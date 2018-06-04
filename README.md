@@ -1,0 +1,2 @@
+# PythonSdk
+PlayFab Python Sdk
