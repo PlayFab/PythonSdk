@@ -3,7 +3,7 @@ import playfab.PlayFabHTTP as PlayFabHTTP
 import playfab.PlayFabSettings as PlayFabSettings
 
 # PlayFab Entity APIs provide a variety of core PlayFab features and work consistently across a broad set of entities,
-# such as titles, players, characters, and more.
+# such as titles, players, characters, and more. API methods for executing CloudScript with an Entity Profile
 
 
 
@@ -150,6 +150,18 @@ def DeleteRole(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Group/DeleteRole", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+# Executes CloudScript using the Entity Profile
+# https://api.playfab.com/documentation/entity/method/ExecuteEntityCloudScript
+def ExecuteEntityCloudScript(request, callback, customData = None, extraHeaders = None):
+    if not PlayFabSettings._internalSettings.EntityToken:
+         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/CloudScript/ExecuteEntityCloudScript", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 # Finalize file uploads to an entity's profile.
 # https://api.playfab.com/documentation/entity/method/FinalizeFileUploads
@@ -473,4 +485,16 @@ def UpdateRole(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Group/UpdateRole", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+# Write batches of entity based events to PlayStream.
+# https://api.playfab.com/documentation/entity/method/WriteEvents
+def WriteEvents(request, callback, customData = None, extraHeaders = None):
+    if not PlayFabSettings._internalSettings.EntityToken:
+         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Event/WriteEvents", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 

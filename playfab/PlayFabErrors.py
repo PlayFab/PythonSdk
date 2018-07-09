@@ -6,7 +6,6 @@ class PlayFabErrorCode(Enum):
     Unknown = 1,
     ConnectionError = 2,
     JsonParseError = 3,
-    MatchmakingHopperIdInvalid = 230,
     UnkownError = 500,
     InvalidParams = 1000,
     AccountNotFound = 1001,
@@ -385,9 +384,11 @@ class PlayFabErrorCode(Enum):
     GameServerConflict = 1386,
     GameServerInternalServerError = 1387,
     GameServerServiceUnavailable = 1388,
-    MatchmakingInvalidEntityKeyList = 2000,
-    MatchmakingInvalidTicketCreatorProfile = 2001,
-    MatchmakingInvalidUserAttributes = 2002,
+    ExplicitContentDetected = 1389,
+    PIIContentDetected = 1390,
+    InvalidScheduledTaskParameter = 1391,
+    MatchmakingEntityInvalid = 2001,
+    MatchmakingPlayerAttributesInvalid = 2002,
     MatchmakingCreateRequestMissing = 2003,
     MatchmakingCreateRequestCreatorMissing = 2004,
     MatchmakingCreateRequestCreatorIdMissing = 2005,
@@ -399,7 +400,7 @@ class PlayFabErrorCode(Enum):
     MatchmakingHopperIdMissing = 2011,
     MatchmakingTitleIdMissing = 2012,
     MatchmakingTicketIdIdMissing = 2013,
-    MatchmakingUserIdMissing = 2014,
+    MatchmakingPlayerIdMissing = 2014,
     MatchmakingJoinRequestUserMissing = 2015,
     MatchmakingHopperConfigNotFound = 2016,
     MatchmakingMatchNotFound = 2017,
@@ -412,10 +413,12 @@ class PlayFabErrorCode(Enum):
     MatchmakingCancelTicketServerIdentityInvalid = 2024,
     MatchmakingCancelTicketUserIdentityMismatch = 2025,
     MatchmakingGetMatchIdentityMismatch = 2026,
-    MatchmakingUserIdentityMismatch = 2027,
+    MatchmakingPlayerIdentityMismatch = 2027,
     MatchmakingAlreadyJoinedTicket = 2028,
     MatchmakingTicketAlreadyCompleted = 2029,
-    MatchmakingHopperConfigInvalid = 2031
+    MatchmakingHopperIdInvalid = 2030,
+    MatchmakingHopperConfigInvalid = 2031,
+    MatchmakingMemberProfileInvalid = 2032
 
 class PlayFabError:
     # the first args item is expected to be a valid dictionary
