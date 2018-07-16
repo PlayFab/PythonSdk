@@ -14,7 +14,7 @@ def MultiStepClientLogin(settingsForUser):
     adIdType = PlayFabSettings.AdvertisingIdType
     adIdVal = PlayFabSettings.AdvertisingIdValue
 
-    if settingsForUser["NeedsAttribution"] and not disabledAds and adIdType and adIdVal:
+    if settingsForUser and settingsForUser["NeedsAttribution"] and not disabledAds and adIdType and adIdVal:
         request = {}
         if adIdType == PlayFabSettings.AD_TYPE_IDFA:
             request["Idfa"] = adIdVal
@@ -957,9 +957,10 @@ def LoginWithAndroidDeviceID(request, callback, customData = None, extraHeaders 
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -974,9 +975,10 @@ def LoginWithCustomID(request, callback, customData = None, extraHeaders = None)
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -993,9 +995,10 @@ def LoginWithEmailAddress(request, callback, customData = None, extraHeaders = N
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1010,9 +1013,10 @@ def LoginWithFacebook(request, callback, customData = None, extraHeaders = None)
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1027,9 +1031,10 @@ def LoginWithGameCenter(request, callback, customData = None, extraHeaders = Non
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1043,9 +1048,10 @@ def LoginWithGoogleAccount(request, callback, customData = None, extraHeaders = 
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1060,9 +1066,10 @@ def LoginWithIOSDeviceID(request, callback, customData = None, extraHeaders = No
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1076,9 +1083,10 @@ def LoginWithKongregate(request, callback, customData = None, extraHeaders = Non
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1095,9 +1103,10 @@ def LoginWithPlayFab(request, callback, customData = None, extraHeaders = None):
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1112,9 +1121,10 @@ def LoginWithSteam(request, callback, customData = None, extraHeaders = None):
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1128,9 +1138,10 @@ def LoginWithTwitch(request, callback, customData = None, extraHeaders = None):
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1147,9 +1158,10 @@ def LoginWithWindowsHello(request, callback, customData = None, extraHeaders = N
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1243,8 +1255,9 @@ def RegisterPlayFabUser(request, callback, customData = None, extraHeaders = Non
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1259,9 +1272,10 @@ def RegisterWithWindowsHello(request, callback, customData = None, extraHeaders 
         raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] or PlayFabSettings._internalSettings.ClientSessionTicket
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
-        MultiStepClientLogin(playFabResult["SettingsForUser"])
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 

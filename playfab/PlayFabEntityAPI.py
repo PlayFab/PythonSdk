@@ -192,7 +192,8 @@ def GetEntityToken(request, callback, customData = None, extraHeaders = None):
         authValue = PlayFabSettings.DeveloperSecretKey 
 
     def wrappedCallback(playFabResult, error):
-        PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"] or PlayFabSettings._internalSettings.EntityToken
+        if playFabResult:
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
         if callback:
             callback(playFabResult, error)
 
