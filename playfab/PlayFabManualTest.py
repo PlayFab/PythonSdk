@@ -1,10 +1,6 @@
-'''
-idea here is to include PlayFabSettings, set them,
-include API.py (or PlayFabSErverAPI.py) and see if you can call a function
-out of it.
-
+"""
 These test API calls are synchronous and will block the current running python process.
-'''
+"""
 
 from playfab import *
 import PlayFabManualTestSettings
@@ -38,7 +34,7 @@ def entityTokenCallback(success, fail):
         print(success)
 
 etRequest = {}
-PlayFabEntityAPI.GetEntityToken(etRequest, entityTokenCallback)
+PlayFabAuthenticationAPI.GetEntityToken(etRequest, entityTokenCallback)
 
 def entityObjectCallback(success, fail):
     if fail:
@@ -48,12 +44,12 @@ def entityObjectCallback(success, fail):
 
 # need to add entity id to this request
 eoRequest = {}
-PlayFabEntityAPI.GetObjects(etRequest, entityObjectCallback)
+PlayFabDataAPI.GetObjects(etRequest, entityObjectCallback)
 
 eoRequest2 = {
     "Entity" : EntityKey
 }
-PlayFabEntityAPI.GetObjects(eoRequest2, entityObjectCallback)
+PlayFabDataAPI.GetObjects(eoRequest2, entityObjectCallback)
 
 def titleDataReqCallback(success, fail):
     if fail:
