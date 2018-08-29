@@ -2,8 +2,10 @@ import playfab.PlayFabErrors as PlayFabErrors
 import playfab.PlayFabHTTP as PlayFabHTTP
 import playfab.PlayFabSettings as PlayFabSettings
 
-""" Entity profiles are the top level containers for essentially all information about an entity. """
-
+"""
+Write custom PlayStream events for any PlayFab entity. PlayStream events can be used for analytics, reporting,
+debugging, or to trigger custom actions in near real-time.
+"""
 
 def WriteEvents(request, callback, customData = None, extraHeaders = None):
     """

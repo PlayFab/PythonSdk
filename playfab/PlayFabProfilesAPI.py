@@ -2,8 +2,10 @@ import playfab.PlayFabErrors as PlayFabErrors
 import playfab.PlayFabHTTP as PlayFabHTTP
 import playfab.PlayFabSettings as PlayFabSettings
 
-""" Entity profiles are the top level containers for essentially all information about an entity. """
-
+"""
+All PlayFab entities have profiles, which hold top-level properties about the entity. These APIs give you the tools
+needed to manage entity profiles.
+"""
 
 def GetGlobalPolicy(request, callback, customData = None, extraHeaders = None):
     """

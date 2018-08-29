@@ -3,9 +3,9 @@ import playfab.PlayFabHTTP as PlayFabHTTP
 import playfab.PlayFabSettings as PlayFabSettings
 
 """
-The Groups API is designed for any permanent or semi-permanent collections of Entities (Players, or non-players). If you
-want to make Guilds/Clans/Corporations/etc, then you should use Groups. Groups can also be used to make chatrooms,
-parties, or any other excuse you need to lump some Entites together in a persistent way.
+The Groups API is designed for any permanent or semi-permanent collections of Entities (players, or non-players). If you
+want to make Guilds/Clans/Corporations/etc., then you should use groups. Groups can also be used to make chatrooms,
+parties, or any other persistent collection of entities.
 """
 
 def AcceptGroupApplication(request, callback, customData = None, extraHeaders = None):

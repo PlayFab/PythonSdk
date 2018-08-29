@@ -205,6 +205,21 @@ def ConsumeItem(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Client/ConsumeItem", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
+def ConsumeXboxEntitlements(request, callback, customData = None, extraHeaders = None):
+    """
+    Grants the player's current entitlements from Xbox Live, consuming all availble items in Xbox and granting them to the
+    player's PlayFab inventory. This call is idempotent and will not grant previously granted items to the player.
+    https://api.playfab.com/documentation/client/method/ConsumeXboxEntitlements
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/ConsumeXboxEntitlements", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
 def CreateSharedGroup(request, callback, customData = None, extraHeaders = None):
     """
     Requests the creation of a shared group object, containing key/value pairs which may be updated by all members of the
@@ -1154,6 +1169,20 @@ def LinkWindowsHello(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Client/LinkWindowsHello", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
+def LinkXboxAccount(request, callback, customData = None, extraHeaders = None):
+    """
+    Links the Xbox Live account associated with the provided access code to the user's PlayFab account
+    https://api.playfab.com/documentation/client/method/LinkXboxAccount
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/LinkXboxAccount", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
 def LoginWithAndroidDeviceID(request, callback, customData = None, extraHeaders = None):
     """
     Signs the user in using the Android device identifier, returning a session identifier that can subsequently be used for
@@ -1436,6 +1465,26 @@ def LoginWithWindowsHello(request, callback, customData = None, extraHeaders = N
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/LoginWithWindowsHello", request, None, None, wrappedCallback, customData, extraHeaders)
+
+def LoginWithXbox(request, callback, customData = None, extraHeaders = None):
+    """
+    Signs the user in using a Xbox Live Token, returning a session identifier that can subsequently be used for API calls
+    which require an authenticated user
+    https://api.playfab.com/documentation/client/method/LoginWithXbox
+    """
+    request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
+    if not request["TitleId"]:
+        raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/LoginWithXbox", request, None, None, wrappedCallback, customData, extraHeaders)
 
 def Matchmake(request, callback, customData = None, extraHeaders = None):
     """
@@ -1923,6 +1972,20 @@ def UnlinkWindowsHello(request, callback, customData = None, extraHeaders = None
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/UnlinkWindowsHello", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
+def UnlinkXboxAccount(request, callback, customData = None, extraHeaders = None):
+    """
+    Unlinks the related Xbox Live account from the user's PlayFab account
+    https://api.playfab.com/documentation/client/method/UnlinkXboxAccount
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/UnlinkXboxAccount", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
 def UnlockContainerInstance(request, callback, customData = None, extraHeaders = None):
     """
