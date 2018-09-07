@@ -65,7 +65,8 @@ def SetGlobalPolicy(request, callback, customData = None, extraHeaders = None):
 
 def SetProfileLanguage(request, callback, customData = None, extraHeaders = None):
     """
-    Updates the entity's language
+    Updates the entity's language. The precedence hierarchy for communication to the player is Title Player Account
+    language, Master Player Account language, and then title default language if the first two aren't set or supported.
     https://api.playfab.com/documentation/profiles/method/SetProfileLanguage
     """
     if not PlayFabSettings._internalSettings.EntityToken:

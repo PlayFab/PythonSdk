@@ -10,6 +10,7 @@ files = [
 "PlayFabDataAPI.py",
 "PlayFabEventsAPI.py",
 "PlayFabGroupsAPI.py",
+"PlayFabLocalizationAPI.py",
 "PlayFabProfilesAPI.py",
 
 "__init__.py",
