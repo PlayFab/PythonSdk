@@ -167,6 +167,20 @@ def DeleteCharacterFromUser(request, callback, customData = None, extraHeaders =
 
     PlayFabHTTP.DoPost("/Server/DeleteCharacterFromUser", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def DeletePlayer(request, callback, customData = None, extraHeaders = None):
+    """
+    Removes a user's player account from a title and deletes all associated data
+    https://api.playfab.com/documentation/server/method/DeletePlayer
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/DeletePlayer", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def DeleteSharedGroup(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a shared group, freeing up the shared group ID to be reused for a new group. Shared Groups are designed for
@@ -183,9 +197,10 @@ def DeleteSharedGroup(request, callback, customData = None, extraHeaders = None)
 
     PlayFabHTTP.DoPost("/Server/DeleteSharedGroup", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+# [Obsolete("Use 'DeletePlayer' instead", false)]
 def DeleteUsers(request, callback, customData = None, extraHeaders = None):
     """
-    Deletes the users for the provided game. Deletes custom data, all account linkages, and statistics.
+    Deletes custom data, all account linkages, and statistics.
     https://api.playfab.com/documentation/server/method/DeleteUsers
     """
     if not PlayFabSettings.DeveloperSecretKey:

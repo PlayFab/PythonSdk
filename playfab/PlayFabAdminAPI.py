@@ -448,6 +448,20 @@ def GetMatchmakerGameModes(request, callback, customData = None, extraHeaders = 
 
     PlayFabHTTP.DoPost("/Admin/GetMatchmakerGameModes", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def GetMatchmakingQueue(request, callback, customData = None, extraHeaders = None):
+    """
+    Get a matchmaking queue configuration.
+    https://api.playfab.com/documentation/admin/method/GetMatchmakingQueue
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/GetMatchmakingQueue", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def GetPlayedTitleList(request, callback, customData = None, extraHeaders = None):
     """
     Get the list of titles that the player has played
@@ -887,6 +901,20 @@ def IncrementPlayerStatisticVersion(request, callback, customData = None, extraH
 
     PlayFabHTTP.DoPost("/Admin/IncrementPlayerStatisticVersion", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def ListMatchmakingQueues(request, callback, customData = None, extraHeaders = None):
+    """
+    List all matchmaking queue configs.
+    https://api.playfab.com/documentation/admin/method/ListMatchmakingQueues
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/ListMatchmakingQueues", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def ListServerBuilds(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the build details for all game server executables which are currently defined for the title
@@ -956,6 +984,20 @@ def RefundPurchase(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Admin/RefundPurchase", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def RemoveMatchmakingQueue(request, callback, customData = None, extraHeaders = None):
+    """
+    Remove a matchmaking queue config.
+    https://api.playfab.com/documentation/admin/method/RemoveMatchmakingQueue
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/RemoveMatchmakingQueue", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def RemovePlayerTag(request, callback, customData = None, extraHeaders = None):
     """
@@ -1155,6 +1197,20 @@ def SetCatalogItems(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Admin/SetCatalogItems", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def SetMatchmakingQueue(request, callback, customData = None, extraHeaders = None):
+    """
+    Create or update a matchmaking queue configuration.
+    https://api.playfab.com/documentation/admin/method/SetMatchmakingQueue
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/SetMatchmakingQueue", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def SetPlayerSecret(request, callback, customData = None, extraHeaders = None):
     """

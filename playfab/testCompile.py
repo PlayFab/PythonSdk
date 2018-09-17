@@ -15,7 +15,6 @@ files = [
 
 "__init__.py",
 "PlayFabErrors.py",
-"PlayFabPlayStreamEventsAPI.py",
 "PlayFabHTTP.py",
 "PlayFabSettings.py",
 "PlayFabManualTest.py"
