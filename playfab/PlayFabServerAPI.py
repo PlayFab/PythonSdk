@@ -197,7 +197,7 @@ def DeleteSharedGroup(request, callback, customData = None, extraHeaders = None)
 
     PlayFabHTTP.DoPost("/Server/DeleteSharedGroup", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
-# [Obsolete("Use 'DeletePlayer' instead", false)]
+# [Obsolete("Use 'DeletePlayer' instead", true)]
 def DeleteUsers(request, callback, customData = None, extraHeaders = None):
     """
     Deletes custom data, all account linkages, and statistics.
