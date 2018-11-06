@@ -778,6 +778,20 @@ def GetPlayFabIDsFromTwitchIDs(request, callback, customData = None, extraHeader
 
     PlayFabHTTP.DoPost("/Client/GetPlayFabIDsFromTwitchIDs", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
+def GetPlayFabIDsFromXboxLiveIDs(request, callback, customData = None, extraHeaders = None):
+    """
+    Retrieves the unique PlayFab identifiers for the given set of XboxLive identifiers.
+    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromXboxLiveIDs
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/GetPlayFabIDsFromXboxLiveIDs", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
 def GetPublisherData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the key-value store of custom publisher settings
@@ -1127,6 +1141,21 @@ def LinkNintendoSwitchDeviceId(request, callback, customData = None, extraHeader
 
     PlayFabHTTP.DoPost("/Client/LinkNintendoSwitchDeviceId", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
+def LinkOpenIdConnect(request, callback, customData = None, extraHeaders = None):
+    """
+    Links an OpenID Connect account to a user's PlayFab account, based on an existing relationship between a title and an
+    Open ID Connect provider and the OpenId Connect JWT from that provider.
+    https://api.playfab.com/documentation/client/method/LinkOpenIdConnect
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/LinkOpenIdConnect", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
 def LinkSteamAccount(request, callback, customData = None, extraHeaders = None):
     """
     Links the Steam account associated with the provided Steam authentication ticket to the user's PlayFab account
@@ -1382,6 +1411,26 @@ def LoginWithNintendoSwitchDeviceId(request, callback, customData = None, extraH
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/LoginWithNintendoSwitchDeviceId", request, None, None, wrappedCallback, customData, extraHeaders)
+
+def LoginWithOpenIdConnect(request, callback, customData = None, extraHeaders = None):
+    """
+    Logs in a user with an Open ID Connect JWT created by an existing relationship between a title and an Open ID Connect
+    provider.
+    https://api.playfab.com/documentation/client/method/LoginWithOpenIdConnect
+    """
+    request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
+    if not request["TitleId"]:
+        raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/LoginWithOpenIdConnect", request, None, None, wrappedCallback, customData, extraHeaders)
 
 def LoginWithPlayFab(request, callback, customData = None, extraHeaders = None):
     """
@@ -1930,6 +1979,21 @@ def UnlinkNintendoSwitchDeviceId(request, callback, customData = None, extraHead
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/UnlinkNintendoSwitchDeviceId", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
+def UnlinkOpenIdConnect(request, callback, customData = None, extraHeaders = None):
+    """
+    Unlinks an OpenID Connect account from a user's PlayFab account, based on the connection ID of an existing relationship
+    between a title and an Open ID Connect provider.
+    https://api.playfab.com/documentation/client/method/UnlinkOpenIdConnect
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/UnlinkOpenIdConnect", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
 def UnlinkSteamAccount(request, callback, customData = None, extraHeaders = None):
     """

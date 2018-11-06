@@ -8,6 +8,7 @@ import playfab.PlayFabDataAPI as PlayFabDataAPI
 import playfab.PlayFabEventsAPI as PlayFabEventsAPI
 import playfab.PlayFabGroupsAPI as PlayFabGroupsAPI
 import playfab.PlayFabLocalizationAPI as PlayFabLocalizationAPI
+import playfab.PlayFabMultiplayerAPI as PlayFabMultiplayerAPI
 import playfab.PlayFabProfilesAPI as PlayFabProfilesAPI
 
 import playfab.PlayFabErrors as PlayFabErrors
@@ -26,5 +27,6 @@ __all__.append("PlayFabDataAPI")
 __all__.append("PlayFabEventsAPI")
 __all__.append("PlayFabGroupsAPI")
 __all__.append("PlayFabLocalizationAPI")
+__all__.append("PlayFabMultiplayerAPI")
 __all__.append("PlayFabProfilesAPI")
 

@@ -197,21 +197,6 @@ def DeleteSharedGroup(request, callback, customData = None, extraHeaders = None)
 
     PlayFabHTTP.DoPost("/Server/DeleteSharedGroup", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
-# [Obsolete("Use 'DeletePlayer' instead", true)]
-def DeleteUsers(request, callback, customData = None, extraHeaders = None):
-    """
-    Deletes custom data, all account linkages, and statistics.
-    https://api.playfab.com/documentation/server/method/DeleteUsers
-    """
-    if not PlayFabSettings.DeveloperSecretKey:
-        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Server/DeleteUsers", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
-
 def DeregisterGame(request, callback, customData = None, extraHeaders = None):
     """
     Inform the matchmaker that a Game Server Instance is removed.
@@ -647,6 +632,20 @@ def GetPlayFabIDsFromSteamIDs(request, callback, customData = None, extraHeaders
 
     PlayFabHTTP.DoPost("/Server/GetPlayFabIDsFromSteamIDs", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def GetPlayFabIDsFromXboxLiveIDs(request, callback, customData = None, extraHeaders = None):
+    """
+    Retrieves the unique PlayFab identifiers for the given set of XboxLive identifiers.
+    https://api.playfab.com/documentation/server/method/GetPlayFabIDsFromXboxLiveIDs
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/GetPlayFabIDsFromXboxLiveIDs", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def GetPublisherData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the key-value store of custom publisher settings
@@ -675,6 +674,20 @@ def GetRandomResultTables(request, callback, customData = None, extraHeaders = N
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Server/GetRandomResultTables", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def GetServerCustomIDsFromPlayFabIDs(request, callback, customData = None, extraHeaders = None):
+    """
+    Retrieves the associated PlayFab account identifiers for the given set of server custom identifiers.
+    https://api.playfab.com/documentation/server/method/GetServerCustomIDsFromPlayFabIDs
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/GetServerCustomIDsFromPlayFabIDs", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def GetSharedGroupData(request, callback, customData = None, extraHeaders = None):
     """
@@ -930,6 +943,50 @@ def GrantItemsToUsers(request, callback, customData = None, extraHeaders = None)
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Server/GrantItemsToUsers", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def LinkXboxAccount(request, callback, customData = None, extraHeaders = None):
+    """
+    Links the Xbox Live account associated with the provided access code to the user's PlayFab account
+    https://api.playfab.com/documentation/server/method/LinkXboxAccount
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/LinkXboxAccount", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def LoginWithServerCustomId(request, callback, customData = None, extraHeaders = None):
+    """
+    Securely login a game client from an external server backend using a custom identifier for that player. Server Custom ID
+    and Client Custom ID are mutually exclusive and cannot be used to retrieve the same player account.
+    https://api.playfab.com/documentation/server/method/LoginWithServerCustomId
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/LoginWithServerCustomId", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def LoginWithXbox(request, callback, customData = None, extraHeaders = None):
+    """
+    Signs the user in using a Xbox Live Token from an external server backend, returning a session identifier that can
+    subsequently be used for API calls which require an authenticated user
+    https://api.playfab.com/documentation/server/method/LoginWithXbox
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/LoginWithXbox", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def ModifyItemUses(request, callback, customData = None, extraHeaders = None):
     """
@@ -1360,6 +1417,20 @@ def SubtractUserVirtualCurrency(request, callback, customData = None, extraHeade
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Server/SubtractUserVirtualCurrency", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def UnlinkXboxAccount(request, callback, customData = None, extraHeaders = None):
+    """
+    Unlinks the related Xbox Live account from the user's PlayFab account
+    https://api.playfab.com/documentation/server/method/UnlinkXboxAccount
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/UnlinkXboxAccount", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def UnlockContainerInstance(request, callback, customData = None, extraHeaders = None):
     """

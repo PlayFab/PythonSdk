@@ -394,6 +394,11 @@ class PlayFabErrorCode(Enum):
     FacebookInstantGamesIdNotLinked = 1395,
     InvalidFacebookInstantGamesSignature = 1396,
     FacebookInstantGamesAuthNotConfiguredForTitle = 1397,
+    EntityProfileConstraintValidationFailed = 1398,
+    PlayInsightsIngestionKeyPending = 1399,
+    PlayInsightsIngestionKeyNotFound = 1400,
+    StatisticTagRequired = 1401,
+    StatisticTagInvalid = 1402,
     MatchmakingEntityInvalid = 2001,
     MatchmakingPlayerAttributesInvalid = 2002,
     MatchmakingCreateRequestMissing = 2003,
@@ -428,7 +433,9 @@ class PlayFabErrorCode(Enum):
     MatchmakingMemberProfileInvalid = 2032,
     WriteAttemptedDuringExport = 2033,
     NintendoSwitchDeviceIdNotLinked = 2034,
-    MatchmakingNotEnabled = 2035
+    MatchmakingNotEnabled = 2035,
+    MatchmakingGetStatisticsIdentityInvalid = 2036,
+    MatchmakingStatisticsIdMissing = 2037
 
 class PlayFabError:
     def __init__(self, *args):
