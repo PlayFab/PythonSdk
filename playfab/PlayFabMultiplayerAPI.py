@@ -201,6 +201,20 @@ def GetTitleEnabledForMultiplayerServersStatus(request, callback, customData = N
 
     PlayFabHTTP.DoPost("/MultiplayerServer/GetTitleEnabledForMultiplayerServersStatus", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def ListArchivedMultiplayerServers(request, callback, customData = None, extraHeaders = None):
+    """
+    Lists archived multiplayer server sessions for a build.
+    https://api.playfab.com/documentation/multiplayer/method/ListArchivedMultiplayerServers
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/ListArchivedMultiplayerServers", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def ListAssetSummaries(request, callback, customData = None, extraHeaders = None):
     """
     Lists multiplayer server game assets for a title.
