@@ -205,6 +205,20 @@ def ConsumeItem(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Client/ConsumeItem", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
+def ConsumePSNEntitlements(request, callback, customData = None, extraHeaders = None):
+    """
+    Checks for any new consumable entitlements. If any are found, they are consumed and added as PlayFab items
+    https://api.playfab.com/documentation/client/method/ConsumePSNEntitlements
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/ConsumePSNEntitlements", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
 def ConsumeXboxEntitlements(request, callback, customData = None, extraHeaders = None):
     """
     Grants the player's current entitlements from Xbox Live, consuming all availble items in Xbox and granting them to the
@@ -747,6 +761,20 @@ def GetPlayFabIDsFromNintendoSwitchDeviceIds(request, callback, customData = Non
 
     PlayFabHTTP.DoPost("/Client/GetPlayFabIDsFromNintendoSwitchDeviceIds", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
+def GetPlayFabIDsFromPSNAccountIDs(request, callback, customData = None, extraHeaders = None):
+    """
+    Retrieves the unique PlayFab identifiers for the given set of PlayStation Network identifiers.
+    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromPSNAccountIDs
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/GetPlayFabIDsFromPSNAccountIDs", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
 def GetPlayFabIDsFromSteamIDs(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers are the profile
@@ -1156,6 +1184,20 @@ def LinkOpenIdConnect(request, callback, customData = None, extraHeaders = None)
 
     PlayFabHTTP.DoPost("/Client/LinkOpenIdConnect", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
+def LinkPSNAccount(request, callback, customData = None, extraHeaders = None):
+    """
+    Links the PlayStation Network account associated with the provided access code to the user's PlayFab account
+    https://api.playfab.com/documentation/client/method/LinkPSNAccount
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/LinkPSNAccount", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
 def LinkSteamAccount(request, callback, customData = None, extraHeaders = None):
     """
     Links the Steam account associated with the provided Steam authentication ticket to the user's PlayFab account
@@ -1454,6 +1496,26 @@ def LoginWithPlayFab(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Client/LoginWithPlayFab", request, None, None, wrappedCallback, customData, extraHeaders)
 
+def LoginWithPSN(request, callback, customData = None, extraHeaders = None):
+    """
+    Signs the user in using a PlayStation Network authentication code, returning a session identifier that can subsequently
+    be used for API calls which require an authenticated user
+    https://api.playfab.com/documentation/client/method/LoginWithPSN
+    """
+    request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
+    if not request["TitleId"]:
+        raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/LoginWithPSN", request, None, None, wrappedCallback, customData, extraHeaders)
+
 def LoginWithSteam(request, callback, customData = None, extraHeaders = None):
     """
     Signs the user in using a Steam authentication ticket, returning a session identifier that can subsequently be used for
@@ -1611,6 +1673,20 @@ def RedeemCoupon(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/RedeemCoupon", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
+def RefreshPSNAuthToken(request, callback, customData = None, extraHeaders = None):
+    """
+    Uses the supplied OAuth code to refresh the internally cached player PSN auth token
+    https://api.playfab.com/documentation/client/method/RefreshPSNAuthToken
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/RefreshPSNAuthToken", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
 def RegisterForIOSPushNotification(request, callback, customData = None, extraHeaders = None):
     """
@@ -1994,6 +2070,20 @@ def UnlinkOpenIdConnect(request, callback, customData = None, extraHeaders = Non
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/UnlinkOpenIdConnect", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
+def UnlinkPSNAccount(request, callback, customData = None, extraHeaders = None):
+    """
+    Unlinks the related PSN account from the user's PlayFab account
+    https://api.playfab.com/documentation/client/method/UnlinkPSNAccount
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/UnlinkPSNAccount", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
 def UnlinkSteamAccount(request, callback, customData = None, extraHeaders = None):
     """
