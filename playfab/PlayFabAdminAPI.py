@@ -19,6 +19,20 @@ def AbortTaskInstance(request, callback, customData = None, extraHeaders = None)
 
     PlayFabHTTP.DoPost("/Admin/AbortTaskInstance", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def AddLocalizedNews(request, callback, customData = None, extraHeaders = None):
+    """
+    Update news item to include localized version
+    https://api.playfab.com/documentation/admin/method/AddLocalizedNews
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/AddLocalizedNews", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def AddNews(request, callback, customData = None, extraHeaders = None):
     """
     Adds a new news item to the title's news feed

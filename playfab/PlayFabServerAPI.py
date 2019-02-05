@@ -617,6 +617,20 @@ def GetPlayFabIDsFromNintendoSwitchDeviceIds(request, callback, customData = Non
 
     PlayFabHTTP.DoPost("/Server/GetPlayFabIDsFromNintendoSwitchDeviceIds", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def GetPlayFabIDsFromPSNAccountIDs(request, callback, customData = None, extraHeaders = None):
+    """
+    Retrieves the unique PlayFab identifiers for the given set of PlayStation Network identifiers.
+    https://api.playfab.com/documentation/server/method/GetPlayFabIDsFromPSNAccountIDs
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/GetPlayFabIDsFromPSNAccountIDs", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def GetPlayFabIDsFromSteamIDs(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers are the profile
