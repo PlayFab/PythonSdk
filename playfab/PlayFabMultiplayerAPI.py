@@ -2,7 +2,7 @@ import playfab.PlayFabErrors as PlayFabErrors
 import playfab.PlayFabHTTP as PlayFabHTTP
 import playfab.PlayFabSettings as PlayFabSettings
 
-""" API methods for managing multiplayer servers. """
+""" API methods for managing multiplayer servers. API methods for managing parties. """
 
 
 def CreateBuildWithCustomContainer(request, callback, customData = None, extraHeaders = None):
