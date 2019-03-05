@@ -161,6 +161,20 @@ def CreateCloudScriptTask(request, callback, customData = None, extraHeaders = N
 
     PlayFabHTTP.DoPost("/Admin/CreateCloudScriptTask", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def CreateOpenIdConnection(request, callback, customData = None, extraHeaders = None):
+    """
+    Registers a relationship between a title and an Open ID Connect provider.
+    https://api.playfab.com/documentation/admin/method/CreateOpenIdConnection
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/CreateOpenIdConnection", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def CreatePlayerSharedSecret(request, callback, customData = None, extraHeaders = None):
     """
     Creates a new Player Shared Secret Key. It may take up to 5 minutes for this key to become generally available after
@@ -218,6 +232,20 @@ def DeleteMasterPlayerAccount(request, callback, customData = None, extraHeaders
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Admin/DeleteMasterPlayerAccount", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def DeleteOpenIdConnection(request, callback, customData = None, extraHeaders = None):
+    """
+    Removes a relationship between a title and an OpenID Connect provider.
+    https://api.playfab.com/documentation/admin/method/DeleteOpenIdConnection
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/DeleteOpenIdConnection", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def DeletePlayer(request, callback, customData = None, extraHeaders = None):
     """
@@ -901,6 +929,20 @@ def IncrementPlayerStatisticVersion(request, callback, customData = None, extraH
 
     PlayFabHTTP.DoPost("/Admin/IncrementPlayerStatisticVersion", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def ListOpenIdConnection(request, callback, customData = None, extraHeaders = None):
+    """
+    Retrieves a list of all Open ID Connect providers registered to a title.
+    https://api.playfab.com/documentation/admin/method/ListOpenIdConnection
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/ListOpenIdConnection", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def ListServerBuilds(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the build details for all game server executables which are currently defined for the title
@@ -1326,6 +1368,20 @@ def UpdateCloudScript(request, callback, customData = None, extraHeaders = None)
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Admin/UpdateCloudScript", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def UpdateOpenIdConnection(request, callback, customData = None, extraHeaders = None):
+    """
+    Modifies data and credentials for an existing relationship between a title and an Open ID Connect provider
+    https://api.playfab.com/documentation/admin/method/UpdateOpenIdConnection
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/UpdateOpenIdConnection", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def UpdatePlayerSharedSecret(request, callback, customData = None, extraHeaders = None):
     """
