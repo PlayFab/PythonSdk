@@ -230,20 +230,6 @@ def GetMatch(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Match/GetMatch", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
-def GetMatchmakingQueue(request, callback, customData = None, extraHeaders = None):
-    """
-    Get a matchmaking queue configuration.
-    https://api.playfab.com/documentation/multiplayer/method/GetMatchmakingQueue
-    """
-    if not PlayFabSettings._internalSettings.EntityToken:
-        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Match/GetMatchmakingQueue", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
-
 def GetMatchmakingTicket(request, callback, customData = None, extraHeaders = None):
     """
     Get a matchmaking ticket by ticket Id.
@@ -313,6 +299,20 @@ def GetTitleEnabledForMultiplayerServersStatus(request, callback, customData = N
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/GetTitleEnabledForMultiplayerServersStatus", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def GetTitleMultiplayerServersQuotas(request, callback, customData = None, extraHeaders = None):
+    """
+    Gets the quotas for a title in relation to multiplayer servers.
+    https://api.playfab.com/documentation/multiplayer/method/GetTitleMultiplayerServersQuotas
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/GetTitleMultiplayerServersQuotas", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def JoinMatchmakingTicket(request, callback, customData = None, extraHeaders = None):
     """
@@ -412,20 +412,6 @@ def ListContainerImageTags(request, callback, customData = None, extraHeaders = 
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ListContainerImageTags", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
-def ListMatchmakingQueues(request, callback, customData = None, extraHeaders = None):
-    """
-    List all matchmaking queue configs.
-    https://api.playfab.com/documentation/multiplayer/method/ListMatchmakingQueues
-    """
-    if not PlayFabSettings._internalSettings.EntityToken:
-        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Match/ListMatchmakingQueues", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
-
 def ListMatchmakingTicketsForPlayer(request, callback, customData = None, extraHeaders = None):
     """
     List all matchmaking ticket Ids the user is a member of.
@@ -479,20 +465,6 @@ def ListVirtualMachineSummaries(request, callback, customData = None, extraHeade
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ListVirtualMachineSummaries", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
-def RemoveMatchmakingQueue(request, callback, customData = None, extraHeaders = None):
-    """
-    Remove a matchmaking queue config.
-    https://api.playfab.com/documentation/multiplayer/method/RemoveMatchmakingQueue
-    """
-    if not PlayFabSettings._internalSettings.EntityToken:
-        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Match/RemoveMatchmakingQueue", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
-
 def RequestMultiplayerServer(request, callback, customData = None, extraHeaders = None):
     """
     Request a multiplayer server session. Accepts tokens for title and if game client accesss is enabled, allows game client
@@ -521,20 +493,6 @@ def RolloverContainerRegistryCredentials(request, callback, customData = None, e
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/RolloverContainerRegistryCredentials", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
-
-def SetMatchmakingQueue(request, callback, customData = None, extraHeaders = None):
-    """
-    Create or update a matchmaking queue configuration.
-    https://api.playfab.com/documentation/multiplayer/method/SetMatchmakingQueue
-    """
-    if not PlayFabSettings._internalSettings.EntityToken:
-        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Match/SetMatchmakingQueue", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def ShutdownMultiplayerServer(request, callback, customData = None, extraHeaders = None):
     """
