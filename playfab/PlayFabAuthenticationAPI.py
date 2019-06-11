@@ -34,4 +34,18 @@ def GetEntityToken(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Authentication/GetEntityToken", request, authKey, authValue, wrappedCallback, customData, extraHeaders)
 
+def ValidateEntityToken(request, callback, customData = None, extraHeaders = None):
+    """
+    Method for a server to validate a client provided EntityToken. Only callable by the title entity.
+    https://api.playfab.com/documentation/authentication/method/ValidateEntityToken
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Authentication/ValidateEntityToken", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 
