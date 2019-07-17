@@ -49,6 +49,20 @@ def GetProfiles(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Profile/GetProfiles", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def GetTitlePlayersFromMasterPlayerAccountIds(request, callback, customData = None, extraHeaders = None):
+    """
+    Retrieves the title player accounts associated with the given master player account.
+    https://api.playfab.com/documentation/profiles/method/GetTitlePlayersFromMasterPlayerAccountIds
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Profile/GetTitlePlayersFromMasterPlayerAccountIds", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def SetGlobalPolicy(request, callback, customData = None, extraHeaders = None):
     """
     Sets the global title access policy
