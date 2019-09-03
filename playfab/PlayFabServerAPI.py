@@ -765,6 +765,20 @@ def GetSharedGroupData(request, callback, customData = None, extraHeaders = None
 
     PlayFabHTTP.DoPost("/Server/GetSharedGroupData", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def GetStoreItems(request, callback, customData = None, extraHeaders = None):
+    """
+    Retrieves the set of items defined for the specified store, including all prices defined, for the specified player
+    https://api.playfab.com/documentation/server/method/GetStoreItems
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/GetStoreItems", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def GetTime(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the current server time
@@ -1061,6 +1075,21 @@ def LoginWithXbox(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Server/LoginWithXbox", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def LoginWithXboxId(request, callback, customData = None, extraHeaders = None):
+    """
+    Signs the user in using an Xbox ID and Sandbox ID, returning a session identifier that can subsequently be used for API
+    calls which require an authenticated user
+    https://api.playfab.com/documentation/server/method/LoginWithXboxId
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/LoginWithXboxId", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def ModifyItemUses(request, callback, customData = None, extraHeaders = None):
     """

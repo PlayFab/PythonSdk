@@ -465,6 +465,20 @@ def ListQosServers(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ListQosServers", request, None, None, wrappedCallback, customData, extraHeaders)
 
+def ListQosServersForTitle(request, callback, customData = None, extraHeaders = None):
+    """
+    Lists quality of service servers.
+    https://api.playfab.com/documentation/multiplayer/method/ListQosServersForTitle
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/ListQosServersForTitle", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def ListVirtualMachineSummaries(request, callback, customData = None, extraHeaders = None):
     """
     Lists virtual machines for a title.
