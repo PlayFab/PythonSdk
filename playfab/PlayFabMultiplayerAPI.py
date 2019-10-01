@@ -358,7 +358,8 @@ def ListAssetSummaries(request, callback, customData = None, extraHeaders = None
 
 def ListBuildSummaries(request, callback, customData = None, extraHeaders = None):
     """
-    Lists summarized details of all multiplayer server builds for a title.
+    Lists summarized details of all multiplayer server builds for a title. Accepts tokens for title and if game client
+    access is enabled, allows game client to request list of builds with player entity token.
     https://api.playfab.com/documentation/multiplayer/method/ListBuildSummaries
     """
     if not PlayFabSettings._internalSettings.EntityToken:
@@ -495,7 +496,7 @@ def ListVirtualMachineSummaries(request, callback, customData = None, extraHeade
 
 def RequestMultiplayerServer(request, callback, customData = None, extraHeaders = None):
     """
-    Request a multiplayer server session. Accepts tokens for title and if game client accesss is enabled, allows game client
+    Request a multiplayer server session. Accepts tokens for title and if game client access is enabled, allows game client
     to request a server with player entity token.
     https://api.playfab.com/documentation/multiplayer/method/RequestMultiplayerServer
     """
