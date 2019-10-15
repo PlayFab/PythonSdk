@@ -33,6 +33,20 @@ def CancelMatchmakingTicket(request, callback, customData = None, extraHeaders =
 
     PlayFabHTTP.DoPost("/Match/CancelMatchmakingTicket", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def CreateBuildAlias(request, callback, customData = None, extraHeaders = None):
+    """
+    Creates a multiplayer server build alias.
+    https://api.playfab.com/documentation/multiplayer/method/CreateBuildAlias
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/CreateBuildAlias", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def CreateBuildWithCustomContainer(request, callback, customData = None, extraHeaders = None):
     """
     Creates a multiplayer server build with a custom container.
@@ -132,6 +146,20 @@ def DeleteBuild(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/MultiplayerServer/DeleteBuild", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def DeleteBuildAlias(request, callback, customData = None, extraHeaders = None):
+    """
+    Deletes a multiplayer server build alias.
+    https://api.playfab.com/documentation/multiplayer/method/DeleteBuildAlias
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/DeleteBuildAlias", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def DeleteCertificate(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a multiplayer server game certificate.
@@ -201,6 +229,20 @@ def GetBuild(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/GetBuild", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def GetBuildAlias(request, callback, customData = None, extraHeaders = None):
+    """
+    Gets a multiplayer server build alias.
+    https://api.playfab.com/documentation/multiplayer/method/GetBuildAlias
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/GetBuildAlias", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def GetContainerRegistryCredentials(request, callback, customData = None, extraHeaders = None):
     """
@@ -355,6 +397,21 @@ def ListAssetSummaries(request, callback, customData = None, extraHeaders = None
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ListAssetSummaries", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def ListBuildAliases(request, callback, customData = None, extraHeaders = None):
+    """
+    Lists details of all build aliases for a title. Accepts tokens for title and if game client access is enabled, allows
+    game client to request list of builds with player entity token.
+    https://api.playfab.com/documentation/multiplayer/method/ListBuildAliases
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/ListBuildAliases", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def ListBuildSummaries(request, callback, customData = None, extraHeaders = None):
     """
@@ -536,6 +593,20 @@ def ShutdownMultiplayerServer(request, callback, customData = None, extraHeaders
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ShutdownMultiplayerServer", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def UpdateBuildAlias(request, callback, customData = None, extraHeaders = None):
+    """
+    Creates a multiplayer server build alias.
+    https://api.playfab.com/documentation/multiplayer/method/UpdateBuildAlias
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/UpdateBuildAlias", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def UpdateBuildRegions(request, callback, customData = None, extraHeaders = None):
     """
