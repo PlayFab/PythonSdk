@@ -484,6 +484,8 @@ class PlayFabErrorCode(Enum):
     InsightsManagementSetStorageRetentionInvalidParameter = 1486,
     InsightsManagementGetStorageUsageInvalidParameter = 1487,
     InsightsManagementGetOperationStatusInvalidParameter = 1488,
+    DuplicatePurchaseTransactionId = 1489,
+    EvaluationModePlayerCountExceeded = 1490,
     MatchmakingEntityInvalid = 2001,
     MatchmakingPlayerAttributesInvalid = 2002,
     MatchmakingQueueNotFound = 2016,
@@ -520,6 +522,8 @@ class PlayFabErrorCode(Enum):
     CatalogConfigInvalid = 4010,
     CatalogUnauthorized = 4011,
     CatalogItemTypeInvalid = 4012,
+    CatalogBadRequest = 4013,
+    CatalogTooManyRequests = 4014,
     ExportInvalidStatusUpdate = 5000,
     ExportInvalidPrefix = 5001,
     ExportBlobContainerDoesNotExist = 5002,
@@ -546,6 +550,7 @@ class PlayFabErrorCode(Enum):
     ExperimentationExceededVariantNameLength = 7006,
     ExperimentationExceededMaxVariantLength = 7007,
     ExperimentInvalidId = 7008,
+    ExperimentationNoScorecard = 7009,
     MaxActionDepthExceeded = 8000,
     SnapshotNotFound = 11000
 
