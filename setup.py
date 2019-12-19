@@ -4,10 +4,10 @@ with open("README.md", "r") as fh:
         
 setuptools.setup(
     name="playfab",
-    version="0.0.191121",
+    version="0.0.191218",
     author="PlayFab Dev Tools team",
     author_email="devrel@playfab.com",
-    description="PlayFab Python SDK current API version: 0.0.191121",
+    description="PlayFab Python SDK current API version: 0.0.191218",
     long_description=long_description,
     url="https://github.com/PlayFab/PythonSdk",
     packages=setuptools.find_packages(),

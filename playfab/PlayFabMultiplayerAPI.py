@@ -300,6 +300,20 @@ def GetMultiplayerServerDetails(request, callback, customData = None, extraHeade
 
     PlayFabHTTP.DoPost("/MultiplayerServer/GetMultiplayerServerDetails", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def GetMultiplayerServerLogs(request, callback, customData = None, extraHeaders = None):
+    """
+    Gets multiplayer server logs after a server has terminated.
+    https://api.playfab.com/documentation/multiplayer/method/GetMultiplayerServerLogs
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/GetMultiplayerServerLogs", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def GetQueueStatistics(request, callback, customData = None, extraHeaders = None):
     """
     Get the statistics for a queue.
@@ -593,6 +607,20 @@ def ShutdownMultiplayerServer(request, callback, customData = None, extraHeaders
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ShutdownMultiplayerServer", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def UntagContainerImage(request, callback, customData = None, extraHeaders = None):
+    """
+    Untags a container image.
+    https://api.playfab.com/documentation/multiplayer/method/UntagContainerImage
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/UntagContainerImage", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def UpdateBuildAlias(request, callback, customData = None, extraHeaders = None):
     """
