@@ -11,7 +11,7 @@ parties, or any other persistent collection of entities.
 def AcceptGroupApplication(request, callback, customData = None, extraHeaders = None):
     """
     Accepts an outstanding invitation to to join a group
-    https://api.playfab.com/documentation/groups/method/AcceptGroupApplication
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/acceptgroupapplication
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -25,7 +25,7 @@ def AcceptGroupApplication(request, callback, customData = None, extraHeaders = 
 def AcceptGroupInvitation(request, callback, customData = None, extraHeaders = None):
     """
     Accepts an invitation to join a group
-    https://api.playfab.com/documentation/groups/method/AcceptGroupInvitation
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/acceptgroupinvitation
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -39,7 +39,7 @@ def AcceptGroupInvitation(request, callback, customData = None, extraHeaders = N
 def AddMembers(request, callback, customData = None, extraHeaders = None):
     """
     Adds members to a group or role.
-    https://api.playfab.com/documentation/groups/method/AddMembers
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/addmembers
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -53,7 +53,7 @@ def AddMembers(request, callback, customData = None, extraHeaders = None):
 def ApplyToGroup(request, callback, customData = None, extraHeaders = None):
     """
     Applies to join a group
-    https://api.playfab.com/documentation/groups/method/ApplyToGroup
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/applytogroup
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -67,7 +67,7 @@ def ApplyToGroup(request, callback, customData = None, extraHeaders = None):
 def BlockEntity(request, callback, customData = None, extraHeaders = None):
     """
     Blocks a list of entities from joining a group.
-    https://api.playfab.com/documentation/groups/method/BlockEntity
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/blockentity
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -81,7 +81,7 @@ def BlockEntity(request, callback, customData = None, extraHeaders = None):
 def ChangeMemberRole(request, callback, customData = None, extraHeaders = None):
     """
     Changes the role membership of a list of entities from one role to another.
-    https://api.playfab.com/documentation/groups/method/ChangeMemberRole
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/changememberrole
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -95,7 +95,7 @@ def ChangeMemberRole(request, callback, customData = None, extraHeaders = None):
 def CreateGroup(request, callback, customData = None, extraHeaders = None):
     """
     Creates a new group.
-    https://api.playfab.com/documentation/groups/method/CreateGroup
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/creategroup
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -109,7 +109,7 @@ def CreateGroup(request, callback, customData = None, extraHeaders = None):
 def CreateRole(request, callback, customData = None, extraHeaders = None):
     """
     Creates a new group role.
-    https://api.playfab.com/documentation/groups/method/CreateRole
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/createrole
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -123,7 +123,7 @@ def CreateRole(request, callback, customData = None, extraHeaders = None):
 def DeleteGroup(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a group and all roles, invitations, join requests, and blocks associated with it.
-    https://api.playfab.com/documentation/groups/method/DeleteGroup
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/deletegroup
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -137,7 +137,7 @@ def DeleteGroup(request, callback, customData = None, extraHeaders = None):
 def DeleteRole(request, callback, customData = None, extraHeaders = None):
     """
     Deletes an existing role in a group.
-    https://api.playfab.com/documentation/groups/method/DeleteRole
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/deleterole
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -151,7 +151,7 @@ def DeleteRole(request, callback, customData = None, extraHeaders = None):
 def GetGroup(request, callback, customData = None, extraHeaders = None):
     """
     Gets information about a group and its roles
-    https://api.playfab.com/documentation/groups/method/GetGroup
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/getgroup
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -165,7 +165,7 @@ def GetGroup(request, callback, customData = None, extraHeaders = None):
 def InviteToGroup(request, callback, customData = None, extraHeaders = None):
     """
     Invites a player to join a group
-    https://api.playfab.com/documentation/groups/method/InviteToGroup
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/invitetogroup
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -179,7 +179,7 @@ def InviteToGroup(request, callback, customData = None, extraHeaders = None):
 def IsMember(request, callback, customData = None, extraHeaders = None):
     """
     Checks to see if an entity is a member of a group or role within the group
-    https://api.playfab.com/documentation/groups/method/IsMember
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/ismember
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -193,7 +193,7 @@ def IsMember(request, callback, customData = None, extraHeaders = None):
 def ListGroupApplications(request, callback, customData = None, extraHeaders = None):
     """
     Lists all outstanding requests to join a group
-    https://api.playfab.com/documentation/groups/method/ListGroupApplications
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/listgroupapplications
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -207,7 +207,7 @@ def ListGroupApplications(request, callback, customData = None, extraHeaders = N
 def ListGroupBlocks(request, callback, customData = None, extraHeaders = None):
     """
     Lists all entities blocked from joining a group
-    https://api.playfab.com/documentation/groups/method/ListGroupBlocks
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/listgroupblocks
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -221,7 +221,7 @@ def ListGroupBlocks(request, callback, customData = None, extraHeaders = None):
 def ListGroupInvitations(request, callback, customData = None, extraHeaders = None):
     """
     Lists all outstanding invitations for a group
-    https://api.playfab.com/documentation/groups/method/ListGroupInvitations
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/listgroupinvitations
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -235,7 +235,7 @@ def ListGroupInvitations(request, callback, customData = None, extraHeaders = No
 def ListGroupMembers(request, callback, customData = None, extraHeaders = None):
     """
     Lists all members for a group
-    https://api.playfab.com/documentation/groups/method/ListGroupMembers
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/listgroupmembers
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -249,7 +249,7 @@ def ListGroupMembers(request, callback, customData = None, extraHeaders = None):
 def ListMembership(request, callback, customData = None, extraHeaders = None):
     """
     Lists all groups and roles for an entity
-    https://api.playfab.com/documentation/groups/method/ListMembership
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/listmembership
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -263,7 +263,7 @@ def ListMembership(request, callback, customData = None, extraHeaders = None):
 def ListMembershipOpportunities(request, callback, customData = None, extraHeaders = None):
     """
     Lists all outstanding invitations and group applications for an entity
-    https://api.playfab.com/documentation/groups/method/ListMembershipOpportunities
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/listmembershipopportunities
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -277,7 +277,7 @@ def ListMembershipOpportunities(request, callback, customData = None, extraHeade
 def RemoveGroupApplication(request, callback, customData = None, extraHeaders = None):
     """
     Removes an application to join a group
-    https://api.playfab.com/documentation/groups/method/RemoveGroupApplication
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/removegroupapplication
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -291,7 +291,7 @@ def RemoveGroupApplication(request, callback, customData = None, extraHeaders = 
 def RemoveGroupInvitation(request, callback, customData = None, extraHeaders = None):
     """
     Removes an invitation join a group
-    https://api.playfab.com/documentation/groups/method/RemoveGroupInvitation
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/removegroupinvitation
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -305,7 +305,7 @@ def RemoveGroupInvitation(request, callback, customData = None, extraHeaders = N
 def RemoveMembers(request, callback, customData = None, extraHeaders = None):
     """
     Removes members from a group.
-    https://api.playfab.com/documentation/groups/method/RemoveMembers
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/removemembers
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -319,7 +319,7 @@ def RemoveMembers(request, callback, customData = None, extraHeaders = None):
 def UnblockEntity(request, callback, customData = None, extraHeaders = None):
     """
     Unblocks a list of entities from joining a group
-    https://api.playfab.com/documentation/groups/method/UnblockEntity
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/unblockentity
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -333,7 +333,7 @@ def UnblockEntity(request, callback, customData = None, extraHeaders = None):
 def UpdateGroup(request, callback, customData = None, extraHeaders = None):
     """
     Updates non-membership data about a group.
-    https://api.playfab.com/documentation/groups/method/UpdateGroup
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/updategroup
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -347,7 +347,7 @@ def UpdateGroup(request, callback, customData = None, extraHeaders = None):
 def UpdateRole(request, callback, customData = None, extraHeaders = None):
     """
     Updates metadata about a role.
-    https://api.playfab.com/documentation/groups/method/UpdateRole
+    https://docs.microsoft.com/rest/api/playfab/groups/groups/updaterole
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")

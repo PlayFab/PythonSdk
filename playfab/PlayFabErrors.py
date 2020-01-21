@@ -491,6 +491,7 @@ class PlayFabErrorCode(Enum):
     InsightsManagementTitleInEvaluationMode = 1493,
     CloudScriptAzureFunctionsQueueRequestError = 1494,
     EvaluationModeTitleCountExceeded = 1495,
+    InsightsManagementTitleNotInFlight = 1496,
     MatchmakingEntityInvalid = 2001,
     MatchmakingPlayerAttributesInvalid = 2002,
     MatchmakingQueueNotFound = 2016,

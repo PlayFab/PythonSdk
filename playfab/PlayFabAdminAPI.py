@@ -8,7 +8,7 @@ import playfab.PlayFabSettings as PlayFabSettings
 def AbortTaskInstance(request, callback, customData = None, extraHeaders = None):
     """
     Abort an ongoing task instance.
-    https://api.playfab.com/documentation/admin/method/AbortTaskInstance
+    https://docs.microsoft.com/rest/api/playfab/admin/scheduledtask/aborttaskinstance
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -22,7 +22,7 @@ def AbortTaskInstance(request, callback, customData = None, extraHeaders = None)
 def AddLocalizedNews(request, callback, customData = None, extraHeaders = None):
     """
     Update news item to include localized version
-    https://api.playfab.com/documentation/admin/method/AddLocalizedNews
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/addlocalizednews
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -36,7 +36,7 @@ def AddLocalizedNews(request, callback, customData = None, extraHeaders = None):
 def AddNews(request, callback, customData = None, extraHeaders = None):
     """
     Adds a new news item to the title's news feed
-    https://api.playfab.com/documentation/admin/method/AddNews
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/addnews
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -50,7 +50,7 @@ def AddNews(request, callback, customData = None, extraHeaders = None):
 def AddPlayerTag(request, callback, customData = None, extraHeaders = None):
     """
     Adds a given tag to a player profile. The tag's namespace is automatically generated based on the source of the tag.
-    https://api.playfab.com/documentation/admin/method/AddPlayerTag
+    https://docs.microsoft.com/rest/api/playfab/admin/playstream/addplayertag
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -65,7 +65,7 @@ def AddServerBuild(request, callback, customData = None, extraHeaders = None):
     """
     Adds the game server executable specified (previously uploaded - see GetServerBuildUploadUrl) to the set of those a
     client is permitted to request in a call to StartGame
-    https://api.playfab.com/documentation/admin/method/AddServerBuild
+    https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/addserverbuild
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -79,7 +79,7 @@ def AddServerBuild(request, callback, customData = None, extraHeaders = None):
 def AddUserVirtualCurrency(request, callback, customData = None, extraHeaders = None):
     """
     Increments the specified virtual currency by the stated amount
-    https://api.playfab.com/documentation/admin/method/AddUserVirtualCurrency
+    https://docs.microsoft.com/rest/api/playfab/admin/player-item-management/adduservirtualcurrency
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -94,7 +94,7 @@ def AddVirtualCurrencyTypes(request, callback, customData = None, extraHeaders =
     """
     Adds one or more virtual currencies to the set defined for the title. Virtual Currencies have a maximum value of
     2,147,483,647 when granted to a player. Any value over that will be discarded.
-    https://api.playfab.com/documentation/admin/method/AddVirtualCurrencyTypes
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/addvirtualcurrencytypes
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -108,7 +108,7 @@ def AddVirtualCurrencyTypes(request, callback, customData = None, extraHeaders =
 def BanUsers(request, callback, customData = None, extraHeaders = None):
     """
     Bans users by PlayFab ID with optional IP address, or MAC address for the provided game.
-    https://api.playfab.com/documentation/admin/method/BanUsers
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/banusers
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -122,7 +122,7 @@ def BanUsers(request, callback, customData = None, extraHeaders = None):
 def CheckLimitedEditionItemAvailability(request, callback, customData = None, extraHeaders = None):
     """
     Checks the global count for the limited edition item.
-    https://api.playfab.com/documentation/admin/method/CheckLimitedEditionItemAvailability
+    https://docs.microsoft.com/rest/api/playfab/admin/player-item-management/checklimitededitionitemavailability
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -136,7 +136,7 @@ def CheckLimitedEditionItemAvailability(request, callback, customData = None, ex
 def CreateActionsOnPlayersInSegmentTask(request, callback, customData = None, extraHeaders = None):
     """
     Create an ActionsOnPlayersInSegment task, which iterates through all players in a segment to execute action.
-    https://api.playfab.com/documentation/admin/method/CreateActionsOnPlayersInSegmentTask
+    https://docs.microsoft.com/rest/api/playfab/admin/scheduledtask/createactionsonplayersinsegmenttask
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -150,7 +150,7 @@ def CreateActionsOnPlayersInSegmentTask(request, callback, customData = None, ex
 def CreateCloudScriptTask(request, callback, customData = None, extraHeaders = None):
     """
     Create a CloudScript task, which can run a CloudScript on a schedule.
-    https://api.playfab.com/documentation/admin/method/CreateCloudScriptTask
+    https://docs.microsoft.com/rest/api/playfab/admin/scheduledtask/createcloudscripttask
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -164,7 +164,7 @@ def CreateCloudScriptTask(request, callback, customData = None, extraHeaders = N
 def CreateOpenIdConnection(request, callback, customData = None, extraHeaders = None):
     """
     Registers a relationship between a title and an Open ID Connect provider.
-    https://api.playfab.com/documentation/admin/method/CreateOpenIdConnection
+    https://docs.microsoft.com/rest/api/playfab/admin/authentication/createopenidconnection
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -179,7 +179,7 @@ def CreatePlayerSharedSecret(request, callback, customData = None, extraHeaders 
     """
     Creates a new Player Shared Secret Key. It may take up to 5 minutes for this key to become generally available after
     this API returns.
-    https://api.playfab.com/documentation/admin/method/CreatePlayerSharedSecret
+    https://docs.microsoft.com/rest/api/playfab/admin/authentication/createplayersharedsecret
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -194,7 +194,7 @@ def CreatePlayerStatisticDefinition(request, callback, customData = None, extraH
     """
     Adds a new player statistic configuration to the title, optionally allowing the developer to specify a reset interval
     and an aggregation method.
-    https://api.playfab.com/documentation/admin/method/CreatePlayerStatisticDefinition
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/createplayerstatisticdefinition
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -208,7 +208,7 @@ def CreatePlayerStatisticDefinition(request, callback, customData = None, extraH
 def DeleteContent(request, callback, customData = None, extraHeaders = None):
     """
     Delete a content file from the title. When deleting a file that does not exist, it returns success.
-    https://api.playfab.com/documentation/admin/method/DeleteContent
+    https://docs.microsoft.com/rest/api/playfab/admin/content/deletecontent
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -222,7 +222,7 @@ def DeleteContent(request, callback, customData = None, extraHeaders = None):
 def DeleteMasterPlayerAccount(request, callback, customData = None, extraHeaders = None):
     """
     Removes a master player account entirely from all titles and deletes all associated data
-    https://api.playfab.com/documentation/admin/method/DeleteMasterPlayerAccount
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/deletemasterplayeraccount
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -236,7 +236,7 @@ def DeleteMasterPlayerAccount(request, callback, customData = None, extraHeaders
 def DeleteOpenIdConnection(request, callback, customData = None, extraHeaders = None):
     """
     Removes a relationship between a title and an OpenID Connect provider.
-    https://api.playfab.com/documentation/admin/method/DeleteOpenIdConnection
+    https://docs.microsoft.com/rest/api/playfab/admin/authentication/deleteopenidconnection
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -250,7 +250,7 @@ def DeleteOpenIdConnection(request, callback, customData = None, extraHeaders = 
 def DeletePlayer(request, callback, customData = None, extraHeaders = None):
     """
     Removes a user's player account from a title and deletes all associated data
-    https://api.playfab.com/documentation/admin/method/DeletePlayer
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/deleteplayer
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -265,7 +265,7 @@ def DeletePlayerSharedSecret(request, callback, customData = None, extraHeaders 
     """
     Deletes an existing Player Shared Secret Key. It may take up to 5 minutes for this delete to be reflected after this API
     returns.
-    https://api.playfab.com/documentation/admin/method/DeletePlayerSharedSecret
+    https://docs.microsoft.com/rest/api/playfab/admin/authentication/deleteplayersharedsecret
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -279,7 +279,7 @@ def DeletePlayerSharedSecret(request, callback, customData = None, extraHeaders 
 def DeleteStore(request, callback, customData = None, extraHeaders = None):
     """
     Deletes an existing virtual item store
-    https://api.playfab.com/documentation/admin/method/DeleteStore
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/deletestore
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -293,7 +293,7 @@ def DeleteStore(request, callback, customData = None, extraHeaders = None):
 def DeleteTask(request, callback, customData = None, extraHeaders = None):
     """
     Delete a task.
-    https://api.playfab.com/documentation/admin/method/DeleteTask
+    https://docs.microsoft.com/rest/api/playfab/admin/scheduledtask/deletetask
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -307,7 +307,7 @@ def DeleteTask(request, callback, customData = None, extraHeaders = None):
 def DeleteTitle(request, callback, customData = None, extraHeaders = None):
     """
     Permanently deletes a title and all associated configuration
-    https://api.playfab.com/documentation/admin/method/DeleteTitle
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/deletetitle
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -321,7 +321,7 @@ def DeleteTitle(request, callback, customData = None, extraHeaders = None):
 def ExportMasterPlayerData(request, callback, customData = None, extraHeaders = None):
     """
     Exports all associated data of a master player account
-    https://api.playfab.com/documentation/admin/method/ExportMasterPlayerData
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/exportmasterplayerdata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -335,7 +335,7 @@ def ExportMasterPlayerData(request, callback, customData = None, extraHeaders = 
 def GetActionsOnPlayersInSegmentTaskInstance(request, callback, customData = None, extraHeaders = None):
     """
     Get information about a ActionsOnPlayersInSegment task instance.
-    https://api.playfab.com/documentation/admin/method/GetActionsOnPlayersInSegmentTaskInstance
+    https://docs.microsoft.com/rest/api/playfab/admin/scheduledtask/getactionsonplayersinsegmenttaskinstance
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -350,7 +350,7 @@ def GetAllSegments(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves an array of player segment definitions. Results from this can be used in subsequent API calls such as
     GetPlayersInSegment which requires a Segment ID. While segment names can change the ID for that segment will not change.
-    https://api.playfab.com/documentation/admin/method/GetAllSegments
+    https://docs.microsoft.com/rest/api/playfab/admin/playstream/getallsegments
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -364,7 +364,7 @@ def GetAllSegments(request, callback, customData = None, extraHeaders = None):
 def GetCatalogItems(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the specified version of the title's catalog of virtual goods, including all defined properties
-    https://api.playfab.com/documentation/admin/method/GetCatalogItems
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/getcatalogitems
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -378,7 +378,7 @@ def GetCatalogItems(request, callback, customData = None, extraHeaders = None):
 def GetCloudScriptRevision(request, callback, customData = None, extraHeaders = None):
     """
     Gets the contents and information of a specific Cloud Script revision.
-    https://api.playfab.com/documentation/admin/method/GetCloudScriptRevision
+    https://docs.microsoft.com/rest/api/playfab/admin/server-side-cloud-script/getcloudscriptrevision
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -392,7 +392,7 @@ def GetCloudScriptRevision(request, callback, customData = None, extraHeaders = 
 def GetCloudScriptTaskInstance(request, callback, customData = None, extraHeaders = None):
     """
     Get detail information about a CloudScript task instance.
-    https://api.playfab.com/documentation/admin/method/GetCloudScriptTaskInstance
+    https://docs.microsoft.com/rest/api/playfab/admin/scheduledtask/getcloudscripttaskinstance
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -407,7 +407,7 @@ def GetCloudScriptVersions(request, callback, customData = None, extraHeaders = 
     """
     Lists all the current cloud script versions. For each version, information about the current published and latest
     revisions is also listed.
-    https://api.playfab.com/documentation/admin/method/GetCloudScriptVersions
+    https://docs.microsoft.com/rest/api/playfab/admin/server-side-cloud-script/getcloudscriptversions
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -421,7 +421,7 @@ def GetCloudScriptVersions(request, callback, customData = None, extraHeaders = 
 def GetContentList(request, callback, customData = None, extraHeaders = None):
     """
     List all contents of the title and get statistics such as size
-    https://api.playfab.com/documentation/admin/method/GetContentList
+    https://docs.microsoft.com/rest/api/playfab/admin/content/getcontentlist
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -437,7 +437,7 @@ def GetContentUploadUrl(request, callback, customData = None, extraHeaders = Non
     Retrieves the pre-signed URL for uploading a content file. A subsequent HTTP PUT to the returned URL uploads the
     content. Also, please be aware that the Content service is specifically PlayFab's CDN offering, for which standard CDN
     rates apply.
-    https://api.playfab.com/documentation/admin/method/GetContentUploadUrl
+    https://docs.microsoft.com/rest/api/playfab/admin/content/getcontentuploadurl
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -451,7 +451,7 @@ def GetContentUploadUrl(request, callback, customData = None, extraHeaders = Non
 def GetDataReport(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves a download URL for the requested report
-    https://api.playfab.com/documentation/admin/method/GetDataReport
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/getdatareport
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -465,7 +465,7 @@ def GetDataReport(request, callback, customData = None, extraHeaders = None):
 def GetMatchmakerGameInfo(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the details for a specific completed session, including links to standard out and standard error logs
-    https://api.playfab.com/documentation/admin/method/GetMatchmakerGameInfo
+    https://docs.microsoft.com/rest/api/playfab/admin/matchmaking/getmatchmakergameinfo
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -479,7 +479,7 @@ def GetMatchmakerGameInfo(request, callback, customData = None, extraHeaders = N
 def GetMatchmakerGameModes(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the details of defined game modes for the specified game server executable
-    https://api.playfab.com/documentation/admin/method/GetMatchmakerGameModes
+    https://docs.microsoft.com/rest/api/playfab/admin/matchmaking/getmatchmakergamemodes
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -493,7 +493,7 @@ def GetMatchmakerGameModes(request, callback, customData = None, extraHeaders = 
 def GetPlayedTitleList(request, callback, customData = None, extraHeaders = None):
     """
     Get the list of titles that the player has played
-    https://api.playfab.com/documentation/admin/method/GetPlayedTitleList
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/getplayedtitlelist
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -507,7 +507,7 @@ def GetPlayedTitleList(request, callback, customData = None, extraHeaders = None
 def GetPlayerIdFromAuthToken(request, callback, customData = None, extraHeaders = None):
     """
     Gets a player's ID from an auth token.
-    https://api.playfab.com/documentation/admin/method/GetPlayerIdFromAuthToken
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/getplayeridfromauthtoken
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -521,7 +521,7 @@ def GetPlayerIdFromAuthToken(request, callback, customData = None, extraHeaders 
 def GetPlayerProfile(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the player's profile
-    https://api.playfab.com/documentation/admin/method/GetPlayerProfile
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/getplayerprofile
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -535,7 +535,7 @@ def GetPlayerProfile(request, callback, customData = None, extraHeaders = None):
 def GetPlayerSegments(request, callback, customData = None, extraHeaders = None):
     """
     List all segments that a player currently belongs to at this moment in time.
-    https://api.playfab.com/documentation/admin/method/GetPlayerSegments
+    https://docs.microsoft.com/rest/api/playfab/admin/playstream/getplayersegments
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -549,7 +549,7 @@ def GetPlayerSegments(request, callback, customData = None, extraHeaders = None)
 def GetPlayerSharedSecrets(request, callback, customData = None, extraHeaders = None):
     """
     Returns all Player Shared Secret Keys including disabled and expired.
-    https://api.playfab.com/documentation/admin/method/GetPlayerSharedSecrets
+    https://docs.microsoft.com/rest/api/playfab/admin/authentication/getplayersharedsecrets
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -567,7 +567,7 @@ def GetPlayersInSegment(request, callback, customData = None, extraHeaders = Non
     on each subsequent use of the Continuation Token. Profiles that change during the course of paging will not be reflected
     in the results. AB Test segments are currently not supported by this operation. NOTE: This API is limited to being
     called 30 times in one minute. You will be returned an error if you exceed this threshold.
-    https://api.playfab.com/documentation/admin/method/GetPlayersInSegment
+    https://docs.microsoft.com/rest/api/playfab/admin/playstream/getplayersinsegment
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -582,7 +582,7 @@ def GetPlayerStatisticDefinitions(request, callback, customData = None, extraHea
     """
     Retrieves the configuration information for all player statistics defined in the title, regardless of whether they have
     a reset interval.
-    https://api.playfab.com/documentation/admin/method/GetPlayerStatisticDefinitions
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/getplayerstatisticdefinitions
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -596,7 +596,7 @@ def GetPlayerStatisticDefinitions(request, callback, customData = None, extraHea
 def GetPlayerStatisticVersions(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the information on the available versions of the specified statistic.
-    https://api.playfab.com/documentation/admin/method/GetPlayerStatisticVersions
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/getplayerstatisticversions
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -610,7 +610,7 @@ def GetPlayerStatisticVersions(request, callback, customData = None, extraHeader
 def GetPlayerTags(request, callback, customData = None, extraHeaders = None):
     """
     Get all tags with a given Namespace (optional) from a player profile.
-    https://api.playfab.com/documentation/admin/method/GetPlayerTags
+    https://docs.microsoft.com/rest/api/playfab/admin/playstream/getplayertags
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -624,7 +624,7 @@ def GetPlayerTags(request, callback, customData = None, extraHeaders = None):
 def GetPolicy(request, callback, customData = None, extraHeaders = None):
     """
     Gets the requested policy.
-    https://api.playfab.com/documentation/admin/method/GetPolicy
+    https://docs.microsoft.com/rest/api/playfab/admin/authentication/getpolicy
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -638,7 +638,7 @@ def GetPolicy(request, callback, customData = None, extraHeaders = None):
 def GetPublisherData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the key-value store of custom publisher settings
-    https://api.playfab.com/documentation/admin/method/GetPublisherData
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/getpublisherdata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -652,7 +652,7 @@ def GetPublisherData(request, callback, customData = None, extraHeaders = None):
 def GetRandomResultTables(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the random drop table configuration for the title
-    https://api.playfab.com/documentation/admin/method/GetRandomResultTables
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/getrandomresulttables
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -666,7 +666,7 @@ def GetRandomResultTables(request, callback, customData = None, extraHeaders = N
 def GetServerBuildInfo(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the build details for the specified game server executable
-    https://api.playfab.com/documentation/admin/method/GetServerBuildInfo
+    https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/getserverbuildinfo
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -681,7 +681,7 @@ def GetServerBuildUploadUrl(request, callback, customData = None, extraHeaders =
     """
     Retrieves the pre-authorized URL for uploading a game server package containing a build (does not enable the build for
     use - see AddServerBuild)
-    https://api.playfab.com/documentation/admin/method/GetServerBuildUploadUrl
+    https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/getserverbuilduploadurl
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -695,7 +695,7 @@ def GetServerBuildUploadUrl(request, callback, customData = None, extraHeaders =
 def GetStoreItems(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the set of items defined for the specified store, including all prices defined
-    https://api.playfab.com/documentation/admin/method/GetStoreItems
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/getstoreitems
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -709,7 +709,7 @@ def GetStoreItems(request, callback, customData = None, extraHeaders = None):
 def GetTaskInstances(request, callback, customData = None, extraHeaders = None):
     """
     Query for task instances by task, status, or time range.
-    https://api.playfab.com/documentation/admin/method/GetTaskInstances
+    https://docs.microsoft.com/rest/api/playfab/admin/scheduledtask/gettaskinstances
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -723,7 +723,7 @@ def GetTaskInstances(request, callback, customData = None, extraHeaders = None):
 def GetTasks(request, callback, customData = None, extraHeaders = None):
     """
     Get definition information on a specified task or all tasks within a title.
-    https://api.playfab.com/documentation/admin/method/GetTasks
+    https://docs.microsoft.com/rest/api/playfab/admin/scheduledtask/gettasks
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -737,7 +737,7 @@ def GetTasks(request, callback, customData = None, extraHeaders = None):
 def GetTitleData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the key-value store of custom title settings which can be read by the client
-    https://api.playfab.com/documentation/admin/method/GetTitleData
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/gettitledata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -751,7 +751,7 @@ def GetTitleData(request, callback, customData = None, extraHeaders = None):
 def GetTitleInternalData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the key-value store of custom title settings which cannot be read by the client
-    https://api.playfab.com/documentation/admin/method/GetTitleInternalData
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/gettitleinternaldata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -765,7 +765,7 @@ def GetTitleInternalData(request, callback, customData = None, extraHeaders = No
 def GetUserAccountInfo(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the relevant details for a specified user, based upon a match against a supplied unique identifier
-    https://api.playfab.com/documentation/admin/method/GetUserAccountInfo
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/getuseraccountinfo
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -779,7 +779,7 @@ def GetUserAccountInfo(request, callback, customData = None, extraHeaders = None
 def GetUserBans(request, callback, customData = None, extraHeaders = None):
     """
     Gets all bans for a user.
-    https://api.playfab.com/documentation/admin/method/GetUserBans
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/getuserbans
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -793,7 +793,7 @@ def GetUserBans(request, callback, customData = None, extraHeaders = None):
 def GetUserData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the title-specific custom data for the user which is readable and writable by the client
-    https://api.playfab.com/documentation/admin/method/GetUserData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/getuserdata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -807,7 +807,7 @@ def GetUserData(request, callback, customData = None, extraHeaders = None):
 def GetUserInternalData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the title-specific custom data for the user which cannot be accessed by the client
-    https://api.playfab.com/documentation/admin/method/GetUserInternalData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/getuserinternaldata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -821,7 +821,7 @@ def GetUserInternalData(request, callback, customData = None, extraHeaders = Non
 def GetUserInventory(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the specified user's current inventory of virtual goods
-    https://api.playfab.com/documentation/admin/method/GetUserInventory
+    https://docs.microsoft.com/rest/api/playfab/admin/player-item-management/getuserinventory
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -835,7 +835,7 @@ def GetUserInventory(request, callback, customData = None, extraHeaders = None):
 def GetUserPublisherData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the publisher-specific custom data for the user which is readable and writable by the client
-    https://api.playfab.com/documentation/admin/method/GetUserPublisherData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/getuserpublisherdata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -849,7 +849,7 @@ def GetUserPublisherData(request, callback, customData = None, extraHeaders = No
 def GetUserPublisherInternalData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the publisher-specific custom data for the user which cannot be accessed by the client
-    https://api.playfab.com/documentation/admin/method/GetUserPublisherInternalData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/getuserpublisherinternaldata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -863,7 +863,7 @@ def GetUserPublisherInternalData(request, callback, customData = None, extraHead
 def GetUserPublisherReadOnlyData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the publisher-specific custom data for the user which can only be read by the client
-    https://api.playfab.com/documentation/admin/method/GetUserPublisherReadOnlyData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/getuserpublisherreadonlydata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -877,7 +877,7 @@ def GetUserPublisherReadOnlyData(request, callback, customData = None, extraHead
 def GetUserReadOnlyData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the title-specific custom data for the user which can only be read by the client
-    https://api.playfab.com/documentation/admin/method/GetUserReadOnlyData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/getuserreadonlydata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -891,7 +891,7 @@ def GetUserReadOnlyData(request, callback, customData = None, extraHeaders = Non
 def GrantItemsToUsers(request, callback, customData = None, extraHeaders = None):
     """
     Adds the specified items to the specified user inventories
-    https://api.playfab.com/documentation/admin/method/GrantItemsToUsers
+    https://docs.microsoft.com/rest/api/playfab/admin/player-item-management/grantitemstousers
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -905,7 +905,7 @@ def GrantItemsToUsers(request, callback, customData = None, extraHeaders = None)
 def IncrementLimitedEditionItemAvailability(request, callback, customData = None, extraHeaders = None):
     """
     Increases the global count for the given scarce resource.
-    https://api.playfab.com/documentation/admin/method/IncrementLimitedEditionItemAvailability
+    https://docs.microsoft.com/rest/api/playfab/admin/player-item-management/incrementlimitededitionitemavailability
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -919,7 +919,7 @@ def IncrementLimitedEditionItemAvailability(request, callback, customData = None
 def IncrementPlayerStatisticVersion(request, callback, customData = None, extraHeaders = None):
     """
     Resets the indicated statistic, removing all player entries for it and backing up the old values.
-    https://api.playfab.com/documentation/admin/method/IncrementPlayerStatisticVersion
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/incrementplayerstatisticversion
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -933,7 +933,7 @@ def IncrementPlayerStatisticVersion(request, callback, customData = None, extraH
 def ListOpenIdConnection(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves a list of all Open ID Connect providers registered to a title.
-    https://api.playfab.com/documentation/admin/method/ListOpenIdConnection
+    https://docs.microsoft.com/rest/api/playfab/admin/authentication/listopenidconnection
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -947,7 +947,7 @@ def ListOpenIdConnection(request, callback, customData = None, extraHeaders = No
 def ListServerBuilds(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the build details for all game server executables which are currently defined for the title
-    https://api.playfab.com/documentation/admin/method/ListServerBuilds
+    https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/listserverbuilds
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -961,7 +961,7 @@ def ListServerBuilds(request, callback, customData = None, extraHeaders = None):
 def ListVirtualCurrencyTypes(request, callback, customData = None, extraHeaders = None):
     """
     Retuns the list of all defined virtual currencies for the title
-    https://api.playfab.com/documentation/admin/method/ListVirtualCurrencyTypes
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/listvirtualcurrencytypes
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -975,7 +975,7 @@ def ListVirtualCurrencyTypes(request, callback, customData = None, extraHeaders 
 def ModifyMatchmakerGameModes(request, callback, customData = None, extraHeaders = None):
     """
     Updates the game server mode details for the specified game server executable
-    https://api.playfab.com/documentation/admin/method/ModifyMatchmakerGameModes
+    https://docs.microsoft.com/rest/api/playfab/admin/matchmaking/modifymatchmakergamemodes
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -989,7 +989,7 @@ def ModifyMatchmakerGameModes(request, callback, customData = None, extraHeaders
 def ModifyServerBuild(request, callback, customData = None, extraHeaders = None):
     """
     Updates the build details for the specified game server executable
-    https://api.playfab.com/documentation/admin/method/ModifyServerBuild
+    https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/modifyserverbuild
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1003,7 +1003,7 @@ def ModifyServerBuild(request, callback, customData = None, extraHeaders = None)
 def RefundPurchase(request, callback, customData = None, extraHeaders = None):
     """
     Attempts to process an order refund through the original real money payment provider.
-    https://api.playfab.com/documentation/admin/method/RefundPurchase
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/refundpurchase
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1017,7 +1017,7 @@ def RefundPurchase(request, callback, customData = None, extraHeaders = None):
 def RemovePlayerTag(request, callback, customData = None, extraHeaders = None):
     """
     Remove a given tag from a player profile. The tag's namespace is automatically generated based on the source of the tag.
-    https://api.playfab.com/documentation/admin/method/RemovePlayerTag
+    https://docs.microsoft.com/rest/api/playfab/admin/playstream/removeplayertag
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1032,7 +1032,7 @@ def RemoveServerBuild(request, callback, customData = None, extraHeaders = None)
     """
     Removes the game server executable specified from the set of those a client is permitted to request in a call to
     StartGame
-    https://api.playfab.com/documentation/admin/method/RemoveServerBuild
+    https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/removeserverbuild
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1046,7 +1046,7 @@ def RemoveServerBuild(request, callback, customData = None, extraHeaders = None)
 def RemoveVirtualCurrencyTypes(request, callback, customData = None, extraHeaders = None):
     """
     Removes one or more virtual currencies from the set defined for the title.
-    https://api.playfab.com/documentation/admin/method/RemoveVirtualCurrencyTypes
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/removevirtualcurrencytypes
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1060,7 +1060,7 @@ def RemoveVirtualCurrencyTypes(request, callback, customData = None, extraHeader
 def ResetCharacterStatistics(request, callback, customData = None, extraHeaders = None):
     """
     Completely removes all statistics for the specified character, for the current game
-    https://api.playfab.com/documentation/admin/method/ResetCharacterStatistics
+    https://docs.microsoft.com/rest/api/playfab/admin/characters/resetcharacterstatistics
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1074,7 +1074,7 @@ def ResetCharacterStatistics(request, callback, customData = None, extraHeaders 
 def ResetPassword(request, callback, customData = None, extraHeaders = None):
     """
     Reset a player's password for a given title.
-    https://api.playfab.com/documentation/admin/method/ResetPassword
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/resetpassword
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1088,7 +1088,7 @@ def ResetPassword(request, callback, customData = None, extraHeaders = None):
 def ResetUserStatistics(request, callback, customData = None, extraHeaders = None):
     """
     Completely removes all statistics for the specified user, for the current game
-    https://api.playfab.com/documentation/admin/method/ResetUserStatistics
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/resetuserstatistics
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1102,7 +1102,7 @@ def ResetUserStatistics(request, callback, customData = None, extraHeaders = Non
 def ResolvePurchaseDispute(request, callback, customData = None, extraHeaders = None):
     """
     Attempts to resolve a dispute with the original order's payment provider.
-    https://api.playfab.com/documentation/admin/method/ResolvePurchaseDispute
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/resolvepurchasedispute
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1116,7 +1116,7 @@ def ResolvePurchaseDispute(request, callback, customData = None, extraHeaders = 
 def RevokeAllBansForUser(request, callback, customData = None, extraHeaders = None):
     """
     Revoke all active bans for a user.
-    https://api.playfab.com/documentation/admin/method/RevokeAllBansForUser
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/revokeallbansforuser
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1130,7 +1130,7 @@ def RevokeAllBansForUser(request, callback, customData = None, extraHeaders = No
 def RevokeBans(request, callback, customData = None, extraHeaders = None):
     """
     Revoke all active bans specified with BanId.
-    https://api.playfab.com/documentation/admin/method/RevokeBans
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/revokebans
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1144,7 +1144,7 @@ def RevokeBans(request, callback, customData = None, extraHeaders = None):
 def RevokeInventoryItem(request, callback, customData = None, extraHeaders = None):
     """
     Revokes access to an item in a user's inventory
-    https://api.playfab.com/documentation/admin/method/RevokeInventoryItem
+    https://docs.microsoft.com/rest/api/playfab/admin/player-item-management/revokeinventoryitem
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1158,7 +1158,7 @@ def RevokeInventoryItem(request, callback, customData = None, extraHeaders = Non
 def RevokeInventoryItems(request, callback, customData = None, extraHeaders = None):
     """
     Revokes access for up to 25 items across multiple users and characters.
-    https://api.playfab.com/documentation/admin/method/RevokeInventoryItems
+    https://docs.microsoft.com/rest/api/playfab/admin/player-item-management/revokeinventoryitems
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1172,7 +1172,7 @@ def RevokeInventoryItems(request, callback, customData = None, extraHeaders = No
 def RunTask(request, callback, customData = None, extraHeaders = None):
     """
     Run a task immediately regardless of its schedule.
-    https://api.playfab.com/documentation/admin/method/RunTask
+    https://docs.microsoft.com/rest/api/playfab/admin/scheduledtask/runtask
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1188,7 +1188,7 @@ def SendAccountRecoveryEmail(request, callback, customData = None, extraHeaders 
     Forces an email to be sent to the registered email address for the user's account, with a link allowing the user to
     change the password.If an account recovery email template ID is provided, an email using the custom email template will
     be used.
-    https://api.playfab.com/documentation/admin/method/SendAccountRecoveryEmail
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/sendaccountrecoveryemail
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1202,7 +1202,7 @@ def SendAccountRecoveryEmail(request, callback, customData = None, extraHeaders 
 def SetCatalogItems(request, callback, customData = None, extraHeaders = None):
     """
     Creates the catalog configuration of all virtual goods for the specified catalog version
-    https://api.playfab.com/documentation/admin/method/SetCatalogItems
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/setcatalogitems
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1216,7 +1216,7 @@ def SetCatalogItems(request, callback, customData = None, extraHeaders = None):
 def SetPlayerSecret(request, callback, customData = None, extraHeaders = None):
     """
     Sets or resets the player's secret. Player secrets are used to sign API requests.
-    https://api.playfab.com/documentation/admin/method/SetPlayerSecret
+    https://docs.microsoft.com/rest/api/playfab/admin/authentication/setplayersecret
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1230,7 +1230,7 @@ def SetPlayerSecret(request, callback, customData = None, extraHeaders = None):
 def SetPublishedRevision(request, callback, customData = None, extraHeaders = None):
     """
     Sets the currently published revision of a title Cloud Script
-    https://api.playfab.com/documentation/admin/method/SetPublishedRevision
+    https://docs.microsoft.com/rest/api/playfab/admin/server-side-cloud-script/setpublishedrevision
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1244,7 +1244,7 @@ def SetPublishedRevision(request, callback, customData = None, extraHeaders = No
 def SetPublisherData(request, callback, customData = None, extraHeaders = None):
     """
     Updates the key-value store of custom publisher settings
-    https://api.playfab.com/documentation/admin/method/SetPublisherData
+    https://docs.microsoft.com/rest/api/playfab/admin/shared-group-data/setpublisherdata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1258,7 +1258,7 @@ def SetPublisherData(request, callback, customData = None, extraHeaders = None):
 def SetStoreItems(request, callback, customData = None, extraHeaders = None):
     """
     Sets all the items in one virtual store
-    https://api.playfab.com/documentation/admin/method/SetStoreItems
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/setstoreitems
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1272,7 +1272,7 @@ def SetStoreItems(request, callback, customData = None, extraHeaders = None):
 def SetTitleData(request, callback, customData = None, extraHeaders = None):
     """
     Creates and updates the key-value store of custom title settings which can be read by the client
-    https://api.playfab.com/documentation/admin/method/SetTitleData
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/settitledata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1286,7 +1286,7 @@ def SetTitleData(request, callback, customData = None, extraHeaders = None):
 def SetTitleInternalData(request, callback, customData = None, extraHeaders = None):
     """
     Updates the key-value store of custom title settings which cannot be read by the client
-    https://api.playfab.com/documentation/admin/method/SetTitleInternalData
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/settitleinternaldata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1302,7 +1302,7 @@ def SetupPushNotification(request, callback, customData = None, extraHeaders = N
     Sets the Amazon Resource Name (ARN) for iOS and Android push notifications. Documentation on the exact restrictions can
     be found at: http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html. Currently, Amazon device
     Messaging is not supported.
-    https://api.playfab.com/documentation/admin/method/SetupPushNotification
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/setuppushnotification
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1316,7 +1316,7 @@ def SetupPushNotification(request, callback, customData = None, extraHeaders = N
 def SubtractUserVirtualCurrency(request, callback, customData = None, extraHeaders = None):
     """
     Decrements the specified virtual currency by the stated amount
-    https://api.playfab.com/documentation/admin/method/SubtractUserVirtualCurrency
+    https://docs.microsoft.com/rest/api/playfab/admin/player-item-management/subtractuservirtualcurrency
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1330,7 +1330,7 @@ def SubtractUserVirtualCurrency(request, callback, customData = None, extraHeade
 def UpdateBans(request, callback, customData = None, extraHeaders = None):
     """
     Updates information of a list of existing bans specified with Ban Ids.
-    https://api.playfab.com/documentation/admin/method/UpdateBans
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/updatebans
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1344,7 +1344,7 @@ def UpdateBans(request, callback, customData = None, extraHeaders = None):
 def UpdateCatalogItems(request, callback, customData = None, extraHeaders = None):
     """
     Updates the catalog configuration for virtual goods in the specified catalog version
-    https://api.playfab.com/documentation/admin/method/UpdateCatalogItems
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/updatecatalogitems
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1359,7 +1359,7 @@ def UpdateCloudScript(request, callback, customData = None, extraHeaders = None)
     """
     Creates a new Cloud Script revision and uploads source code to it. Note that at this time, only one file should be
     submitted in the revision.
-    https://api.playfab.com/documentation/admin/method/UpdateCloudScript
+    https://docs.microsoft.com/rest/api/playfab/admin/server-side-cloud-script/updatecloudscript
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1373,7 +1373,7 @@ def UpdateCloudScript(request, callback, customData = None, extraHeaders = None)
 def UpdateOpenIdConnection(request, callback, customData = None, extraHeaders = None):
     """
     Modifies data and credentials for an existing relationship between a title and an Open ID Connect provider
-    https://api.playfab.com/documentation/admin/method/UpdateOpenIdConnection
+    https://docs.microsoft.com/rest/api/playfab/admin/authentication/updateopenidconnection
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1388,7 +1388,7 @@ def UpdatePlayerSharedSecret(request, callback, customData = None, extraHeaders 
     """
     Updates a existing Player Shared Secret Key. It may take up to 5 minutes for this update to become generally available
     after this API returns.
-    https://api.playfab.com/documentation/admin/method/UpdatePlayerSharedSecret
+    https://docs.microsoft.com/rest/api/playfab/admin/authentication/updateplayersharedsecret
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1402,7 +1402,7 @@ def UpdatePlayerSharedSecret(request, callback, customData = None, extraHeaders 
 def UpdatePlayerStatisticDefinition(request, callback, customData = None, extraHeaders = None):
     """
     Updates a player statistic configuration for the title, optionally allowing the developer to specify a reset interval.
-    https://api.playfab.com/documentation/admin/method/UpdatePlayerStatisticDefinition
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/updateplayerstatisticdefinition
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1416,7 +1416,7 @@ def UpdatePlayerStatisticDefinition(request, callback, customData = None, extraH
 def UpdatePolicy(request, callback, customData = None, extraHeaders = None):
     """
     Changes a policy for a title
-    https://api.playfab.com/documentation/admin/method/UpdatePolicy
+    https://docs.microsoft.com/rest/api/playfab/admin/authentication/updatepolicy
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1430,7 +1430,7 @@ def UpdatePolicy(request, callback, customData = None, extraHeaders = None):
 def UpdateRandomResultTables(request, callback, customData = None, extraHeaders = None):
     """
     Updates the random drop table configuration for the title
-    https://api.playfab.com/documentation/admin/method/UpdateRandomResultTables
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/updaterandomresulttables
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1444,7 +1444,7 @@ def UpdateRandomResultTables(request, callback, customData = None, extraHeaders 
 def UpdateStoreItems(request, callback, customData = None, extraHeaders = None):
     """
     Updates an existing virtual item store with new or modified items
-    https://api.playfab.com/documentation/admin/method/UpdateStoreItems
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/updatestoreitems
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1458,7 +1458,7 @@ def UpdateStoreItems(request, callback, customData = None, extraHeaders = None):
 def UpdateTask(request, callback, customData = None, extraHeaders = None):
     """
     Update an existing task.
-    https://api.playfab.com/documentation/admin/method/UpdateTask
+    https://docs.microsoft.com/rest/api/playfab/admin/scheduledtask/updatetask
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1472,7 +1472,7 @@ def UpdateTask(request, callback, customData = None, extraHeaders = None):
 def UpdateUserData(request, callback, customData = None, extraHeaders = None):
     """
     Updates the title-specific custom data for the user which is readable and writable by the client
-    https://api.playfab.com/documentation/admin/method/UpdateUserData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/updateuserdata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1486,7 +1486,7 @@ def UpdateUserData(request, callback, customData = None, extraHeaders = None):
 def UpdateUserInternalData(request, callback, customData = None, extraHeaders = None):
     """
     Updates the title-specific custom data for the user which cannot be accessed by the client
-    https://api.playfab.com/documentation/admin/method/UpdateUserInternalData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/updateuserinternaldata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1500,7 +1500,7 @@ def UpdateUserInternalData(request, callback, customData = None, extraHeaders = 
 def UpdateUserPublisherData(request, callback, customData = None, extraHeaders = None):
     """
     Updates the publisher-specific custom data for the user which is readable and writable by the client
-    https://api.playfab.com/documentation/admin/method/UpdateUserPublisherData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/updateuserpublisherdata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1514,7 +1514,7 @@ def UpdateUserPublisherData(request, callback, customData = None, extraHeaders =
 def UpdateUserPublisherInternalData(request, callback, customData = None, extraHeaders = None):
     """
     Updates the publisher-specific custom data for the user which cannot be accessed by the client
-    https://api.playfab.com/documentation/admin/method/UpdateUserPublisherInternalData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/updateuserpublisherinternaldata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1528,7 +1528,7 @@ def UpdateUserPublisherInternalData(request, callback, customData = None, extraH
 def UpdateUserPublisherReadOnlyData(request, callback, customData = None, extraHeaders = None):
     """
     Updates the publisher-specific custom data for the user which can only be read by the client
-    https://api.playfab.com/documentation/admin/method/UpdateUserPublisherReadOnlyData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/updateuserpublisherreadonlydata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1542,7 +1542,7 @@ def UpdateUserPublisherReadOnlyData(request, callback, customData = None, extraH
 def UpdateUserReadOnlyData(request, callback, customData = None, extraHeaders = None):
     """
     Updates the title-specific custom data for the user which can only be read by the client
-    https://api.playfab.com/documentation/admin/method/UpdateUserReadOnlyData
+    https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/updateuserreadonlydata
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -1556,7 +1556,7 @@ def UpdateUserReadOnlyData(request, callback, customData = None, extraHeaders = 
 def UpdateUserTitleDisplayName(request, callback, customData = None, extraHeaders = None):
     """
     Updates the title specific display name for a user
-    https://api.playfab.com/documentation/admin/method/UpdateUserTitleDisplayName
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/updateusertitledisplayname
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")

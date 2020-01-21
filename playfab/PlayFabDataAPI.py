@@ -12,7 +12,7 @@ flexible permissions system to control read and write access by other entities.
 def AbortFileUploads(request, callback, customData = None, extraHeaders = None):
     """
     Abort pending file uploads to an entity's profile.
-    https://api.playfab.com/documentation/data/method/AbortFileUploads
+    https://docs.microsoft.com/rest/api/playfab/data/file/abortfileuploads
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -26,7 +26,7 @@ def AbortFileUploads(request, callback, customData = None, extraHeaders = None):
 def DeleteFiles(request, callback, customData = None, extraHeaders = None):
     """
     Delete files on an entity's profile.
-    https://api.playfab.com/documentation/data/method/DeleteFiles
+    https://docs.microsoft.com/rest/api/playfab/data/file/deletefiles
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -40,7 +40,7 @@ def DeleteFiles(request, callback, customData = None, extraHeaders = None):
 def FinalizeFileUploads(request, callback, customData = None, extraHeaders = None):
     """
     Finalize file uploads to an entity's profile.
-    https://api.playfab.com/documentation/data/method/FinalizeFileUploads
+    https://docs.microsoft.com/rest/api/playfab/data/file/finalizefileuploads
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -54,7 +54,7 @@ def FinalizeFileUploads(request, callback, customData = None, extraHeaders = Non
 def GetFiles(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves file metadata from an entity's profile.
-    https://api.playfab.com/documentation/data/method/GetFiles
+    https://docs.microsoft.com/rest/api/playfab/data/file/getfiles
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -68,7 +68,7 @@ def GetFiles(request, callback, customData = None, extraHeaders = None):
 def GetObjects(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves objects from an entity's profile.
-    https://api.playfab.com/documentation/data/method/GetObjects
+    https://docs.microsoft.com/rest/api/playfab/data/object/getobjects
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -82,7 +82,7 @@ def GetObjects(request, callback, customData = None, extraHeaders = None):
 def InitiateFileUploads(request, callback, customData = None, extraHeaders = None):
     """
     Initiates file uploads to an entity's profile.
-    https://api.playfab.com/documentation/data/method/InitiateFileUploads
+    https://docs.microsoft.com/rest/api/playfab/data/file/initiatefileuploads
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -96,7 +96,7 @@ def InitiateFileUploads(request, callback, customData = None, extraHeaders = Non
 def SetObjects(request, callback, customData = None, extraHeaders = None):
     """
     Sets objects on an entity's profile.
-    https://api.playfab.com/documentation/data/method/SetObjects
+    https://docs.microsoft.com/rest/api/playfab/data/object/setobjects
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")

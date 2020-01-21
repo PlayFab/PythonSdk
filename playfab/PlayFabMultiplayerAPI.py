@@ -8,7 +8,7 @@ import playfab.PlayFabSettings as PlayFabSettings
 def CancelAllMatchmakingTicketsForPlayer(request, callback, customData = None, extraHeaders = None):
     """
     Cancel all active tickets the player is a member of in a given queue.
-    https://api.playfab.com/documentation/multiplayer/method/CancelAllMatchmakingTicketsForPlayer
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/cancelallmatchmakingticketsforplayer
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -19,10 +19,24 @@ def CancelAllMatchmakingTicketsForPlayer(request, callback, customData = None, e
 
     PlayFabHTTP.DoPost("/Match/CancelAllMatchmakingTicketsForPlayer", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def CancelAllServerBackfillTicketsForPlayer(request, callback, customData = None, extraHeaders = None):
+    """
+    Cancel all active backfill tickets the player is a member of in a given queue.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/cancelallserverbackfillticketsforplayer
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Match/CancelAllServerBackfillTicketsForPlayer", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def CancelMatchmakingTicket(request, callback, customData = None, extraHeaders = None):
     """
     Cancel a matchmaking ticket.
-    https://api.playfab.com/documentation/multiplayer/method/CancelMatchmakingTicket
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/cancelmatchmakingticket
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -33,10 +47,24 @@ def CancelMatchmakingTicket(request, callback, customData = None, extraHeaders =
 
     PlayFabHTTP.DoPost("/Match/CancelMatchmakingTicket", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def CancelServerBackfillTicket(request, callback, customData = None, extraHeaders = None):
+    """
+    Cancel a server backfill ticket.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/cancelserverbackfillticket
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Match/CancelServerBackfillTicket", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def CreateBuildAlias(request, callback, customData = None, extraHeaders = None):
     """
     Creates a multiplayer server build alias.
-    https://api.playfab.com/documentation/multiplayer/method/CreateBuildAlias
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/createbuildalias
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -50,7 +78,7 @@ def CreateBuildAlias(request, callback, customData = None, extraHeaders = None):
 def CreateBuildWithCustomContainer(request, callback, customData = None, extraHeaders = None):
     """
     Creates a multiplayer server build with a custom container.
-    https://api.playfab.com/documentation/multiplayer/method/CreateBuildWithCustomContainer
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/createbuildwithcustomcontainer
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -64,7 +92,7 @@ def CreateBuildWithCustomContainer(request, callback, customData = None, extraHe
 def CreateBuildWithManagedContainer(request, callback, customData = None, extraHeaders = None):
     """
     Creates a multiplayer server build with a managed container.
-    https://api.playfab.com/documentation/multiplayer/method/CreateBuildWithManagedContainer
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/createbuildwithmanagedcontainer
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -78,7 +106,7 @@ def CreateBuildWithManagedContainer(request, callback, customData = None, extraH
 def CreateMatchmakingTicket(request, callback, customData = None, extraHeaders = None):
     """
     Create a matchmaking ticket as a client.
-    https://api.playfab.com/documentation/multiplayer/method/CreateMatchmakingTicket
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/creatematchmakingticket
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -92,7 +120,7 @@ def CreateMatchmakingTicket(request, callback, customData = None, extraHeaders =
 def CreateRemoteUser(request, callback, customData = None, extraHeaders = None):
     """
     Creates a remote user to log on to a VM for a multiplayer server build.
-    https://api.playfab.com/documentation/multiplayer/method/CreateRemoteUser
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/createremoteuser
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -103,11 +131,27 @@ def CreateRemoteUser(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/MultiplayerServer/CreateRemoteUser", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def CreateServerBackfillTicket(request, callback, customData = None, extraHeaders = None):
+    """
+    Create a backfill matchmaking ticket as a server. A backfill ticket represents an ongoing game. The matchmaking service
+    automatically starts matching the backfill ticket against other matchmaking tickets. Backfill tickets cannot match with
+    other backfill tickets.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/createserverbackfillticket
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Match/CreateServerBackfillTicket", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def CreateServerMatchmakingTicket(request, callback, customData = None, extraHeaders = None):
     """
     Create a matchmaking ticket as a server. The matchmaking service automatically starts matching the ticket against other
     matchmaking tickets.
-    https://api.playfab.com/documentation/multiplayer/method/CreateServerMatchmakingTicket
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/createservermatchmakingticket
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -121,7 +165,7 @@ def CreateServerMatchmakingTicket(request, callback, customData = None, extraHea
 def DeleteAsset(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a multiplayer server game asset for a title.
-    https://api.playfab.com/documentation/multiplayer/method/DeleteAsset
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/deleteasset
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -135,7 +179,7 @@ def DeleteAsset(request, callback, customData = None, extraHeaders = None):
 def DeleteBuild(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a multiplayer server build.
-    https://api.playfab.com/documentation/multiplayer/method/DeleteBuild
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/deletebuild
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -149,7 +193,7 @@ def DeleteBuild(request, callback, customData = None, extraHeaders = None):
 def DeleteBuildAlias(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a multiplayer server build alias.
-    https://api.playfab.com/documentation/multiplayer/method/DeleteBuildAlias
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/deletebuildalias
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -163,7 +207,7 @@ def DeleteBuildAlias(request, callback, customData = None, extraHeaders = None):
 def DeleteCertificate(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a multiplayer server game certificate.
-    https://api.playfab.com/documentation/multiplayer/method/DeleteCertificate
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/deletecertificate
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -177,7 +221,7 @@ def DeleteCertificate(request, callback, customData = None, extraHeaders = None)
 def DeleteRemoteUser(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a remote user to log on to a VM for a multiplayer server build.
-    https://api.playfab.com/documentation/multiplayer/method/DeleteRemoteUser
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/deleteremoteuser
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -191,7 +235,7 @@ def DeleteRemoteUser(request, callback, customData = None, extraHeaders = None):
 def EnableMultiplayerServersForTitle(request, callback, customData = None, extraHeaders = None):
     """
     Enables the multiplayer server feature for a title.
-    https://api.playfab.com/documentation/multiplayer/method/EnableMultiplayerServersForTitle
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/enablemultiplayerserversfortitle
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -205,7 +249,7 @@ def EnableMultiplayerServersForTitle(request, callback, customData = None, extra
 def GetAssetUploadUrl(request, callback, customData = None, extraHeaders = None):
     """
     Gets the URL to upload assets to.
-    https://api.playfab.com/documentation/multiplayer/method/GetAssetUploadUrl
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/getassetuploadurl
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -219,7 +263,7 @@ def GetAssetUploadUrl(request, callback, customData = None, extraHeaders = None)
 def GetBuild(request, callback, customData = None, extraHeaders = None):
     """
     Gets a multiplayer server build.
-    https://api.playfab.com/documentation/multiplayer/method/GetBuild
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/getbuild
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -233,7 +277,7 @@ def GetBuild(request, callback, customData = None, extraHeaders = None):
 def GetBuildAlias(request, callback, customData = None, extraHeaders = None):
     """
     Gets a multiplayer server build alias.
-    https://api.playfab.com/documentation/multiplayer/method/GetBuildAlias
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/getbuildalias
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -247,7 +291,7 @@ def GetBuildAlias(request, callback, customData = None, extraHeaders = None):
 def GetContainerRegistryCredentials(request, callback, customData = None, extraHeaders = None):
     """
     Gets the credentials to the container registry.
-    https://api.playfab.com/documentation/multiplayer/method/GetContainerRegistryCredentials
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/getcontainerregistrycredentials
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -261,7 +305,7 @@ def GetContainerRegistryCredentials(request, callback, customData = None, extraH
 def GetMatch(request, callback, customData = None, extraHeaders = None):
     """
     Get a match.
-    https://api.playfab.com/documentation/multiplayer/method/GetMatch
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/getmatch
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -275,7 +319,7 @@ def GetMatch(request, callback, customData = None, extraHeaders = None):
 def GetMatchmakingTicket(request, callback, customData = None, extraHeaders = None):
     """
     Get a matchmaking ticket by ticket Id.
-    https://api.playfab.com/documentation/multiplayer/method/GetMatchmakingTicket
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/getmatchmakingticket
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -289,7 +333,7 @@ def GetMatchmakingTicket(request, callback, customData = None, extraHeaders = No
 def GetMultiplayerServerDetails(request, callback, customData = None, extraHeaders = None):
     """
     Gets multiplayer server session details for a build.
-    https://api.playfab.com/documentation/multiplayer/method/GetMultiplayerServerDetails
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/getmultiplayerserverdetails
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -303,7 +347,7 @@ def GetMultiplayerServerDetails(request, callback, customData = None, extraHeade
 def GetMultiplayerServerLogs(request, callback, customData = None, extraHeaders = None):
     """
     Gets multiplayer server logs after a server has terminated.
-    https://api.playfab.com/documentation/multiplayer/method/GetMultiplayerServerLogs
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/getmultiplayerserverlogs
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -317,7 +361,7 @@ def GetMultiplayerServerLogs(request, callback, customData = None, extraHeaders 
 def GetQueueStatistics(request, callback, customData = None, extraHeaders = None):
     """
     Get the statistics for a queue.
-    https://api.playfab.com/documentation/multiplayer/method/GetQueueStatistics
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/getqueuestatistics
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -331,7 +375,7 @@ def GetQueueStatistics(request, callback, customData = None, extraHeaders = None
 def GetRemoteLoginEndpoint(request, callback, customData = None, extraHeaders = None):
     """
     Gets a remote login endpoint to a VM that is hosting a multiplayer server build.
-    https://api.playfab.com/documentation/multiplayer/method/GetRemoteLoginEndpoint
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/getremoteloginendpoint
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -342,10 +386,24 @@ def GetRemoteLoginEndpoint(request, callback, customData = None, extraHeaders = 
 
     PlayFabHTTP.DoPost("/MultiplayerServer/GetRemoteLoginEndpoint", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def GetServerBackfillTicket(request, callback, customData = None, extraHeaders = None):
+    """
+    Get a matchmaking backfill ticket by ticket Id.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/getserverbackfillticket
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Match/GetServerBackfillTicket", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def GetTitleEnabledForMultiplayerServersStatus(request, callback, customData = None, extraHeaders = None):
     """
     Gets the status of whether a title is enabled for the multiplayer server feature.
-    https://api.playfab.com/documentation/multiplayer/method/GetTitleEnabledForMultiplayerServersStatus
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/gettitleenabledformultiplayerserversstatus
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -359,7 +417,7 @@ def GetTitleEnabledForMultiplayerServersStatus(request, callback, customData = N
 def GetTitleMultiplayerServersQuotas(request, callback, customData = None, extraHeaders = None):
     """
     Gets the quotas for a title in relation to multiplayer servers.
-    https://api.playfab.com/documentation/multiplayer/method/GetTitleMultiplayerServersQuotas
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/gettitlemultiplayerserversquotas
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -373,7 +431,7 @@ def GetTitleMultiplayerServersQuotas(request, callback, customData = None, extra
 def JoinMatchmakingTicket(request, callback, customData = None, extraHeaders = None):
     """
     Join a matchmaking ticket.
-    https://api.playfab.com/documentation/multiplayer/method/JoinMatchmakingTicket
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/joinmatchmakingticket
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -387,7 +445,7 @@ def JoinMatchmakingTicket(request, callback, customData = None, extraHeaders = N
 def ListArchivedMultiplayerServers(request, callback, customData = None, extraHeaders = None):
     """
     Lists archived multiplayer server sessions for a build.
-    https://api.playfab.com/documentation/multiplayer/method/ListArchivedMultiplayerServers
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listarchivedmultiplayerservers
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -401,7 +459,7 @@ def ListArchivedMultiplayerServers(request, callback, customData = None, extraHe
 def ListAssetSummaries(request, callback, customData = None, extraHeaders = None):
     """
     Lists multiplayer server game assets for a title.
-    https://api.playfab.com/documentation/multiplayer/method/ListAssetSummaries
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listassetsummaries
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -416,7 +474,7 @@ def ListBuildAliases(request, callback, customData = None, extraHeaders = None):
     """
     Lists details of all build aliases for a title. Accepts tokens for title and if game client access is enabled, allows
     game client to request list of builds with player entity token.
-    https://api.playfab.com/documentation/multiplayer/method/ListBuildAliases
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listbuildaliases
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -431,7 +489,7 @@ def ListBuildSummaries(request, callback, customData = None, extraHeaders = None
     """
     Lists summarized details of all multiplayer server builds for a title. Accepts tokens for title and if game client
     access is enabled, allows game client to request list of builds with player entity token.
-    https://api.playfab.com/documentation/multiplayer/method/ListBuildSummaries
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listbuildsummaries
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -445,7 +503,7 @@ def ListBuildSummaries(request, callback, customData = None, extraHeaders = None
 def ListCertificateSummaries(request, callback, customData = None, extraHeaders = None):
     """
     Lists multiplayer server game certificates for a title.
-    https://api.playfab.com/documentation/multiplayer/method/ListCertificateSummaries
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listcertificatesummaries
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -459,7 +517,7 @@ def ListCertificateSummaries(request, callback, customData = None, extraHeaders 
 def ListContainerImages(request, callback, customData = None, extraHeaders = None):
     """
     Lists custom container images for a title.
-    https://api.playfab.com/documentation/multiplayer/method/ListContainerImages
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listcontainerimages
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -473,7 +531,7 @@ def ListContainerImages(request, callback, customData = None, extraHeaders = Non
 def ListContainerImageTags(request, callback, customData = None, extraHeaders = None):
     """
     Lists the tags for a custom container image.
-    https://api.playfab.com/documentation/multiplayer/method/ListContainerImageTags
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listcontainerimagetags
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -487,7 +545,7 @@ def ListContainerImageTags(request, callback, customData = None, extraHeaders = 
 def ListMatchmakingTicketsForPlayer(request, callback, customData = None, extraHeaders = None):
     """
     List all matchmaking ticket Ids the user is a member of.
-    https://api.playfab.com/documentation/multiplayer/method/ListMatchmakingTicketsForPlayer
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/listmatchmakingticketsforplayer
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -501,7 +559,7 @@ def ListMatchmakingTicketsForPlayer(request, callback, customData = None, extraH
 def ListMultiplayerServers(request, callback, customData = None, extraHeaders = None):
     """
     Lists multiplayer server sessions for a build.
-    https://api.playfab.com/documentation/multiplayer/method/ListMultiplayerServers
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listmultiplayerservers
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -515,7 +573,7 @@ def ListMultiplayerServers(request, callback, customData = None, extraHeaders = 
 def ListPartyQosServers(request, callback, customData = None, extraHeaders = None):
     """
     Lists quality of service servers for party.
-    https://api.playfab.com/documentation/multiplayer/method/ListPartyQosServers
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listpartyqosservers
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -529,7 +587,7 @@ def ListPartyQosServers(request, callback, customData = None, extraHeaders = Non
 def ListQosServers(request, callback, customData = None, extraHeaders = None):
     """
     Lists quality of service servers.
-    https://api.playfab.com/documentation/multiplayer/method/ListQosServers
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listqosservers
     """
     def wrappedCallback(playFabResult, error):
         if callback:
@@ -540,7 +598,7 @@ def ListQosServers(request, callback, customData = None, extraHeaders = None):
 def ListQosServersForTitle(request, callback, customData = None, extraHeaders = None):
     """
     Lists quality of service servers.
-    https://api.playfab.com/documentation/multiplayer/method/ListQosServersForTitle
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listqosserversfortitle
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -551,10 +609,24 @@ def ListQosServersForTitle(request, callback, customData = None, extraHeaders = 
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ListQosServersForTitle", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def ListServerBackfillTicketsForPlayer(request, callback, customData = None, extraHeaders = None):
+    """
+    List all server backfill ticket Ids the user is a member of.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/listserverbackfillticketsforplayer
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Match/ListServerBackfillTicketsForPlayer", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def ListVirtualMachineSummaries(request, callback, customData = None, extraHeaders = None):
     """
     Lists virtual machines for a title.
-    https://api.playfab.com/documentation/multiplayer/method/ListVirtualMachineSummaries
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listvirtualmachinesummaries
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -569,7 +641,7 @@ def RequestMultiplayerServer(request, callback, customData = None, extraHeaders 
     """
     Request a multiplayer server session. Accepts tokens for title and if game client access is enabled, allows game client
     to request a server with player entity token.
-    https://api.playfab.com/documentation/multiplayer/method/RequestMultiplayerServer
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/requestmultiplayerserver
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -583,7 +655,7 @@ def RequestMultiplayerServer(request, callback, customData = None, extraHeaders 
 def RolloverContainerRegistryCredentials(request, callback, customData = None, extraHeaders = None):
     """
     Rolls over the credentials to the container registry.
-    https://api.playfab.com/documentation/multiplayer/method/RolloverContainerRegistryCredentials
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/rollovercontainerregistrycredentials
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -597,7 +669,7 @@ def RolloverContainerRegistryCredentials(request, callback, customData = None, e
 def ShutdownMultiplayerServer(request, callback, customData = None, extraHeaders = None):
     """
     Shuts down a multiplayer server session.
-    https://api.playfab.com/documentation/multiplayer/method/ShutdownMultiplayerServer
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/shutdownmultiplayerserver
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -611,7 +683,7 @@ def ShutdownMultiplayerServer(request, callback, customData = None, extraHeaders
 def UntagContainerImage(request, callback, customData = None, extraHeaders = None):
     """
     Untags a container image.
-    https://api.playfab.com/documentation/multiplayer/method/UntagContainerImage
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/untagcontainerimage
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -625,7 +697,7 @@ def UntagContainerImage(request, callback, customData = None, extraHeaders = Non
 def UpdateBuildAlias(request, callback, customData = None, extraHeaders = None):
     """
     Creates a multiplayer server build alias.
-    https://api.playfab.com/documentation/multiplayer/method/UpdateBuildAlias
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/updatebuildalias
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -639,7 +711,7 @@ def UpdateBuildAlias(request, callback, customData = None, extraHeaders = None):
 def UpdateBuildRegions(request, callback, customData = None, extraHeaders = None):
     """
     Updates a multiplayer server build's regions.
-    https://api.playfab.com/documentation/multiplayer/method/UpdateBuildRegions
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/updatebuildregions
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -653,7 +725,7 @@ def UpdateBuildRegions(request, callback, customData = None, extraHeaders = None
 def UploadCertificate(request, callback, customData = None, extraHeaders = None):
     """
     Uploads a multiplayer server game certificate.
-    https://api.playfab.com/documentation/multiplayer/method/UploadCertificate
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/uploadcertificate
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")

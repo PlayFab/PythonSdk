@@ -10,7 +10,7 @@ needed to manage entity profiles.
 def GetGlobalPolicy(request, callback, customData = None, extraHeaders = None):
     """
     Gets the global title access policy
-    https://api.playfab.com/documentation/profiles/method/GetGlobalPolicy
+    https://docs.microsoft.com/rest/api/playfab/profiles/account-management/getglobalpolicy
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -24,7 +24,7 @@ def GetGlobalPolicy(request, callback, customData = None, extraHeaders = None):
 def GetProfile(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the entity's profile.
-    https://api.playfab.com/documentation/profiles/method/GetProfile
+    https://docs.microsoft.com/rest/api/playfab/profiles/account-management/getprofile
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -38,7 +38,7 @@ def GetProfile(request, callback, customData = None, extraHeaders = None):
 def GetProfiles(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the entity's profile.
-    https://api.playfab.com/documentation/profiles/method/GetProfiles
+    https://docs.microsoft.com/rest/api/playfab/profiles/account-management/getprofiles
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -52,7 +52,7 @@ def GetProfiles(request, callback, customData = None, extraHeaders = None):
 def GetTitlePlayersFromMasterPlayerAccountIds(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the title player accounts associated with the given master player account.
-    https://api.playfab.com/documentation/profiles/method/GetTitlePlayersFromMasterPlayerAccountIds
+    https://docs.microsoft.com/rest/api/playfab/profiles/account-management/gettitleplayersfrommasterplayeraccountids
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -66,7 +66,7 @@ def GetTitlePlayersFromMasterPlayerAccountIds(request, callback, customData = No
 def SetGlobalPolicy(request, callback, customData = None, extraHeaders = None):
     """
     Sets the global title access policy
-    https://api.playfab.com/documentation/profiles/method/SetGlobalPolicy
+    https://docs.microsoft.com/rest/api/playfab/profiles/account-management/setglobalpolicy
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -81,7 +81,7 @@ def SetProfileLanguage(request, callback, customData = None, extraHeaders = None
     """
     Updates the entity's language. The precedence hierarchy for communication to the player is Title Player Account
     language, Master Player Account language, and then title default language if the first two aren't set or supported.
-    https://api.playfab.com/documentation/profiles/method/SetProfileLanguage
+    https://docs.microsoft.com/rest/api/playfab/profiles/account-management/setprofilelanguage
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -95,7 +95,7 @@ def SetProfileLanguage(request, callback, customData = None, extraHeaders = None
 def SetProfilePolicy(request, callback, customData = None, extraHeaders = None):
     """
     Sets the profiles access policy
-    https://api.playfab.com/documentation/profiles/method/SetProfilePolicy
+    https://docs.microsoft.com/rest/api/playfab/profiles/account-management/setprofilepolicy
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")

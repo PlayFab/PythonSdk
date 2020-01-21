@@ -12,7 +12,7 @@ def GetEntityToken(request, callback, customData = None, extraHeaders = None):
     """
     Method to exchange a legacy AuthenticationTicket or title SecretKey for an Entity Token or to refresh a still valid
     Entity Token.
-    https://api.playfab.com/documentation/authentication/method/GetEntityToken
+    https://docs.microsoft.com/rest/api/playfab/authentication/authentication/getentitytoken
     """
     authKey = None
     authValue = None
@@ -37,7 +37,7 @@ def GetEntityToken(request, callback, customData = None, extraHeaders = None):
 def ValidateEntityToken(request, callback, customData = None, extraHeaders = None):
     """
     Method for a server to validate a client provided EntityToken. Only callable by the title entity.
-    https://api.playfab.com/documentation/authentication/method/ValidateEntityToken
+    https://docs.microsoft.com/rest/api/playfab/authentication/authentication/validateentitytoken
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")

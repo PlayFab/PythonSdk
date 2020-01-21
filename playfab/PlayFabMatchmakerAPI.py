@@ -8,7 +8,7 @@ import playfab.PlayFabSettings as PlayFabSettings
 def AuthUser(request, callback, customData = None, extraHeaders = None):
     """
     Validates a user with the PlayFab service
-    https://api.playfab.com/documentation/matchmaker/method/AuthUser
+    https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/authuser
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -22,7 +22,7 @@ def AuthUser(request, callback, customData = None, extraHeaders = None):
 def PlayerJoined(request, callback, customData = None, extraHeaders = None):
     """
     Informs the PlayFab game server hosting service that the indicated user has joined the Game Server Instance specified
-    https://api.playfab.com/documentation/matchmaker/method/PlayerJoined
+    https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/playerjoined
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -36,7 +36,7 @@ def PlayerJoined(request, callback, customData = None, extraHeaders = None):
 def PlayerLeft(request, callback, customData = None, extraHeaders = None):
     """
     Informs the PlayFab game server hosting service that the indicated user has left the Game Server Instance specified
-    https://api.playfab.com/documentation/matchmaker/method/PlayerLeft
+    https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/playerleft
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -50,7 +50,7 @@ def PlayerLeft(request, callback, customData = None, extraHeaders = None):
 def StartGame(request, callback, customData = None, extraHeaders = None):
     """
     Instructs the PlayFab game server hosting service to instantiate a new Game Server Instance
-    https://api.playfab.com/documentation/matchmaker/method/StartGame
+    https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/startgame
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
@@ -65,7 +65,7 @@ def UserInfo(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the relevant details for a specified user, which the external match-making service can then use to compute
     effective matches
-    https://api.playfab.com/documentation/matchmaker/method/UserInfo
+    https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/userinfo
     """
     if not PlayFabSettings.DeveloperSecretKey:
         raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")

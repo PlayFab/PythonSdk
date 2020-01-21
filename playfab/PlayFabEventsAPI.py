@@ -10,7 +10,7 @@ reporting, or debugging. PlayStream events can do all of that and also trigger c
 def WriteEvents(request, callback, customData = None, extraHeaders = None):
     """
     Write batches of entity based events to PlayStream. The namespace of the Event must start with 'com.playfab.events.'
-    https://api.playfab.com/documentation/events/method/WriteEvents
+    https://docs.microsoft.com/rest/api/playfab/events/playstream-events/writeevents
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -25,7 +25,7 @@ def WriteTelemetryEvents(request, callback, customData = None, extraHeaders = No
     """
     Write batches of entity based events to as Telemetry events (bypass PlayStream). The namespace must be 'custom' or start
     with 'custom.'
-    https://api.playfab.com/documentation/events/method/WriteTelemetryEvents
+    https://docs.microsoft.com/rest/api/playfab/events/playstream-events/writetelemetryevents
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")

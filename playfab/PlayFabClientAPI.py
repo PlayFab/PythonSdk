@@ -29,7 +29,7 @@ def AcceptTrade(request, callback, customData = None, extraHeaders = None):
     Accepts an open trade (one that has not yet been accepted or cancelled), if the locally signed-in player is in the
     allowed player list for the trade, or it is open to all players. If the call is successful, the offered and accepted
     items will be swapped between the two players' inventories.
-    https://api.playfab.com/documentation/client/method/AcceptTrade
+    https://docs.microsoft.com/rest/api/playfab/client/trading/accepttrade
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -44,7 +44,7 @@ def AddFriend(request, callback, customData = None, extraHeaders = None):
     """
     Adds the PlayFab user, based upon a match against a supplied unique identifier, to the friend list of the local user. At
     least one of FriendPlayFabId,FriendUsername,FriendEmail, or FriendTitleDisplayName should be initialized.
-    https://api.playfab.com/documentation/client/method/AddFriend
+    https://docs.microsoft.com/rest/api/playfab/client/friend-list-management/addfriend
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -60,7 +60,7 @@ def AddGenericID(request, callback, customData = None, extraHeaders = None):
     Adds the specified generic service identifier to the player's PlayFab account. This is designed to allow for a PlayFab
     ID lookup of any arbitrary service identifier a title wants to add. This identifier should never be used as
     authentication credentials, as the intent is that it is easily accessible by other players.
-    https://api.playfab.com/documentation/client/method/AddGenericID
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/addgenericid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -74,7 +74,7 @@ def AddGenericID(request, callback, customData = None, extraHeaders = None):
 def AddOrUpdateContactEmail(request, callback, customData = None, extraHeaders = None):
     """
     Adds or updates a contact email to the player's profile.
-    https://api.playfab.com/documentation/client/method/AddOrUpdateContactEmail
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/addorupdatecontactemail
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -89,8 +89,8 @@ def AddSharedGroupMembers(request, callback, customData = None, extraHeaders = N
     """
     Adds users to the set of those able to update both the shared data, as well as the set of users in the group. Only users
     in the group can add new members. Shared Groups are designed for sharing data between a very small number of players,
-    please see our guide: https://api.playfab.com/docs/tutorials/landing-players/shared-groups
-    https://api.playfab.com/documentation/client/method/AddSharedGroupMembers
+    please see our guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
+    https://docs.microsoft.com/rest/api/playfab/client/shared-group-data/addsharedgroupmembers
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -105,7 +105,7 @@ def AddUsernamePassword(request, callback, customData = None, extraHeaders = Non
     """
     Adds playfab username/password auth to an existing account created via an anonymous auth method, e.g. automatic device
     ID login.
-    https://api.playfab.com/documentation/client/method/AddUsernamePassword
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/addusernamepassword
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -119,7 +119,7 @@ def AddUsernamePassword(request, callback, customData = None, extraHeaders = Non
 def AddUserVirtualCurrency(request, callback, customData = None, extraHeaders = None):
     """
     Increments the user's balance of the specified virtual currency by the stated amount
-    https://api.playfab.com/documentation/client/method/AddUserVirtualCurrency
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/adduservirtualcurrency
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -133,7 +133,7 @@ def AddUserVirtualCurrency(request, callback, customData = None, extraHeaders = 
 def AndroidDevicePushNotificationRegistration(request, callback, customData = None, extraHeaders = None):
     """
     Registers the Android device to receive push notifications
-    https://api.playfab.com/documentation/client/method/AndroidDevicePushNotificationRegistration
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/androiddevicepushnotificationregistration
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -147,7 +147,7 @@ def AndroidDevicePushNotificationRegistration(request, callback, customData = No
 def AttributeInstall(request, callback, customData = None, extraHeaders = None):
     """
     Attributes an install for advertisment.
-    https://api.playfab.com/documentation/client/method/AttributeInstall
+    https://docs.microsoft.com/rest/api/playfab/client/advertising/attributeinstall
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -165,7 +165,7 @@ def CancelTrade(request, callback, customData = None, extraHeaders = None):
     Cancels an open trade (one that has not yet been accepted or cancelled). Note that only the player who created the trade
     can cancel it via this API call, to prevent griefing of the trade system (cancelling trades in order to prevent other
     players from accepting them, for trades that can be claimed by more than one player).
-    https://api.playfab.com/documentation/client/method/CancelTrade
+    https://docs.microsoft.com/rest/api/playfab/client/trading/canceltrade
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -180,7 +180,7 @@ def ConfirmPurchase(request, callback, customData = None, extraHeaders = None):
     """
     Confirms with the payment provider that the purchase was approved (if applicable) and adjusts inventory and virtual
     currency balances as appropriate
-    https://api.playfab.com/documentation/client/method/ConfirmPurchase
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/confirmpurchase
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -194,7 +194,7 @@ def ConfirmPurchase(request, callback, customData = None, extraHeaders = None):
 def ConsumeItem(request, callback, customData = None, extraHeaders = None):
     """
     Consume uses of a consumable item. When all uses are consumed, it will be removed from the player's inventory.
-    https://api.playfab.com/documentation/client/method/ConsumeItem
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/consumeitem
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -208,7 +208,7 @@ def ConsumeItem(request, callback, customData = None, extraHeaders = None):
 def ConsumePSNEntitlements(request, callback, customData = None, extraHeaders = None):
     """
     Checks for any new consumable entitlements. If any are found, they are consumed and added as PlayFab items
-    https://api.playfab.com/documentation/client/method/ConsumePSNEntitlements
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/consumepsnentitlements
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -223,7 +223,7 @@ def ConsumeXboxEntitlements(request, callback, customData = None, extraHeaders =
     """
     Grants the player's current entitlements from Xbox Live, consuming all availble items in Xbox and granting them to the
     player's PlayFab inventory. This call is idempotent and will not grant previously granted items to the player.
-    https://api.playfab.com/documentation/client/method/ConsumeXboxEntitlements
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/consumexboxentitlements
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -239,8 +239,8 @@ def CreateSharedGroup(request, callback, customData = None, extraHeaders = None)
     Requests the creation of a shared group object, containing key/value pairs which may be updated by all members of the
     group. Upon creation, the current user will be the only member of the group. Shared Groups are designed for sharing data
     between a very small number of players, please see our guide:
-    https://docs.microsoft.com/en-us/gaming/playfab/features/social/groups/using-shared-group-data
-    https://api.playfab.com/documentation/client/method/CreateSharedGroup
+    https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
+    https://docs.microsoft.com/rest/api/playfab/client/shared-group-data/createsharedgroup
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -254,7 +254,7 @@ def CreateSharedGroup(request, callback, customData = None, extraHeaders = None)
 def ExecuteCloudScript(request, callback, customData = None, extraHeaders = None):
     """
     Executes a CloudScript function, with the 'currentPlayerId' set to the PlayFab ID of the authenticated player.
-    https://api.playfab.com/documentation/client/method/ExecuteCloudScript
+    https://docs.microsoft.com/rest/api/playfab/client/server-side-cloud-script/executecloudscript
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -268,7 +268,7 @@ def ExecuteCloudScript(request, callback, customData = None, extraHeaders = None
 def GetAccountInfo(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the user's PlayFab account details
-    https://api.playfab.com/documentation/client/method/GetAccountInfo
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getaccountinfo
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -283,7 +283,7 @@ def GetAllUsersCharacters(request, callback, customData = None, extraHeaders = N
     """
     Lists all of the characters that belong to a specific user. CharacterIds are not globally unique; characterId must be
     evaluated with the parent PlayFabId to guarantee uniqueness.
-    https://api.playfab.com/documentation/client/method/GetAllUsersCharacters
+    https://docs.microsoft.com/rest/api/playfab/client/characters/getalluserscharacters
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -297,7 +297,7 @@ def GetAllUsersCharacters(request, callback, customData = None, extraHeaders = N
 def GetCatalogItems(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the specified version of the title's catalog of virtual goods, including all defined properties
-    https://api.playfab.com/documentation/client/method/GetCatalogItems
+    https://docs.microsoft.com/rest/api/playfab/client/title-wide-data-management/getcatalogitems
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -311,7 +311,7 @@ def GetCatalogItems(request, callback, customData = None, extraHeaders = None):
 def GetCharacterData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the title-specific custom data for the character which is readable and writable by the client
-    https://api.playfab.com/documentation/client/method/GetCharacterData
+    https://docs.microsoft.com/rest/api/playfab/client/character-data/getcharacterdata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -325,7 +325,7 @@ def GetCharacterData(request, callback, customData = None, extraHeaders = None):
 def GetCharacterInventory(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the specified character's current inventory of virtual goods
-    https://api.playfab.com/documentation/client/method/GetCharacterInventory
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/getcharacterinventory
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -339,7 +339,7 @@ def GetCharacterInventory(request, callback, customData = None, extraHeaders = N
 def GetCharacterLeaderboard(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves a list of ranked characters for the given statistic, starting from the indicated point in the leaderboard
-    https://api.playfab.com/documentation/client/method/GetCharacterLeaderboard
+    https://docs.microsoft.com/rest/api/playfab/client/characters/getcharacterleaderboard
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -353,7 +353,7 @@ def GetCharacterLeaderboard(request, callback, customData = None, extraHeaders =
 def GetCharacterReadOnlyData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the title-specific custom data for the character which can only be read by the client
-    https://api.playfab.com/documentation/client/method/GetCharacterReadOnlyData
+    https://docs.microsoft.com/rest/api/playfab/client/character-data/getcharacterreadonlydata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -367,7 +367,7 @@ def GetCharacterReadOnlyData(request, callback, customData = None, extraHeaders 
 def GetCharacterStatistics(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the details of all title-specific statistics for the user
-    https://api.playfab.com/documentation/client/method/GetCharacterStatistics
+    https://docs.microsoft.com/rest/api/playfab/client/characters/getcharacterstatistics
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -384,9 +384,9 @@ def GetContentDownloadUrl(request, callback, customData = None, extraHeaders = N
     URL will attempt to download the content. A HEAD query to the returned URL will attempt to retrieve the metadata of the
     content. Note that a successful result does not guarantee the existence of this content - if it has not been uploaded,
     the query to retrieve the data will fail. See this post for more information:
-    https://community.playfab.com/hc/en-us/community/posts/205469488-How-to-upload-files-to-PlayFab-s-Content-Service. Also,
+    https://community.playfab.com/hc/community/posts/205469488-How-to-upload-files-to-PlayFab-s-Content-Service. Also,
     please be aware that the Content service is specifically PlayFab's CDN offering, for which standard CDN rates apply.
-    https://api.playfab.com/documentation/client/method/GetContentDownloadUrl
+    https://docs.microsoft.com/rest/api/playfab/client/content/getcontentdownloadurl
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -400,7 +400,7 @@ def GetContentDownloadUrl(request, callback, customData = None, extraHeaders = N
 def GetCurrentGames(request, callback, customData = None, extraHeaders = None):
     """
     Get details about all current running game servers matching the given parameters.
-    https://api.playfab.com/documentation/client/method/GetCurrentGames
+    https://docs.microsoft.com/rest/api/playfab/client/matchmaking/getcurrentgames
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -415,7 +415,7 @@ def GetFriendLeaderboard(request, callback, customData = None, extraHeaders = No
     """
     Retrieves a list of ranked friends of the current player for the given statistic, starting from the indicated point in
     the leaderboard
-    https://api.playfab.com/documentation/client/method/GetFriendLeaderboard
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/getfriendleaderboard
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -430,7 +430,7 @@ def GetFriendLeaderboardAroundPlayer(request, callback, customData = None, extra
     """
     Retrieves a list of ranked friends of the current player for the given statistic, centered on the requested PlayFab
     user. If PlayFabId is empty or null will return currently logged in user.
-    https://api.playfab.com/documentation/client/method/GetFriendLeaderboardAroundPlayer
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/getfriendleaderboardaroundplayer
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -445,7 +445,7 @@ def GetFriendsList(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the current friend list for the local user, constrained to users who have PlayFab accounts. Friends from
     linked accounts (Facebook, Steam) are also included. You may optionally exclude some linked services' friends.
-    https://api.playfab.com/documentation/client/method/GetFriendsList
+    https://docs.microsoft.com/rest/api/playfab/client/friend-list-management/getfriendslist
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -459,7 +459,7 @@ def GetFriendsList(request, callback, customData = None, extraHeaders = None):
 def GetGameServerRegions(request, callback, customData = None, extraHeaders = None):
     """
     Get details about the regions hosting game servers matching the given parameters.
-    https://api.playfab.com/documentation/client/method/GetGameServerRegions
+    https://docs.microsoft.com/rest/api/playfab/client/matchmaking/getgameserverregions
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -473,7 +473,7 @@ def GetGameServerRegions(request, callback, customData = None, extraHeaders = No
 def GetLeaderboard(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves a list of ranked users for the given statistic, starting from the indicated point in the leaderboard
-    https://api.playfab.com/documentation/client/method/GetLeaderboard
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/getleaderboard
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -487,7 +487,7 @@ def GetLeaderboard(request, callback, customData = None, extraHeaders = None):
 def GetLeaderboardAroundCharacter(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves a list of ranked characters for the given statistic, centered on the requested Character ID
-    https://api.playfab.com/documentation/client/method/GetLeaderboardAroundCharacter
+    https://docs.microsoft.com/rest/api/playfab/client/characters/getleaderboardaroundcharacter
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -502,7 +502,7 @@ def GetLeaderboardAroundPlayer(request, callback, customData = None, extraHeader
     """
     Retrieves a list of ranked users for the given statistic, centered on the requested player. If PlayFabId is empty or
     null will return currently logged in user.
-    https://api.playfab.com/documentation/client/method/GetLeaderboardAroundPlayer
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/getleaderboardaroundplayer
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -516,7 +516,7 @@ def GetLeaderboardAroundPlayer(request, callback, customData = None, extraHeader
 def GetLeaderboardForUserCharacters(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves a list of all of the user's characters for the given statistic.
-    https://api.playfab.com/documentation/client/method/GetLeaderboardForUserCharacters
+    https://docs.microsoft.com/rest/api/playfab/client/characters/getleaderboardforusercharacters
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -532,7 +532,7 @@ def GetPaymentToken(request, callback, customData = None, extraHeaders = None):
     For payments flows where the provider requires playfab (the fulfiller) to initiate the transaction, but the client
     completes the rest of the flow. In the Xsolla case, the token returned here will be passed to Xsolla by the client to
     create a cart. Poll GetPurchase using the returned OrderId once you've completed the payment.
-    https://api.playfab.com/documentation/client/method/GetPaymentToken
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/getpaymenttoken
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -546,8 +546,8 @@ def GetPaymentToken(request, callback, customData = None, extraHeaders = None):
 def GetPhotonAuthenticationToken(request, callback, customData = None, extraHeaders = None):
     """
     Gets a Photon custom authentication token that can be used to securely join the player into a Photon room. See
-    https://docs.microsoft.com/en-us/gaming/playfab/features/multiplayer/photon/quickstart for more details.
-    https://api.playfab.com/documentation/client/method/GetPhotonAuthenticationToken
+    https://docs.microsoft.com/gaming/playfab/features/multiplayer/photon/quickstart for more details.
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/getphotonauthenticationtoken
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -561,7 +561,7 @@ def GetPhotonAuthenticationToken(request, callback, customData = None, extraHead
 def GetPlayerCombinedInfo(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves all of the user's different kinds of info.
-    https://api.playfab.com/documentation/client/method/GetPlayerCombinedInfo
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayercombinedinfo
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -575,7 +575,7 @@ def GetPlayerCombinedInfo(request, callback, customData = None, extraHeaders = N
 def GetPlayerProfile(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the player's profile
-    https://api.playfab.com/documentation/client/method/GetPlayerProfile
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayerprofile
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -589,7 +589,7 @@ def GetPlayerProfile(request, callback, customData = None, extraHeaders = None):
 def GetPlayerSegments(request, callback, customData = None, extraHeaders = None):
     """
     List all segments that a player currently belongs to at this moment in time.
-    https://api.playfab.com/documentation/client/method/GetPlayerSegments
+    https://docs.microsoft.com/rest/api/playfab/client/playstream/getplayersegments
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -604,7 +604,7 @@ def GetPlayerStatistics(request, callback, customData = None, extraHeaders = Non
     """
     Retrieves the indicated statistics (current version and values for all statistics, if none are specified), for the local
     player.
-    https://api.playfab.com/documentation/client/method/GetPlayerStatistics
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/getplayerstatistics
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -618,7 +618,7 @@ def GetPlayerStatistics(request, callback, customData = None, extraHeaders = Non
 def GetPlayerStatisticVersions(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the information on the available versions of the specified statistic.
-    https://api.playfab.com/documentation/client/method/GetPlayerStatisticVersions
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/getplayerstatisticversions
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -632,7 +632,7 @@ def GetPlayerStatisticVersions(request, callback, customData = None, extraHeader
 def GetPlayerTags(request, callback, customData = None, extraHeaders = None):
     """
     Get all tags with a given Namespace (optional) from a player profile.
-    https://api.playfab.com/documentation/client/method/GetPlayerTags
+    https://docs.microsoft.com/rest/api/playfab/client/playstream/getplayertags
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -646,7 +646,7 @@ def GetPlayerTags(request, callback, customData = None, extraHeaders = None):
 def GetPlayerTrades(request, callback, customData = None, extraHeaders = None):
     """
     Gets all trades the player has either opened or accepted, optionally filtered by trade status.
-    https://api.playfab.com/documentation/client/method/GetPlayerTrades
+    https://docs.microsoft.com/rest/api/playfab/client/trading/getplayertrades
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -660,7 +660,7 @@ def GetPlayerTrades(request, callback, customData = None, extraHeaders = None):
 def GetPlayFabIDsFromFacebookIDs(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the unique PlayFab identifiers for the given set of Facebook identifiers.
-    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromFacebookIDs
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfromfacebookids
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -674,7 +674,7 @@ def GetPlayFabIDsFromFacebookIDs(request, callback, customData = None, extraHead
 def GetPlayFabIDsFromFacebookInstantGamesIds(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the unique PlayFab identifiers for the given set of Facebook Instant Game identifiers.
-    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromFacebookInstantGamesIds
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfromfacebookinstantgamesids
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -689,7 +689,7 @@ def GetPlayFabIDsFromGameCenterIDs(request, callback, customData = None, extraHe
     """
     Retrieves the unique PlayFab identifiers for the given set of Game Center identifiers (referenced in the Game Center
     Programming Guide as the Player Identifier).
-    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromGameCenterIDs
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfromgamecenterids
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -705,7 +705,7 @@ def GetPlayFabIDsFromGenericIDs(request, callback, customData = None, extraHeade
     Retrieves the unique PlayFab identifiers for the given set of generic service identifiers. A generic identifier is the
     service name plus the service-specific ID for the player, as specified by the title when the generic identifier was
     added to the player account.
-    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromGenericIDs
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfromgenericids
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -720,7 +720,7 @@ def GetPlayFabIDsFromGoogleIDs(request, callback, customData = None, extraHeader
     """
     Retrieves the unique PlayFab identifiers for the given set of Google identifiers. The Google identifiers are the IDs for
     the user accounts, available as "id" in the Google+ People API calls.
-    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromGoogleIDs
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfromgoogleids
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -736,7 +736,7 @@ def GetPlayFabIDsFromKongregateIDs(request, callback, customData = None, extraHe
     Retrieves the unique PlayFab identifiers for the given set of Kongregate identifiers. The Kongregate identifiers are the
     IDs for the user accounts, available as "user_id" from the Kongregate API methods(ex:
     http://developers.kongregate.com/docs/client/getUserId).
-    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromKongregateIDs
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfromkongregateids
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -750,7 +750,7 @@ def GetPlayFabIDsFromKongregateIDs(request, callback, customData = None, extraHe
 def GetPlayFabIDsFromNintendoSwitchDeviceIds(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the unique PlayFab identifiers for the given set of Nintendo Switch identifiers.
-    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromNintendoSwitchDeviceIds
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfromnintendoswitchdeviceids
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -764,7 +764,7 @@ def GetPlayFabIDsFromNintendoSwitchDeviceIds(request, callback, customData = Non
 def GetPlayFabIDsFromPSNAccountIDs(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the unique PlayFab identifiers for the given set of PlayStation Network identifiers.
-    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromPSNAccountIDs
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfrompsnaccountids
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -779,7 +779,7 @@ def GetPlayFabIDsFromSteamIDs(request, callback, customData = None, extraHeaders
     """
     Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers are the profile
     IDs for the user accounts, available as SteamId in the Steamworks Community API calls.
-    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromSteamIDs
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfromsteamids
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -795,7 +795,7 @@ def GetPlayFabIDsFromTwitchIDs(request, callback, customData = None, extraHeader
     Retrieves the unique PlayFab identifiers for the given set of Twitch identifiers. The Twitch identifiers are the IDs for
     the user accounts, available as "_id" from the Twitch API methods (ex:
     https://github.com/justintv/Twitch-API/blob/master/v3_resources/users.md#get-usersuser).
-    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromTwitchIDs
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfromtwitchids
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -809,7 +809,7 @@ def GetPlayFabIDsFromTwitchIDs(request, callback, customData = None, extraHeader
 def GetPlayFabIDsFromXboxLiveIDs(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the unique PlayFab identifiers for the given set of XboxLive identifiers.
-    https://api.playfab.com/documentation/client/method/GetPlayFabIDsFromXboxLiveIDs
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfromxboxliveids
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -823,7 +823,7 @@ def GetPlayFabIDsFromXboxLiveIDs(request, callback, customData = None, extraHead
 def GetPublisherData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the key-value store of custom publisher settings
-    https://api.playfab.com/documentation/client/method/GetPublisherData
+    https://docs.microsoft.com/rest/api/playfab/client/title-wide-data-management/getpublisherdata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -838,7 +838,7 @@ def GetPurchase(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves a purchase along with its current PlayFab status. Returns inventory items from the purchase that are still
     active.
-    https://api.playfab.com/documentation/client/method/GetPurchase
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/getpurchase
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -854,8 +854,8 @@ def GetSharedGroupData(request, callback, customData = None, extraHeaders = None
     Retrieves data stored in a shared group object, as well as the list of members in the group. Non-members of the group
     may use this to retrieve group data, including membership, but they will not receive data for keys marked as private.
     Shared Groups are designed for sharing data between a very small number of players, please see our guide:
-    https://api.playfab.com/docs/tutorials/landing-players/shared-groups
-    https://api.playfab.com/documentation/client/method/GetSharedGroupData
+    https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
+    https://docs.microsoft.com/rest/api/playfab/client/shared-group-data/getsharedgroupdata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -869,7 +869,7 @@ def GetSharedGroupData(request, callback, customData = None, extraHeaders = None
 def GetStoreItems(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the set of items defined for the specified store, including all prices defined
-    https://api.playfab.com/documentation/client/method/GetStoreItems
+    https://docs.microsoft.com/rest/api/playfab/client/title-wide-data-management/getstoreitems
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -883,7 +883,7 @@ def GetStoreItems(request, callback, customData = None, extraHeaders = None):
 def GetTime(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the current server time
-    https://api.playfab.com/documentation/client/method/GetTime
+    https://docs.microsoft.com/rest/api/playfab/client/title-wide-data-management/gettime
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -897,7 +897,7 @@ def GetTime(request, callback, customData = None, extraHeaders = None):
 def GetTitleData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the key-value store of custom title settings
-    https://api.playfab.com/documentation/client/method/GetTitleData
+    https://docs.microsoft.com/rest/api/playfab/client/title-wide-data-management/gettitledata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -911,7 +911,7 @@ def GetTitleData(request, callback, customData = None, extraHeaders = None):
 def GetTitleNews(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the title news feed, as configured in the developer portal
-    https://api.playfab.com/documentation/client/method/GetTitleNews
+    https://docs.microsoft.com/rest/api/playfab/client/title-wide-data-management/gettitlenews
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -925,7 +925,7 @@ def GetTitleNews(request, callback, customData = None, extraHeaders = None):
 def GetTitlePublicKey(request, callback, customData = None, extraHeaders = None):
     """
     Returns the title's base 64 encoded RSA CSP blob.
-    https://api.playfab.com/documentation/client/method/GetTitlePublicKey
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/gettitlepublickey
     """
     def wrappedCallback(playFabResult, error):
         if callback:
@@ -936,7 +936,7 @@ def GetTitlePublicKey(request, callback, customData = None, extraHeaders = None)
 def GetTradeStatus(request, callback, customData = None, extraHeaders = None):
     """
     Gets the current status of an existing trade.
-    https://api.playfab.com/documentation/client/method/GetTradeStatus
+    https://docs.microsoft.com/rest/api/playfab/client/trading/gettradestatus
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -950,7 +950,7 @@ def GetTradeStatus(request, callback, customData = None, extraHeaders = None):
 def GetUserData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the title-specific custom data for the user which is readable and writable by the client
-    https://api.playfab.com/documentation/client/method/GetUserData
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/getuserdata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -964,7 +964,7 @@ def GetUserData(request, callback, customData = None, extraHeaders = None):
 def GetUserInventory(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the user's current inventory of virtual goods
-    https://api.playfab.com/documentation/client/method/GetUserInventory
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/getuserinventory
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -978,7 +978,7 @@ def GetUserInventory(request, callback, customData = None, extraHeaders = None):
 def GetUserPublisherData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the publisher-specific custom data for the user which is readable and writable by the client
-    https://api.playfab.com/documentation/client/method/GetUserPublisherData
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/getuserpublisherdata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -992,7 +992,7 @@ def GetUserPublisherData(request, callback, customData = None, extraHeaders = No
 def GetUserPublisherReadOnlyData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the publisher-specific custom data for the user which can only be read by the client
-    https://api.playfab.com/documentation/client/method/GetUserPublisherReadOnlyData
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/getuserpublisherreadonlydata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1006,7 +1006,7 @@ def GetUserPublisherReadOnlyData(request, callback, customData = None, extraHead
 def GetUserReadOnlyData(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the title-specific custom data for the user which can only be read by the client
-    https://api.playfab.com/documentation/client/method/GetUserReadOnlyData
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/getuserreadonlydata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1020,7 +1020,7 @@ def GetUserReadOnlyData(request, callback, customData = None, extraHeaders = Non
 def GetWindowsHelloChallenge(request, callback, customData = None, extraHeaders = None):
     """
     Requests a challenge from the server to be signed by Windows Hello Passport service to authenticate.
-    https://api.playfab.com/documentation/client/method/GetWindowsHelloChallenge
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/getwindowshellochallenge
     """
     def wrappedCallback(playFabResult, error):
         if callback:
@@ -1032,7 +1032,7 @@ def GrantCharacterToUser(request, callback, customData = None, extraHeaders = No
     """
     Grants the specified character type to the user. CharacterIds are not globally unique; characterId must be evaluated
     with the parent PlayFabId to guarantee uniqueness.
-    https://api.playfab.com/documentation/client/method/GrantCharacterToUser
+    https://docs.microsoft.com/rest/api/playfab/client/characters/grantcharactertouser
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1046,7 +1046,7 @@ def GrantCharacterToUser(request, callback, customData = None, extraHeaders = No
 def LinkAndroidDeviceID(request, callback, customData = None, extraHeaders = None):
     """
     Links the Android device identifier to the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/LinkAndroidDeviceID
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkandroiddeviceid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1060,7 +1060,7 @@ def LinkAndroidDeviceID(request, callback, customData = None, extraHeaders = Non
 def LinkCustomID(request, callback, customData = None, extraHeaders = None):
     """
     Links the custom identifier, generated by the title, to the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/LinkCustomID
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkcustomid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1074,7 +1074,7 @@ def LinkCustomID(request, callback, customData = None, extraHeaders = None):
 def LinkFacebookAccount(request, callback, customData = None, extraHeaders = None):
     """
     Links the Facebook account associated with the provided Facebook access token to the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/LinkFacebookAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkfacebookaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1088,7 +1088,7 @@ def LinkFacebookAccount(request, callback, customData = None, extraHeaders = Non
 def LinkFacebookInstantGamesId(request, callback, customData = None, extraHeaders = None):
     """
     Links the Facebook Instant Games Id to the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/LinkFacebookInstantGamesId
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkfacebookinstantgamesid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1102,7 +1102,7 @@ def LinkFacebookInstantGamesId(request, callback, customData = None, extraHeader
 def LinkGameCenterAccount(request, callback, customData = None, extraHeaders = None):
     """
     Links the Game Center account associated with the provided Game Center ID to the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/LinkGameCenterAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkgamecenteraccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1116,7 +1116,7 @@ def LinkGameCenterAccount(request, callback, customData = None, extraHeaders = N
 def LinkGoogleAccount(request, callback, customData = None, extraHeaders = None):
     """
     Links the currently signed-in user account to their Google account, using their Google account credentials
-    https://api.playfab.com/documentation/client/method/LinkGoogleAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkgoogleaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1130,7 +1130,7 @@ def LinkGoogleAccount(request, callback, customData = None, extraHeaders = None)
 def LinkIOSDeviceID(request, callback, customData = None, extraHeaders = None):
     """
     Links the vendor-specific iOS device identifier to the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/LinkIOSDeviceID
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkiosdeviceid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1144,7 +1144,7 @@ def LinkIOSDeviceID(request, callback, customData = None, extraHeaders = None):
 def LinkKongregate(request, callback, customData = None, extraHeaders = None):
     """
     Links the Kongregate identifier to the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/LinkKongregate
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkkongregate
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1158,7 +1158,7 @@ def LinkKongregate(request, callback, customData = None, extraHeaders = None):
 def LinkNintendoSwitchDeviceId(request, callback, customData = None, extraHeaders = None):
     """
     Links the NintendoSwitchDeviceId to the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/LinkNintendoSwitchDeviceId
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linknintendoswitchdeviceid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1173,7 +1173,7 @@ def LinkOpenIdConnect(request, callback, customData = None, extraHeaders = None)
     """
     Links an OpenID Connect account to a user's PlayFab account, based on an existing relationship between a title and an
     Open ID Connect provider and the OpenId Connect JWT from that provider.
-    https://api.playfab.com/documentation/client/method/LinkOpenIdConnect
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkopenidconnect
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1187,7 +1187,7 @@ def LinkOpenIdConnect(request, callback, customData = None, extraHeaders = None)
 def LinkPSNAccount(request, callback, customData = None, extraHeaders = None):
     """
     Links the PlayStation Network account associated with the provided access code to the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/LinkPSNAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkpsnaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1201,7 +1201,7 @@ def LinkPSNAccount(request, callback, customData = None, extraHeaders = None):
 def LinkSteamAccount(request, callback, customData = None, extraHeaders = None):
     """
     Links the Steam account associated with the provided Steam authentication ticket to the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/LinkSteamAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linksteamaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1215,7 +1215,7 @@ def LinkSteamAccount(request, callback, customData = None, extraHeaders = None):
 def LinkTwitch(request, callback, customData = None, extraHeaders = None):
     """
     Links the Twitch account associated with the token to the user's PlayFab account.
-    https://api.playfab.com/documentation/client/method/LinkTwitch
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linktwitch
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1229,7 +1229,7 @@ def LinkTwitch(request, callback, customData = None, extraHeaders = None):
 def LinkWindowsHello(request, callback, customData = None, extraHeaders = None):
     """
     Link Windows Hello authentication to the current PlayFab Account
-    https://api.playfab.com/documentation/client/method/LinkWindowsHello
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkwindowshello
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1243,7 +1243,7 @@ def LinkWindowsHello(request, callback, customData = None, extraHeaders = None):
 def LinkXboxAccount(request, callback, customData = None, extraHeaders = None):
     """
     Links the Xbox Live account associated with the provided access code to the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/LinkXboxAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkxboxaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1258,7 +1258,7 @@ def LoginWithAndroidDeviceID(request, callback, customData = None, extraHeaders 
     """
     Signs the user in using the Android device identifier, returning a session identifier that can subsequently be used for
     API calls which require an authenticated user
-    https://api.playfab.com/documentation/client/method/LoginWithAndroidDeviceID
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithandroiddeviceid
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1278,7 +1278,7 @@ def LoginWithCustomID(request, callback, customData = None, extraHeaders = None)
     """
     Signs the user in using a custom unique identifier generated by the title, returning a session identifier that can
     subsequently be used for API calls which require an authenticated user
-    https://api.playfab.com/documentation/client/method/LoginWithCustomID
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithcustomid
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1300,7 +1300,7 @@ def LoginWithEmailAddress(request, callback, customData = None, extraHeaders = N
     which require an authenticated user. Unlike most other login API calls, LoginWithEmailAddress does not permit the
     creation of new accounts via the CreateAccountFlag. Email addresses may be used to create accounts via
     RegisterPlayFabUser.
-    https://api.playfab.com/documentation/client/method/LoginWithEmailAddress
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithemailaddress
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1320,7 +1320,7 @@ def LoginWithFacebook(request, callback, customData = None, extraHeaders = None)
     """
     Signs the user in using a Facebook access token, returning a session identifier that can subsequently be used for API
     calls which require an authenticated user
-    https://api.playfab.com/documentation/client/method/LoginWithFacebook
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithfacebook
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1340,7 +1340,7 @@ def LoginWithFacebookInstantGamesId(request, callback, customData = None, extraH
     """
     Signs the user in using a Facebook Instant Games ID, returning a session identifier that can subsequently be used for
     API calls which require an authenticated user. Requires Facebook Instant Games to be configured.
-    https://api.playfab.com/documentation/client/method/LoginWithFacebookInstantGamesId
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithfacebookinstantgamesid
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1360,7 +1360,7 @@ def LoginWithGameCenter(request, callback, customData = None, extraHeaders = Non
     """
     Signs the user in using an iOS Game Center player identifier, returning a session identifier that can subsequently be
     used for API calls which require an authenticated user
-    https://api.playfab.com/documentation/client/method/LoginWithGameCenter
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithgamecenter
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1379,7 +1379,7 @@ def LoginWithGameCenter(request, callback, customData = None, extraHeaders = Non
 def LoginWithGoogleAccount(request, callback, customData = None, extraHeaders = None):
     """
     Signs the user in using their Google account credentials
-    https://api.playfab.com/documentation/client/method/LoginWithGoogleAccount
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithgoogleaccount
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1399,7 +1399,7 @@ def LoginWithIOSDeviceID(request, callback, customData = None, extraHeaders = No
     """
     Signs the user in using the vendor-specific iOS device identifier, returning a session identifier that can subsequently
     be used for API calls which require an authenticated user
-    https://api.playfab.com/documentation/client/method/LoginWithIOSDeviceID
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithiosdeviceid
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1418,7 +1418,7 @@ def LoginWithIOSDeviceID(request, callback, customData = None, extraHeaders = No
 def LoginWithKongregate(request, callback, customData = None, extraHeaders = None):
     """
     Signs the user in using a Kongregate player account.
-    https://api.playfab.com/documentation/client/method/LoginWithKongregate
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithkongregate
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1438,7 +1438,7 @@ def LoginWithNintendoSwitchDeviceId(request, callback, customData = None, extraH
     """
     Signs the user in using a Nintendo Switch Device ID, returning a session identifier that can subsequently be used for
     API calls which require an authenticated user
-    https://api.playfab.com/documentation/client/method/LoginWithNintendoSwitchDeviceId
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithnintendoswitchdeviceid
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1458,7 +1458,7 @@ def LoginWithOpenIdConnect(request, callback, customData = None, extraHeaders = 
     """
     Logs in a user with an Open ID Connect JWT created by an existing relationship between a title and an Open ID Connect
     provider.
-    https://api.playfab.com/documentation/client/method/LoginWithOpenIdConnect
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithopenidconnect
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1480,7 +1480,7 @@ def LoginWithPlayFab(request, callback, customData = None, extraHeaders = None):
     which require an authenticated user. Unlike most other login API calls, LoginWithPlayFab does not permit the creation of
     new accounts via the CreateAccountFlag. Username/Password credentials may be used to create accounts via
     RegisterPlayFabUser, or added to existing accounts using AddUsernamePassword.
-    https://api.playfab.com/documentation/client/method/LoginWithPlayFab
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithplayfab
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1500,7 +1500,7 @@ def LoginWithPSN(request, callback, customData = None, extraHeaders = None):
     """
     Signs the user in using a PlayStation Network authentication code, returning a session identifier that can subsequently
     be used for API calls which require an authenticated user
-    https://api.playfab.com/documentation/client/method/LoginWithPSN
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithpsn
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1520,7 +1520,7 @@ def LoginWithSteam(request, callback, customData = None, extraHeaders = None):
     """
     Signs the user in using a Steam authentication ticket, returning a session identifier that can subsequently be used for
     API calls which require an authenticated user
-    https://api.playfab.com/documentation/client/method/LoginWithSteam
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithsteam
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1539,7 +1539,7 @@ def LoginWithSteam(request, callback, customData = None, extraHeaders = None):
 def LoginWithTwitch(request, callback, customData = None, extraHeaders = None):
     """
     Signs the user in using a Twitch access token.
-    https://api.playfab.com/documentation/client/method/LoginWithTwitch
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithtwitch
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1561,7 +1561,7 @@ def LoginWithWindowsHello(request, callback, customData = None, extraHeaders = N
     Windows Hello has a 2 step client to server authentication scheme. Step one is to request from the server a challenge
     string. Step two is to request the user sign the string via Windows Hello and then send the signed value back to the
     server.
-    https://api.playfab.com/documentation/client/method/LoginWithWindowsHello
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithwindowshello
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1581,7 +1581,7 @@ def LoginWithXbox(request, callback, customData = None, extraHeaders = None):
     """
     Signs the user in using a Xbox Live Token, returning a session identifier that can subsequently be used for API calls
     which require an authenticated user
-    https://api.playfab.com/documentation/client/method/LoginWithXbox
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithxbox
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1605,7 +1605,7 @@ def Matchmake(request, callback, customData = None, extraHeaders = None):
     found in a server instance matching the parameters, the slot will be assigned to that player, removing it from the
     availabe set. In that case, the information on the game session will be returned, otherwise the Status returned will be
     GameNotFound.
-    https://api.playfab.com/documentation/client/method/Matchmake
+    https://docs.microsoft.com/rest/api/playfab/client/matchmaking/matchmake
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1619,7 +1619,7 @@ def Matchmake(request, callback, customData = None, extraHeaders = None):
 def OpenTrade(request, callback, customData = None, extraHeaders = None):
     """
     Opens a new outstanding trade. Note that a given item instance may only be in one open trade at a time.
-    https://api.playfab.com/documentation/client/method/OpenTrade
+    https://docs.microsoft.com/rest/api/playfab/client/trading/opentrade
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1633,7 +1633,7 @@ def OpenTrade(request, callback, customData = None, extraHeaders = None):
 def PayForPurchase(request, callback, customData = None, extraHeaders = None):
     """
     Selects a payment option for purchase order created via StartPurchase
-    https://api.playfab.com/documentation/client/method/PayForPurchase
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/payforpurchase
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1648,7 +1648,7 @@ def PurchaseItem(request, callback, customData = None, extraHeaders = None):
     """
     Buys a single item with virtual currency. You must specify both the virtual currency to use to purchase, as well as what
     the client believes the price to be. This lets the server fail the purchase if the price has changed.
-    https://api.playfab.com/documentation/client/method/PurchaseItem
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/purchaseitem
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1663,7 +1663,7 @@ def RedeemCoupon(request, callback, customData = None, extraHeaders = None):
     """
     Adds the virtual goods associated with the coupon to the user's inventory. Coupons can be generated via the
     Economy->Catalogs tab in the PlayFab Game Manager.
-    https://api.playfab.com/documentation/client/method/RedeemCoupon
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/redeemcoupon
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1677,7 +1677,7 @@ def RedeemCoupon(request, callback, customData = None, extraHeaders = None):
 def RefreshPSNAuthToken(request, callback, customData = None, extraHeaders = None):
     """
     Uses the supplied OAuth code to refresh the internally cached player PSN auth token
-    https://api.playfab.com/documentation/client/method/RefreshPSNAuthToken
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/refreshpsnauthtoken
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1691,7 +1691,7 @@ def RefreshPSNAuthToken(request, callback, customData = None, extraHeaders = Non
 def RegisterForIOSPushNotification(request, callback, customData = None, extraHeaders = None):
     """
     Registers the iOS device to receive push notifications
-    https://api.playfab.com/documentation/client/method/RegisterForIOSPushNotification
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/registerforiospushnotification
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1706,7 +1706,7 @@ def RegisterPlayFabUser(request, callback, customData = None, extraHeaders = Non
     """
     Registers a new Playfab user account, returning a session identifier that can subsequently be used for API calls which
     require an authenticated user. You must supply either a username or an email address.
-    https://api.playfab.com/documentation/client/method/RegisterPlayFabUser
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/registerplayfabuser
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1725,7 +1725,7 @@ def RegisterWithWindowsHello(request, callback, customData = None, extraHeaders 
     """
     Registers a new PlayFab user account using Windows Hello authentication, returning a session ticket that can
     subsequently be used for API calls which require an authenticated user
-    https://api.playfab.com/documentation/client/method/RegisterWithWindowsHello
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/registerwithwindowshello
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1744,7 +1744,7 @@ def RegisterWithWindowsHello(request, callback, customData = None, extraHeaders 
 def RemoveContactEmail(request, callback, customData = None, extraHeaders = None):
     """
     Removes a contact email from the player's profile.
-    https://api.playfab.com/documentation/client/method/RemoveContactEmail
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/removecontactemail
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1758,7 +1758,7 @@ def RemoveContactEmail(request, callback, customData = None, extraHeaders = None
 def RemoveFriend(request, callback, customData = None, extraHeaders = None):
     """
     Removes a specified user from the friend list of the local user
-    https://api.playfab.com/documentation/client/method/RemoveFriend
+    https://docs.microsoft.com/rest/api/playfab/client/friend-list-management/removefriend
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1772,7 +1772,7 @@ def RemoveFriend(request, callback, customData = None, extraHeaders = None):
 def RemoveGenericID(request, callback, customData = None, extraHeaders = None):
     """
     Removes the specified generic service identifier from the player's PlayFab account.
-    https://api.playfab.com/documentation/client/method/RemoveGenericID
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/removegenericid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1788,8 +1788,8 @@ def RemoveSharedGroupMembers(request, callback, customData = None, extraHeaders 
     Removes users from the set of those able to update the shared data and the set of users in the group. Only users in the
     group can remove members. If as a result of the call, zero users remain with access, the group and its associated data
     will be deleted. Shared Groups are designed for sharing data between a very small number of players, please see our
-    guide: https://api.playfab.com/docs/tutorials/landing-players/shared-groups
-    https://api.playfab.com/documentation/client/method/RemoveSharedGroupMembers
+    guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
+    https://docs.microsoft.com/rest/api/playfab/client/shared-group-data/removesharedgroupmembers
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1804,7 +1804,7 @@ def ReportDeviceInfo(request, callback, customData = None, extraHeaders = None):
     """
     Write a PlayStream event to describe the provided player device information. This API method is not designed to be
     called directly by developers. Each PlayFab client SDK will eventually report this information automatically.
-    https://api.playfab.com/documentation/client/method/ReportDeviceInfo
+    https://docs.microsoft.com/rest/api/playfab/client/analytics/reportdeviceinfo
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1819,7 +1819,7 @@ def ReportPlayer(request, callback, customData = None, extraHeaders = None):
     """
     Submit a report for another player (due to bad bahavior, etc.), so that customer service representatives for the title
     can take action concerning potentially toxic players.
-    https://api.playfab.com/documentation/client/method/ReportPlayer
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/reportplayer
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1833,7 +1833,7 @@ def ReportPlayer(request, callback, customData = None, extraHeaders = None):
 def RestoreIOSPurchases(request, callback, customData = None, extraHeaders = None):
     """
     Restores all in-app purchases based on the given restore receipt
-    https://api.playfab.com/documentation/client/method/RestoreIOSPurchases
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/restoreiospurchases
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1849,7 +1849,7 @@ def SendAccountRecoveryEmail(request, callback, customData = None, extraHeaders 
     Forces an email to be sent to the registered email address for the user's account, with a link allowing the user to
     change the password.If an account recovery email template ID is provided, an email using the custom email template will
     be used.
-    https://api.playfab.com/documentation/client/method/SendAccountRecoveryEmail
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/sendaccountrecoveryemail
     """
     def wrappedCallback(playFabResult, error):
         if callback:
@@ -1860,7 +1860,7 @@ def SendAccountRecoveryEmail(request, callback, customData = None, extraHeaders 
 def SetFriendTags(request, callback, customData = None, extraHeaders = None):
     """
     Updates the tag list for a specified user in the friend list of the local user
-    https://api.playfab.com/documentation/client/method/SetFriendTags
+    https://docs.microsoft.com/rest/api/playfab/client/friend-list-management/setfriendtags
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1875,7 +1875,7 @@ def SetPlayerSecret(request, callback, customData = None, extraHeaders = None):
     """
     Sets the player's secret if it is not already set. Player secrets are used to sign API requests. To reset a player's
     secret use the Admin or Server API method SetPlayerSecret.
-    https://api.playfab.com/documentation/client/method/SetPlayerSecret
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/setplayersecret
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1889,7 +1889,7 @@ def SetPlayerSecret(request, callback, customData = None, extraHeaders = None):
 def StartGame(request, callback, customData = None, extraHeaders = None):
     """
     Start a new game server with a given configuration, add the current player and return the connection information.
-    https://api.playfab.com/documentation/client/method/StartGame
+    https://docs.microsoft.com/rest/api/playfab/client/matchmaking/startgame
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1903,7 +1903,7 @@ def StartGame(request, callback, customData = None, extraHeaders = None):
 def StartPurchase(request, callback, customData = None, extraHeaders = None):
     """
     Creates an order for a list of items from the title catalog
-    https://api.playfab.com/documentation/client/method/StartPurchase
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/startpurchase
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1918,7 +1918,7 @@ def SubtractUserVirtualCurrency(request, callback, customData = None, extraHeade
     """
     Decrements the user's balance of the specified virtual currency by the stated amount. It is possible to make a VC
     balance negative with this API.
-    https://api.playfab.com/documentation/client/method/SubtractUserVirtualCurrency
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/subtractuservirtualcurrency
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1932,7 +1932,7 @@ def SubtractUserVirtualCurrency(request, callback, customData = None, extraHeade
 def UnlinkAndroidDeviceID(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related Android device identifier from the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/UnlinkAndroidDeviceID
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkandroiddeviceid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1946,7 +1946,7 @@ def UnlinkAndroidDeviceID(request, callback, customData = None, extraHeaders = N
 def UnlinkCustomID(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related custom identifier from the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/UnlinkCustomID
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkcustomid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1960,7 +1960,7 @@ def UnlinkCustomID(request, callback, customData = None, extraHeaders = None):
 def UnlinkFacebookAccount(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related Facebook account from the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/UnlinkFacebookAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkfacebookaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1974,7 +1974,7 @@ def UnlinkFacebookAccount(request, callback, customData = None, extraHeaders = N
 def UnlinkFacebookInstantGamesId(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related Facebook Instant Game Ids from the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/UnlinkFacebookInstantGamesId
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkfacebookinstantgamesid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1988,7 +1988,7 @@ def UnlinkFacebookInstantGamesId(request, callback, customData = None, extraHead
 def UnlinkGameCenterAccount(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related Game Center account from the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/UnlinkGameCenterAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkgamecenteraccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2003,7 +2003,7 @@ def UnlinkGoogleAccount(request, callback, customData = None, extraHeaders = Non
     """
     Unlinks the related Google account from the user's PlayFab account
     (https://developers.google.com/android/reference/com/google/android/gms/auth/GoogleAuthUtil#public-methods).
-    https://api.playfab.com/documentation/client/method/UnlinkGoogleAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkgoogleaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2017,7 +2017,7 @@ def UnlinkGoogleAccount(request, callback, customData = None, extraHeaders = Non
 def UnlinkIOSDeviceID(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related iOS device identifier from the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/UnlinkIOSDeviceID
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkiosdeviceid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2031,7 +2031,7 @@ def UnlinkIOSDeviceID(request, callback, customData = None, extraHeaders = None)
 def UnlinkKongregate(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related Kongregate identifier from the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/UnlinkKongregate
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkkongregate
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2045,7 +2045,7 @@ def UnlinkKongregate(request, callback, customData = None, extraHeaders = None):
 def UnlinkNintendoSwitchDeviceId(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related NintendoSwitchDeviceId from the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/UnlinkNintendoSwitchDeviceId
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinknintendoswitchdeviceid
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2060,7 +2060,7 @@ def UnlinkOpenIdConnect(request, callback, customData = None, extraHeaders = Non
     """
     Unlinks an OpenID Connect account from a user's PlayFab account, based on the connection ID of an existing relationship
     between a title and an Open ID Connect provider.
-    https://api.playfab.com/documentation/client/method/UnlinkOpenIdConnect
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkopenidconnect
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2074,7 +2074,7 @@ def UnlinkOpenIdConnect(request, callback, customData = None, extraHeaders = Non
 def UnlinkPSNAccount(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related PSN account from the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/UnlinkPSNAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkpsnaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2088,7 +2088,7 @@ def UnlinkPSNAccount(request, callback, customData = None, extraHeaders = None):
 def UnlinkSteamAccount(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related Steam account from the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/UnlinkSteamAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinksteamaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2102,7 +2102,7 @@ def UnlinkSteamAccount(request, callback, customData = None, extraHeaders = None
 def UnlinkTwitch(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related Twitch account from the user's PlayFab account.
-    https://api.playfab.com/documentation/client/method/UnlinkTwitch
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinktwitch
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2116,7 +2116,7 @@ def UnlinkTwitch(request, callback, customData = None, extraHeaders = None):
 def UnlinkWindowsHello(request, callback, customData = None, extraHeaders = None):
     """
     Unlink Windows Hello authentication from the current PlayFab Account
-    https://api.playfab.com/documentation/client/method/UnlinkWindowsHello
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkwindowshello
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2130,7 +2130,7 @@ def UnlinkWindowsHello(request, callback, customData = None, extraHeaders = None
 def UnlinkXboxAccount(request, callback, customData = None, extraHeaders = None):
     """
     Unlinks the related Xbox Live account from the user's PlayFab account
-    https://api.playfab.com/documentation/client/method/UnlinkXboxAccount
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkxboxaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2146,7 +2146,7 @@ def UnlockContainerInstance(request, callback, customData = None, extraHeaders =
     Opens the specified container, with the specified key (when required), and returns the contents of the opened container.
     If the container (and key when relevant) are consumable (RemainingUses > 0), their RemainingUses will be decremented,
     consistent with the operation of ConsumeItem.
-    https://api.playfab.com/documentation/client/method/UnlockContainerInstance
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/unlockcontainerinstance
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2162,7 +2162,7 @@ def UnlockContainerItem(request, callback, customData = None, extraHeaders = Non
     Searches target inventory for an ItemInstance matching the given CatalogItemId, if necessary unlocks it using an
     appropriate key, and returns the contents of the opened container. If the container (and key when relevant) are
     consumable (RemainingUses > 0), their RemainingUses will be decremented, consistent with the operation of ConsumeItem.
-    https://api.playfab.com/documentation/client/method/UnlockContainerItem
+    https://docs.microsoft.com/rest/api/playfab/client/player-item-management/unlockcontaineritem
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2176,7 +2176,7 @@ def UnlockContainerItem(request, callback, customData = None, extraHeaders = Non
 def UpdateAvatarUrl(request, callback, customData = None, extraHeaders = None):
     """
     Update the avatar URL of the player
-    https://api.playfab.com/documentation/client/method/UpdateAvatarUrl
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/updateavatarurl
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2190,7 +2190,7 @@ def UpdateAvatarUrl(request, callback, customData = None, extraHeaders = None):
 def UpdateCharacterData(request, callback, customData = None, extraHeaders = None):
     """
     Creates and updates the title-specific custom data for the user's character which is readable and writable by the client
-    https://api.playfab.com/documentation/client/method/UpdateCharacterData
+    https://docs.microsoft.com/rest/api/playfab/client/character-data/updatecharacterdata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2205,7 +2205,7 @@ def UpdateCharacterStatistics(request, callback, customData = None, extraHeaders
     """
     Updates the values of the specified title-specific statistics for the specific character. By default, clients are not
     permitted to update statistics. Developers may override this setting in the Game Manager > Settings > API Features.
-    https://api.playfab.com/documentation/client/method/UpdateCharacterStatistics
+    https://docs.microsoft.com/rest/api/playfab/client/characters/updatecharacterstatistics
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2220,7 +2220,7 @@ def UpdatePlayerStatistics(request, callback, customData = None, extraHeaders = 
     """
     Updates the values of the specified title-specific statistics for the user. By default, clients are not permitted to
     update statistics. Developers may override this setting in the Game Manager > Settings > API Features.
-    https://api.playfab.com/documentation/client/method/UpdatePlayerStatistics
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/updateplayerstatistics
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2237,8 +2237,8 @@ def UpdateSharedGroupData(request, callback, customData = None, extraHeaders = N
     or added in this call will be readable by users not in the group. By default, data permissions are set to Private.
     Regardless of the permission setting, only members of the group can update the data. Shared Groups are designed for
     sharing data between a very small number of players, please see our guide:
-    https://api.playfab.com/docs/tutorials/landing-players/shared-groups
-    https://api.playfab.com/documentation/client/method/UpdateSharedGroupData
+    https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
+    https://docs.microsoft.com/rest/api/playfab/client/shared-group-data/updatesharedgroupdata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2252,7 +2252,7 @@ def UpdateSharedGroupData(request, callback, customData = None, extraHeaders = N
 def UpdateUserData(request, callback, customData = None, extraHeaders = None):
     """
     Creates and updates the title-specific custom data for the user which is readable and writable by the client
-    https://api.playfab.com/documentation/client/method/UpdateUserData
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/updateuserdata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2266,7 +2266,7 @@ def UpdateUserData(request, callback, customData = None, extraHeaders = None):
 def UpdateUserPublisherData(request, callback, customData = None, extraHeaders = None):
     """
     Creates and updates the publisher-specific custom data for the user which is readable and writable by the client
-    https://api.playfab.com/documentation/client/method/UpdateUserPublisherData
+    https://docs.microsoft.com/rest/api/playfab/client/player-data-management/updateuserpublisherdata
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2280,7 +2280,7 @@ def UpdateUserPublisherData(request, callback, customData = None, extraHeaders =
 def UpdateUserTitleDisplayName(request, callback, customData = None, extraHeaders = None):
     """
     Updates the title specific display name for the user
-    https://api.playfab.com/documentation/client/method/UpdateUserTitleDisplayName
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/updateusertitledisplayname
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2295,7 +2295,7 @@ def ValidateAmazonIAPReceipt(request, callback, customData = None, extraHeaders 
     """
     Validates with Amazon that the receipt for an Amazon App Store in-app purchase is valid and that it matches the
     purchased catalog item
-    https://api.playfab.com/documentation/client/method/ValidateAmazonIAPReceipt
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/validateamazoniapreceipt
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2309,7 +2309,7 @@ def ValidateAmazonIAPReceipt(request, callback, customData = None, extraHeaders 
 def ValidateGooglePlayPurchase(request, callback, customData = None, extraHeaders = None):
     """
     Validates a Google Play purchase and gives the corresponding item to the player.
-    https://api.playfab.com/documentation/client/method/ValidateGooglePlayPurchase
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/validategoogleplaypurchase
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2324,7 +2324,7 @@ def ValidateIOSReceipt(request, callback, customData = None, extraHeaders = None
     """
     Validates with the Apple store that the receipt for an iOS in-app purchase is valid and that it matches the purchased
     catalog item
-    https://api.playfab.com/documentation/client/method/ValidateIOSReceipt
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/validateiosreceipt
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2339,7 +2339,7 @@ def ValidateWindowsStoreReceipt(request, callback, customData = None, extraHeade
     """
     Validates with Windows that the receipt for an Windows App Store in-app purchase is valid and that it matches the
     purchased catalog item
-    https://api.playfab.com/documentation/client/method/ValidateWindowsStoreReceipt
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/validatewindowsstorereceipt
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2353,7 +2353,7 @@ def ValidateWindowsStoreReceipt(request, callback, customData = None, extraHeade
 def WriteCharacterEvent(request, callback, customData = None, extraHeaders = None):
     """
     Writes a character-based event into PlayStream.
-    https://api.playfab.com/documentation/client/method/WriteCharacterEvent
+    https://docs.microsoft.com/rest/api/playfab/client/analytics/writecharacterevent
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2367,7 +2367,7 @@ def WriteCharacterEvent(request, callback, customData = None, extraHeaders = Non
 def WritePlayerEvent(request, callback, customData = None, extraHeaders = None):
     """
     Writes a player-based event into PlayStream.
-    https://api.playfab.com/documentation/client/method/WritePlayerEvent
+    https://docs.microsoft.com/rest/api/playfab/client/analytics/writeplayerevent
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2381,7 +2381,7 @@ def WritePlayerEvent(request, callback, customData = None, extraHeaders = None):
 def WriteTitleEvent(request, callback, customData = None, extraHeaders = None):
     """
     Writes a title-based event into PlayStream.
-    https://api.playfab.com/documentation/client/method/WriteTitleEvent
+    https://docs.microsoft.com/rest/api/playfab/client/analytics/writetitleevent
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")

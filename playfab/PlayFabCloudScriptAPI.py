@@ -9,7 +9,7 @@ def ExecuteEntityCloudScript(request, callback, customData = None, extraHeaders 
     """
     Cloud Script is one of PlayFab's most versatile features. It allows client code to request execution of any kind of
     custom server-side functionality you can implement, and it can be used in conjunction with virtually anything.
-    https://api.playfab.com/documentation/cloudscript/method/ExecuteEntityCloudScript
+    https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/executeentitycloudscript
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")

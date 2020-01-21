@@ -8,7 +8,7 @@ import playfab.PlayFabSettings as PlayFabSettings
 def GetLanguageList(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the list of allowed languages, only accessible by title entities
-    https://api.playfab.com/documentation/localization/method/GetLanguageList
+    https://docs.microsoft.com/rest/api/playfab/localization/localization/getlanguagelist
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
