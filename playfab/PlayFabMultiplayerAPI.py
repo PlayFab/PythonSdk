@@ -358,6 +358,20 @@ def GetMultiplayerServerLogs(request, callback, customData = None, extraHeaders 
 
     PlayFabHTTP.DoPost("/MultiplayerServer/GetMultiplayerServerLogs", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def GetMultiplayerSessionLogsBySessionId(request, callback, customData = None, extraHeaders = None):
+    """
+    Gets multiplayer server logs after a server has terminated.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/getmultiplayersessionlogsbysessionid
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/GetMultiplayerSessionLogsBySessionId", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def GetQueueStatistics(request, callback, customData = None, extraHeaders = None):
     """
     Get the statistics for a queue.

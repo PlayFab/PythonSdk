@@ -161,6 +161,20 @@ def CreateCloudScriptTask(request, callback, customData = None, extraHeaders = N
 
     PlayFabHTTP.DoPost("/Admin/CreateCloudScriptTask", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def CreateInsightsScheduledScalingTask(request, callback, customData = None, extraHeaders = None):
+    """
+    Create a Insights Scheduled Scaling task, which can scale Insights Performance Units on a schedule
+    https://docs.microsoft.com/rest/api/playfab/admin/scheduledtask/createinsightsscheduledscalingtask
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/CreateInsightsScheduledScalingTask", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def CreateOpenIdConnection(request, callback, customData = None, extraHeaders = None):
     """
     Registers a relationship between a title and an Open ID Connect provider.
