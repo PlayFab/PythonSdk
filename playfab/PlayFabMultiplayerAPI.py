@@ -204,6 +204,20 @@ def DeleteBuildAlias(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/MultiplayerServer/DeleteBuildAlias", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def DeleteBuildRegion(request, callback, customData = None, extraHeaders = None):
+    """
+    Removes a multiplayer server build's region.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/deletebuildregion
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/DeleteBuildRegion", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def DeleteCertificate(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a multiplayer server game certificate.
@@ -721,6 +735,20 @@ def UpdateBuildAlias(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/UpdateBuildAlias", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def UpdateBuildRegion(request, callback, customData = None, extraHeaders = None):
+    """
+    Updates a multiplayer server build's region. If the region is not yet created, it will be created
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/updatebuildregion
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/UpdateBuildRegion", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def UpdateBuildRegions(request, callback, customData = None, extraHeaders = None):
     """

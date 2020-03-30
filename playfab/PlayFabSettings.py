@@ -62,7 +62,7 @@ _internalSettings.EntityToken = None
 This is automatically populated by any PlayFabClientApi.Login method.
 """
 _internalSettings.ClientSessionTicket = None
-_internalSettings.SdkVersionString = "PythonSdk-0.0.200303"
+_internalSettings.SdkVersionString = "PythonSdk-0.0.200330"
 _internalSettings.RequestGetParams = {
     "sdk": _internalSettings.SdkVersionString
 }

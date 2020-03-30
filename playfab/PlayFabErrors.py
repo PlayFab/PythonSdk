@@ -497,7 +497,11 @@ class PlayFabErrorCode(Enum):
     InsightsManagementSetStorageRetentionBelowMinimum = 1499,
     InsightsManagementSetStorageRetentionAboveMaximum = 1500,
     AppleNotEnabledForTitle = 1501,
-    InsightsManagementNewActiveEventArchiveLimitInvalid = 1502,
+    InsightsManagementNewActiveEventExportLimitInvalid = 1502,
+    InsightsManagementSetPerformanceRateLimited = 1503,
+    PartyRequestsThrottledFromRateLimiter = 1504,
+    XboxServiceTooManyRequests = 1505,
+    NintendoSwitchNotEnabledForTitle = 1506,
     MatchmakingEntityInvalid = 2001,
     MatchmakingPlayerAttributesInvalid = 2002,
     MatchmakingQueueNotFound = 2016,
@@ -554,6 +558,11 @@ class PlayFabErrorCode(Enum):
     ExportCouldNotCreate = 5018,
     ExportNoBackingDatabaseFound = 5019,
     ExportCouldNotDelete = 5020,
+    ExportCannotDetermineEventQuery = 5021,
+    ExportInvalidQuerySchemaModification = 5022,
+    ExportQuerySchemaMissingRequiredColumns = 5023,
+    ExportCannotParseQuery = 5024,
+    ExportControlCommandsNotAllowed = 5025,
     TitleNotEnabledForParty = 6000,
     PartyVersionNotFound = 6001,
     MultiplayerServerBuildReferencedByMatchmakingQueue = 6002,
@@ -572,6 +581,7 @@ class PlayFabErrorCode(Enum):
     ExperimentationInvalidDuration = 7012,
     ExperimentationMaxExperimentsReached = 7013,
     MaxActionDepthExceeded = 8000,
+    TitleNotOnUpdatedPricingPlan = 9000,
     SnapshotNotFound = 11000
 
 class PlayFabError:
