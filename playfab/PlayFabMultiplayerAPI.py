@@ -232,6 +232,20 @@ def DeleteCertificate(request, callback, customData = None, extraHeaders = None)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/DeleteCertificate", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def DeleteContainerImageRepository(request, callback, customData = None, extraHeaders = None):
+    """
+    Deletes a container image repository.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/deletecontainerimagerepository
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/DeleteContainerImageRepository", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def DeleteRemoteUser(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a remote user to log on to a VM for a multiplayer server build.
@@ -612,6 +626,7 @@ def ListPartyQosServers(request, callback, customData = None, extraHeaders = Non
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ListPartyQosServers", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+# [Obsolete("Use 'ListQosServersForTitle' instead", false)]
 def ListQosServers(request, callback, customData = None, extraHeaders = None):
     """
     Lists quality of service servers.

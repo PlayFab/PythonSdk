@@ -279,6 +279,20 @@ def GetAccountInfo(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Client/GetAccountInfo", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
+def GetAdPlacements(request, callback, customData = None, extraHeaders = None):
+    """
+    Returns a list of ad placements and a reward for each
+    https://docs.microsoft.com/rest/api/playfab/client/advertising/getadplacements
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/GetAdPlacements", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
 def GetAllUsersCharacters(request, callback, customData = None, extraHeaders = None):
     """
     Lists all of the characters that belong to a specific user. CharacterIds are not globally unique; characterId must be
@@ -1169,6 +1183,20 @@ def LinkKongregate(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Client/LinkKongregate", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
+def LinkNintendoSwitchAccount(request, callback, customData = None, extraHeaders = None):
+    """
+    Links the Nintendo Switch account associated with the token to the user's PlayFab account.
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linknintendoswitchaccount
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/LinkNintendoSwitchAccount", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
 def LinkNintendoSwitchDeviceId(request, callback, customData = None, extraHeaders = None):
     """
     Links the NintendoSwitchDeviceId to the user's PlayFab account
@@ -1466,6 +1494,25 @@ def LoginWithKongregate(request, callback, customData = None, extraHeaders = Non
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/LoginWithKongregate", request, None, None, wrappedCallback, customData, extraHeaders)
+
+def LoginWithNintendoSwitchAccount(request, callback, customData = None, extraHeaders = None):
+    """
+    Signs in the user with a Nintendo Switch Account identity token.
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithnintendoswitchaccount
+    """
+    request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
+    if not request["TitleId"]:
+        raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if playFabResult:
+            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
+            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
+            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/LoginWithNintendoSwitchAccount", request, None, None, wrappedCallback, customData, extraHeaders)
 
 def LoginWithNintendoSwitchDeviceId(request, callback, customData = None, extraHeaders = None):
     """
@@ -1833,6 +1880,20 @@ def RemoveSharedGroupMembers(request, callback, customData = None, extraHeaders 
 
     PlayFabHTTP.DoPost("/Client/RemoveSharedGroupMembers", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
+def ReportAdActivity(request, callback, customData = None, extraHeaders = None):
+    """
+    Report player's ad activity
+    https://docs.microsoft.com/rest/api/playfab/client/advertising/reportadactivity
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/ReportAdActivity", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
 def ReportDeviceInfo(request, callback, customData = None, extraHeaders = None):
     """
     Write a PlayStream event to describe the provided player device information. This API method is not designed to be
@@ -1876,6 +1937,20 @@ def RestoreIOSPurchases(request, callback, customData = None, extraHeaders = Non
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/RestoreIOSPurchases", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
+def RewardAdActivity(request, callback, customData = None, extraHeaders = None):
+    """
+    Reward player's ad activity
+    https://docs.microsoft.com/rest/api/playfab/client/advertising/rewardadactivity
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/RewardAdActivity", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
 def SendAccountRecoveryEmail(request, callback, customData = None, extraHeaders = None):
     """
@@ -2088,6 +2163,20 @@ def UnlinkKongregate(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/UnlinkKongregate", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
+def UnlinkNintendoSwitchAccount(request, callback, customData = None, extraHeaders = None):
+    """
+    Unlinks the related Nintendo Switch account from the user's PlayFab account.
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinknintendoswitchaccount
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/UnlinkNintendoSwitchAccount", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
 def UnlinkNintendoSwitchDeviceId(request, callback, customData = None, extraHeaders = None):
     """
