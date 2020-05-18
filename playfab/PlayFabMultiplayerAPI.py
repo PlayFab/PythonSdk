@@ -344,6 +344,20 @@ def GetMatch(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Match/GetMatch", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def GetMatchmakingQueue(request, callback, customData = None, extraHeaders = None):
+    """
+    SDK support is limited to C# and Java for this API. Get a matchmaking queue configuration.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking-admin/getmatchmakingqueue
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Match/GetMatchmakingQueue", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def GetMatchmakingTicket(request, callback, customData = None, extraHeaders = None):
     """
     Get a matchmaking ticket by ticket Id.
@@ -584,6 +598,20 @@ def ListContainerImageTags(request, callback, customData = None, extraHeaders = 
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ListContainerImageTags", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def ListMatchmakingQueues(request, callback, customData = None, extraHeaders = None):
+    """
+    SDK support is limited to C# and Java for this API. List all matchmaking queue configs.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking-admin/listmatchmakingqueues
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Match/ListMatchmakingQueues", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def ListMatchmakingTicketsForPlayer(request, callback, customData = None, extraHeaders = None):
     """
     List all matchmaking ticket Ids the user is a member of.
@@ -680,6 +708,20 @@ def ListVirtualMachineSummaries(request, callback, customData = None, extraHeade
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ListVirtualMachineSummaries", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def RemoveMatchmakingQueue(request, callback, customData = None, extraHeaders = None):
+    """
+    SDK support is limited to C# and Java for this API. Remove a matchmaking queue config.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking-admin/removematchmakingqueue
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Match/RemoveMatchmakingQueue", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def RequestMultiplayerServer(request, callback, customData = None, extraHeaders = None):
     """
     Request a multiplayer server session. Accepts tokens for title and if game client access is enabled, allows game client
@@ -708,6 +750,20 @@ def RolloverContainerRegistryCredentials(request, callback, customData = None, e
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/RolloverContainerRegistryCredentials", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def SetMatchmakingQueue(request, callback, customData = None, extraHeaders = None):
+    """
+    SDK support is limited to C# and Java for this API. Create or update a matchmaking queue configuration.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking-admin/setmatchmakingqueue
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Match/SetMatchmakingQueue", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def ShutdownMultiplayerServer(request, callback, customData = None, extraHeaders = None):
     """
