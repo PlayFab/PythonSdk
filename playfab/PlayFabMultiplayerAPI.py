@@ -645,14 +645,11 @@ def ListPartyQosServers(request, callback, customData = None, extraHeaders = Non
     Lists quality of service servers for party.
     https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listpartyqosservers
     """
-    if not PlayFabSettings._internalSettings.EntityToken:
-        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
-
     def wrappedCallback(playFabResult, error):
         if callback:
             callback(playFabResult, error)
 
-    PlayFabHTTP.DoPost("/MultiplayerServer/ListPartyQosServers", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+    PlayFabHTTP.DoPost("/MultiplayerServer/ListPartyQosServers", request, None, None, wrappedCallback, customData, extraHeaders)
 
 # [Obsolete("Use 'ListQosServersForTitle' instead", false)]
 def ListQosServers(request, callback, customData = None, extraHeaders = None):

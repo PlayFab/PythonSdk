@@ -9,7 +9,7 @@ reporting, or debugging. PlayStream events can do all of that and also trigger c
 
 def WriteEvents(request, callback, customData = None, extraHeaders = None):
     """
-    Write batches of entity based events to PlayStream. The namespace of the Event must start with 'com.playfab.events.'
+    Write batches of entity based events to PlayStream. The namespace of the Event must be 'custom' or start with 'custom.'.
     https://docs.microsoft.com/rest/api/playfab/events/playstream-events/writeevents
     """
     if not PlayFabSettings._internalSettings.EntityToken:
