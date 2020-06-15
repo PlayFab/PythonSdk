@@ -651,7 +651,7 @@ def ListPartyQosServers(request, callback, customData = None, extraHeaders = Non
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ListPartyQosServers", request, None, None, wrappedCallback, customData, extraHeaders)
 
-# [Obsolete("Use 'ListQosServersForTitle' instead", false)]
+# [Obsolete("Use 'ListQosServersForTitle' instead", true)]
 def ListQosServers(request, callback, customData = None, extraHeaders = None):
     """
     Lists quality of service servers.
