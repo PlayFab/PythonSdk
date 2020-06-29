@@ -1183,10 +1183,10 @@ def LinkKongregate(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Client/LinkKongregate", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
-def LinkNintendoAccount(request, callback, customData = None, extraHeaders = None):
+def LinkNintendoServiceAccount(request, callback, customData = None, extraHeaders = None):
     """
-    Links the Nintendo account associated with the token to the user's PlayFab account. (Open ID)
-    https://docs.microsoft.com/rest/api/playfab/client/account-management/linknintendoaccount
+    Links the Nintendo account associated with the token to the user's PlayFab account.
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/linknintendoserviceaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -1195,7 +1195,7 @@ def LinkNintendoAccount(request, callback, customData = None, extraHeaders = Non
         if callback:
             callback(playFabResult, error)
 
-    PlayFabHTTP.DoPost("/Client/LinkNintendoAccount", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+    PlayFabHTTP.DoPost("/Client/LinkNintendoServiceAccount", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
 def LinkNintendoSwitchDeviceId(request, callback, customData = None, extraHeaders = None):
     """
@@ -1495,10 +1495,10 @@ def LoginWithKongregate(request, callback, customData = None, extraHeaders = Non
 
     PlayFabHTTP.DoPost("/Client/LoginWithKongregate", request, None, None, wrappedCallback, customData, extraHeaders)
 
-def LoginWithNintendoAccount(request, callback, customData = None, extraHeaders = None):
+def LoginWithNintendoServiceAccount(request, callback, customData = None, extraHeaders = None):
     """
-    Signs in the user with a Nintendo account identity token. (Open ID)
-    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithnintendoaccount
+    Signs in the user with a Nintendo service account token.
+    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithnintendoserviceaccount
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
     if not request["TitleId"]:
@@ -1512,7 +1512,7 @@ def LoginWithNintendoAccount(request, callback, customData = None, extraHeaders 
         if callback:
             callback(playFabResult, error)
 
-    PlayFabHTTP.DoPost("/Client/LoginWithNintendoAccount", request, None, None, wrappedCallback, customData, extraHeaders)
+    PlayFabHTTP.DoPost("/Client/LoginWithNintendoServiceAccount", request, None, None, wrappedCallback, customData, extraHeaders)
 
 def LoginWithNintendoSwitchDeviceId(request, callback, customData = None, extraHeaders = None):
     """
@@ -2164,10 +2164,10 @@ def UnlinkKongregate(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Client/UnlinkKongregate", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
-def UnlinkNintendoAccount(request, callback, customData = None, extraHeaders = None):
+def UnlinkNintendoServiceAccount(request, callback, customData = None, extraHeaders = None):
     """
-    Unlinks the related Nintendo account from the user's PlayFab account. (Open ID)
-    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinknintendoaccount
+    Unlinks the related Nintendo account from the user's PlayFab account.
+    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinknintendoserviceaccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
@@ -2176,7 +2176,7 @@ def UnlinkNintendoAccount(request, callback, customData = None, extraHeaders = N
         if callback:
             callback(playFabResult, error)
 
-    PlayFabHTTP.DoPost("/Client/UnlinkNintendoAccount", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+    PlayFabHTTP.DoPost("/Client/UnlinkNintendoServiceAccount", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
 def UnlinkNintendoSwitchDeviceId(request, callback, customData = None, extraHeaders = None):
     """
