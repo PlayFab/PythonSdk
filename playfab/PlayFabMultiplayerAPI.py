@@ -103,6 +103,20 @@ def CreateBuildWithManagedContainer(request, callback, customData = None, extraH
 
     PlayFabHTTP.DoPost("/MultiplayerServer/CreateBuildWithManagedContainer", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def CreateBuildWithProcessBasedServer(request, callback, customData = None, extraHeaders = None):
+    """
+    Creates a multiplayer server build with the server running as a process.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/createbuildwithprocessbasedserver
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/CreateBuildWithProcessBasedServer", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def CreateMatchmakingTicket(request, callback, customData = None, extraHeaders = None):
     """
     Create a matchmaking ticket as a client.
