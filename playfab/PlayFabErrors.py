@@ -586,7 +586,6 @@ class PlayFabErrorCode(Enum):
     ExperimentationInvalidDuration = 7012,
     ExperimentationMaxExperimentsReached = 7013,
     ExperimentationExperimentSchedulingInProgress = 7014,
-    ExperimentationExistingCodelessScheduled = 7015,
     MaxActionDepthExceeded = 8000,
     TitleNotOnUpdatedPricingPlan = 9000,
     SnapshotNotFound = 11000

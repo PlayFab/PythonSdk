@@ -332,6 +332,20 @@ def DeleteTitle(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Admin/DeleteTitle", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def DeleteTitleDataOverride(request, callback, customData = None, extraHeaders = None):
+    """
+    Deletes a specified set of title data overrides.
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/deletetitledataoverride
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/DeleteTitleDataOverride", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def ExportMasterPlayerData(request, callback, customData = None, extraHeaders = None):
     """
     Exports all associated data of a master player account
@@ -1296,6 +1310,20 @@ def SetTitleData(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Admin/SetTitleData", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def SetTitleDataAndOverrides(request, callback, customData = None, extraHeaders = None):
+    """
+    Set and delete key-value pairs in a title data override instance.
+    https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/settitledataandoverrides
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/SetTitleDataAndOverrides", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def SetTitleInternalData(request, callback, customData = None, extraHeaders = None):
     """
