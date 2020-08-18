@@ -665,21 +665,10 @@ def ListPartyQosServers(request, callback, customData = None, extraHeaders = Non
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ListPartyQosServers", request, None, None, wrappedCallback, customData, extraHeaders)
 
-# [Obsolete("Use 'ListQosServersForTitle' instead", true)]
-def ListQosServers(request, callback, customData = None, extraHeaders = None):
-    """
-    Lists quality of service servers.
-    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listqosservers
-    """
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/MultiplayerServer/ListQosServers", request, None, None, wrappedCallback, customData, extraHeaders)
-
 def ListQosServersForTitle(request, callback, customData = None, extraHeaders = None):
     """
-    Lists quality of service servers.
+    Lists quality of service servers for the title. By default, servers are only returned for regions where a Multiplayer
+    Servers build has been deployed.
     https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listqosserversfortitle
     """
     if not PlayFabSettings._internalSettings.EntityToken:
