@@ -589,6 +589,10 @@ class PlayFabErrorCode(Enum):
     ExperimentationExperimentSchedulingInProgress = 7014,
     MaxActionDepthExceeded = 8000,
     TitleNotOnUpdatedPricingPlan = 9000,
+    SegmentManagementTitleNotInFlight = 10000,
+    SegmentManagementNoExpressionTree = 10001,
+    SegmentManagementTriggerActionCountOverLimit = 10002,
+    SegmentManagementSegmentCountOverLimit = 10003,
     SnapshotNotFound = 11000
 
 class PlayFabError:
