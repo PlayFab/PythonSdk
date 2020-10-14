@@ -5,6 +5,20 @@ import playfab.PlayFabSettings as PlayFabSettings
 """ APIs for managing experiments. """
 
 
+def CreateExclusionGroup(request, callback, customData = None, extraHeaders = None):
+    """
+    Creates a new experiment exclusion group for a title.
+    https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/createexclusiongroup
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Experimentation/CreateExclusionGroup", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def CreateExperiment(request, callback, customData = None, extraHeaders = None):
     """
     Creates a new experiment for a title.
@@ -19,6 +33,20 @@ def CreateExperiment(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Experimentation/CreateExperiment", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def DeleteExclusionGroup(request, callback, customData = None, extraHeaders = None):
+    """
+    Deletes an existing exclusion group for a title.
+    https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/deleteexclusiongroup
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Experimentation/DeleteExclusionGroup", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def DeleteExperiment(request, callback, customData = None, extraHeaders = None):
     """
     Deletes an existing experiment for a title.
@@ -32,6 +60,34 @@ def DeleteExperiment(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Experimentation/DeleteExperiment", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def GetExclusionGroups(request, callback, customData = None, extraHeaders = None):
+    """
+    Gets the details of all exclusion groups for a title.
+    https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/getexclusiongroups
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Experimentation/GetExclusionGroups", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def GetExclusionGroupTraffic(request, callback, customData = None, extraHeaders = None):
+    """
+    Gets the details of all exclusion groups for a title.
+    https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/getexclusiongrouptraffic
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Experimentation/GetExclusionGroupTraffic", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def GetExperiments(request, callback, customData = None, extraHeaders = None):
     """
@@ -102,6 +158,20 @@ def StopExperiment(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Experimentation/StopExperiment", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def UpdateExclusionGroup(request, callback, customData = None, extraHeaders = None):
+    """
+    Updates an existing exclusion group for a title.
+    https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/updateexclusiongroup
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Experimentation/UpdateExclusionGroup", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def UpdateExperiment(request, callback, customData = None, extraHeaders = None):
     """
