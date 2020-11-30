@@ -2,11 +2,21 @@
 
 ## 1. Community Support
 
-The internal team that owned this SDK will no longer be making additional changes. Any customers that wish to develop with this SDK can use it as-is, but without support. We are seeking community partners who would be willing to take ownership of this SDK and opt-in for ownership and further maintenance. Please fork this repo, visit our forums, and post your intent there, with the new repo location. From there other customers can find that post and find your repo.
+This is a community supported SDK. 
 
-Please follow the Apache 2 license guidelines for reproduction and modification, and document that Microsoft PlayFab is the original creator.
+For new and existing users, you can use the current version as it is. The team at Microsoft would no longer be providing official support for users who use this SDK. You can continue to get community support and updates at [PlayFab forums](https://community.playfab.com/index.html).
 
-Thank you for your support and happy coding.
+We are currently looking for reliable community partners to provide long-term support for this SDK. If you are interested to take ownership and provide future maintenance, let us know. 
+
+What you have to do: 
+* Fork this repo
+* Push your updates
+* Make sure you follow the Apache License, Version 2.0 guidelines for reproduction and modification, and document that Microsoft PlayFab is the original creator
+* Go to [PlayFab forums](https://community.playfab.com/index.html)
+* Write a post with a link to your forked repo so everyone knows about them
+
+We're excited to hear from you. Thank you for your support and happy coding.
+
 
 ## 2. Copyright and Licensing Information:
 
