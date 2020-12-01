@@ -4,7 +4,7 @@
 
 This is a community supported SDK. 
 
-For new and existing users, you can use the current version as it is. The team at Microsoft would no longer be providing official support for users who use this SDK. You can continue to get community support and updates at [PlayFab forums](https://community.playfab.com/index.html).
+For new and existing users, you can use the current version as it is. The team at Microsoft would no longer be providing official support for those using this SDK. You can continue to get community support and updates at [PlayFab forums](https://community.playfab.com/index.html).
 
 We are currently looking for reliable community partners to provide long-term support for this SDK. If you are interested to take ownership and provide future maintenance, let us know. 
 
