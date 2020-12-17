@@ -79,7 +79,7 @@ steps:
     python testCompile.py
 
     if [ "$isVersioned" = "true" ]; then
-      echo === publish to pypi ===
+        echo === publish to pypi ===
       cd sdks/$SdkName/
       python -m pip install --user --upgrade setuptools wheel
       python -m pip install --user --upgrade twine
