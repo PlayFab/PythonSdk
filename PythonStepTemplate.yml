@@ -71,7 +71,6 @@ steps:
      
     . "$WORKSPACE/JenkinsSdkSetupScripts/JenkinsScripts/Pipeline/testInit.sh"
     cd "$WORKSPACE/SDKGenerator/SDKBuildScripts"
-    export PF_TEST_TITLE_DATA_JSON="$WORKSPACE\JenkinsSdkSetupScripts\Creds\testTitleData.json"
     . ./shared_build.sh
     
     echo === Build the Python Project ===
