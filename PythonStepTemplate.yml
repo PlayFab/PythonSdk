@@ -79,6 +79,8 @@ steps:
     . ./shared_build.sh
 
     echo === Build the Python Project ===
+    cd $WORKSPACE/sdks/$SdkName/playfab
+    python testCompile.py
 
     if [ $isVersioned = true ]; then
       echo === publish to pypi ===
