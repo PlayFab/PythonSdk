@@ -68,31 +68,23 @@ steps:
     WORKSPACE=$(pwd -W)
     # Hack attempt to get WORKSPACE into a sub-environment
     export WORKSPACE="$WORKSPACE"
-    
-    cd "$WORKSPACE/sdks/$SdkName"
-    
+     
     . "$WORKSPACE/JenkinsSdkSetupScripts/JenkinsScripts/Pipeline/testInit.sh"
-    
 
     cd "$WORKSPACE/SDKGenerator/SDKBuildScripts"
     export PF_TEST_TITLE_DATA_JSON="$WORKSPACE\JenkinsSdkSetupScripts\Creds\testTitleData.json"
     . ./shared_build.sh
-
+    
     echo === Build the Python Project ===
     cd $WORKSPACE/sdks/$SdkName/playfab
     python testCompile.py
 
     if [ $isVersioned = true ]; then
       echo === publish to pypi ===
-
       cd sdks/$SdkName/
-
       python -m pip install --user --upgrade setuptools wheel
-
       python -m pip install --user --upgrade twine
-
       python setup.py sdist bdist_wheel
-
       twine upload dist/* -u playfabDevTools -p $PYTHON_API_HASH || exit 0
     fi
   displayName: 'Build/Test/Report'
