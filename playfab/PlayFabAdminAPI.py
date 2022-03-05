@@ -61,21 +61,6 @@ def AddPlayerTag(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Admin/AddPlayerTag", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
-def AddServerBuild(request, callback, customData = None, extraHeaders = None):
-    """
-    Adds the game server executable specified (previously uploaded - see GetServerBuildUploadUrl) to the set of those a
-    client is permitted to request in a call to StartGame
-    https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/addserverbuild
-    """
-    if not PlayFabSettings.DeveloperSecretKey:
-        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Admin/AddServerBuild", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
-
 def AddUserVirtualCurrency(request, callback, customData = None, extraHeaders = None):
     """
     Increments the specified virtual currency by the stated amount
@@ -219,6 +204,21 @@ def CreatePlayerStatisticDefinition(request, callback, customData = None, extraH
 
     PlayFabHTTP.DoPost("/Admin/CreatePlayerStatisticDefinition", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def CreateSegment(request, callback, customData = None, extraHeaders = None):
+    """
+    Creates a new player segment by defining the conditions on player properties. Also, create actions to target the player
+    segments for a title.
+    https://docs.microsoft.com/rest/api/playfab/admin/segments/createsegment
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/CreateSegment", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def DeleteContent(request, callback, customData = None, extraHeaders = None):
     """
     Delete a content file from the title. When deleting a file that does not exist, it returns success.
@@ -246,6 +246,20 @@ def DeleteMasterPlayerAccount(request, callback, customData = None, extraHeaders
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Admin/DeleteMasterPlayerAccount", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def DeleteMembershipSubscription(request, callback, customData = None, extraHeaders = None):
+    """
+    Deletes a player's subscription
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/deletemembershipsubscription
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/DeleteMembershipSubscription", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def DeleteOpenIdConnection(request, callback, customData = None, extraHeaders = None):
     """
@@ -289,6 +303,20 @@ def DeletePlayerSharedSecret(request, callback, customData = None, extraHeaders 
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Admin/DeletePlayerSharedSecret", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def DeleteSegment(request, callback, customData = None, extraHeaders = None):
+    """
+    Deletes an existing player segment and its associated action(s) for a title.
+    https://docs.microsoft.com/rest/api/playfab/admin/segments/deletesegment
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/DeleteSegment", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def DeleteStore(request, callback, customData = None, extraHeaders = None):
     """
@@ -691,6 +719,20 @@ def GetRandomResultTables(request, callback, customData = None, extraHeaders = N
 
     PlayFabHTTP.DoPost("/Admin/GetRandomResultTables", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def GetSegments(request, callback, customData = None, extraHeaders = None):
+    """
+    Get detail information of a segment and its associated definition(s) and action(s) for a title.
+    https://docs.microsoft.com/rest/api/playfab/admin/segments/getsegments
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/GetSegments", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def GetServerBuildInfo(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the build details for the specified game server executable
@@ -704,21 +746,6 @@ def GetServerBuildInfo(request, callback, customData = None, extraHeaders = None
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Admin/GetServerBuildInfo", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
-
-def GetServerBuildUploadUrl(request, callback, customData = None, extraHeaders = None):
-    """
-    Retrieves the pre-authorized URL for uploading a game server package containing a build (does not enable the build for
-    use - see AddServerBuild)
-    https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/getserverbuilduploadurl
-    """
-    if not PlayFabSettings.DeveloperSecretKey:
-        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Admin/GetServerBuildUploadUrl", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def GetStoreItems(request, callback, customData = None, extraHeaders = None):
     """
@@ -1000,20 +1027,6 @@ def ListVirtualCurrencyTypes(request, callback, customData = None, extraHeaders 
 
     PlayFabHTTP.DoPost("/Admin/ListVirtualCurrencyTypes", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
-def ModifyMatchmakerGameModes(request, callback, customData = None, extraHeaders = None):
-    """
-    Updates the game server mode details for the specified game server executable
-    https://docs.microsoft.com/rest/api/playfab/admin/matchmaking/modifymatchmakergamemodes
-    """
-    if not PlayFabSettings.DeveloperSecretKey:
-        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Admin/ModifyMatchmakerGameModes", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
-
 def ModifyServerBuild(request, callback, customData = None, extraHeaders = None):
     """
     Updates the build details for the specified game server executable
@@ -1240,6 +1253,20 @@ def SetCatalogItems(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Admin/SetCatalogItems", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def SetMembershipOverride(request, callback, customData = None, extraHeaders = None):
+    """
+    Sets the override expiration for a membership subscription
+    https://docs.microsoft.com/rest/api/playfab/admin/account-management/setmembershipoverride
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/SetMembershipOverride", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def SetPlayerSecret(request, callback, customData = None, extraHeaders = None):
     """
@@ -1482,6 +1509,20 @@ def UpdateRandomResultTables(request, callback, customData = None, extraHeaders 
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Admin/UpdateRandomResultTables", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
+def UpdateSegment(request, callback, customData = None, extraHeaders = None):
+    """
+    Updates an existing player segment and its associated definition(s) and action(s) for a title.
+    https://docs.microsoft.com/rest/api/playfab/admin/segments/updatesegment
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Admin/UpdateSegment", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def UpdateStoreItems(request, callback, customData = None, extraHeaders = None):
     """

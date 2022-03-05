@@ -47,20 +47,6 @@ def PlayerLeft(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Matchmaker/PlayerLeft", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
-def StartGame(request, callback, customData = None, extraHeaders = None):
-    """
-    Instructs the PlayFab game server hosting service to instantiate a new Game Server Instance
-    https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/startgame
-    """
-    if not PlayFabSettings.DeveloperSecretKey:
-        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Matchmaker/StartGame", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
-
 def UserInfo(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the relevant details for a specified user, which the external match-making service can then use to compute

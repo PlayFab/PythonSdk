@@ -11,19 +11,6 @@ def IsClientLoggedIn():
     """Determine if the client session ticket is set, without actually making it public"""
     return bool(PlayFabSettings._internalSettings.ClientSessionTicket)
 
-def MultiStepClientLogin(settingsForUser):
-    disabledAds = PlayFabSettings.DisableAdvertising
-    adIdType = PlayFabSettings.AdvertisingIdType
-    adIdVal = PlayFabSettings.AdvertisingIdValue
-
-    if settingsForUser and settingsForUser["NeedsAttribution"] and not disabledAds and adIdType and adIdVal:
-        request = {}
-        if adIdType == PlayFabSettings.AD_TYPE_IDFA:
-            request["Idfa"] = adIdVal
-        elif adIdType == PlayFabSettings.AD_TYPE_ANDROID_ID:
-            request["Adid"] = adIdVal
-        AttributeInstall(request, None)
-
 def AcceptTrade(request, callback, customData = None, extraHeaders = None):
     """
     Accepts an open trade (one that has not yet been accepted or cancelled), if the locally signed-in player is in the
@@ -153,8 +140,6 @@ def AttributeInstall(request, callback, customData = None, extraHeaders = None):
         raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
 
     def wrappedCallback(playFabResult, error):
-        # Modify AdvertisingIdType:  Prevents us from sending the id multiple times, and allows automated tests to determine id was sent successfully
-        PlayFabSettings.AdvertisingIdType += "_Successful"
         if callback:
             callback(playFabResult, error)
 
@@ -204,6 +189,35 @@ def ConsumeItem(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/ConsumeItem", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
+def ConsumeMicrosoftStoreEntitlements(request, callback, customData = None, extraHeaders = None):
+    """
+    Grants the player's current entitlements from Microsoft Store's Collection API
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/consumemicrosoftstoreentitlements
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/ConsumeMicrosoftStoreEntitlements", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
+
+def ConsumePS5Entitlements(request, callback, customData = None, extraHeaders = None):
+    """
+    Checks for any new PS5 entitlements. If any are found, they are consumed (if they're consumables) and added as PlayFab
+    items
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/consumeps5entitlements
+    """
+    if not PlayFabSettings._internalSettings.ClientSessionTicket:
+        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Client/ConsumePS5Entitlements", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
 def ConsumePSNEntitlements(request, callback, customData = None, extraHeaders = None):
     """
@@ -1031,17 +1045,6 @@ def GetUserReadOnlyData(request, callback, customData = None, extraHeaders = Non
 
     PlayFabHTTP.DoPost("/Client/GetUserReadOnlyData", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
-def GetWindowsHelloChallenge(request, callback, customData = None, extraHeaders = None):
-    """
-    Requests a challenge from the server to be signed by Windows Hello Passport service to authenticate.
-    https://docs.microsoft.com/rest/api/playfab/client/authentication/getwindowshellochallenge
-    """
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Client/GetWindowsHelloChallenge", request, None, None, wrappedCallback, customData, extraHeaders)
-
 def GrantCharacterToUser(request, callback, customData = None, extraHeaders = None):
     """
     Grants the specified character type to the user. CharacterIds are not globally unique; characterId must be evaluated
@@ -1129,7 +1132,10 @@ def LinkFacebookInstantGamesId(request, callback, customData = None, extraHeader
 
 def LinkGameCenterAccount(request, callback, customData = None, extraHeaders = None):
     """
-    Links the Game Center account associated with the provided Game Center ID to the user's PlayFab account
+    Links the Game Center account associated with the provided Game Center ID to the user's PlayFab account. Logging in with
+    a Game Center ID is insecure if you do not include the optional PublicKeyUrl, Salt, Signature, and Timestamp parameters
+    in this request. It is recommended you require these parameters on all Game Center calls by going to the Apple Add-ons
+    page in the PlayFab Game Manager and enabling the 'Require secure authentication only for this app' option.
     https://docs.microsoft.com/rest/api/playfab/client/account-management/linkgamecenteraccount
     """
     if not PlayFabSettings._internalSettings.ClientSessionTicket:
@@ -1268,20 +1274,6 @@ def LinkTwitch(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Client/LinkTwitch", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
-def LinkWindowsHello(request, callback, customData = None, extraHeaders = None):
-    """
-    Link Windows Hello authentication to the current PlayFab Account
-    https://docs.microsoft.com/rest/api/playfab/client/account-management/linkwindowshello
-    """
-    if not PlayFabSettings._internalSettings.ClientSessionTicket:
-        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Client/LinkWindowsHello", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
-
 def LinkXboxAccount(request, callback, customData = None, extraHeaders = None):
     """
     Links the Xbox Live account associated with the provided access code to the user's PlayFab account
@@ -1310,7 +1302,6 @@ def LoginWithAndroidDeviceID(request, callback, customData = None, extraHeaders 
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1329,7 +1320,6 @@ def LoginWithApple(request, callback, customData = None, extraHeaders = None):
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1349,7 +1339,6 @@ def LoginWithCustomID(request, callback, customData = None, extraHeaders = None)
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1371,7 +1360,6 @@ def LoginWithEmailAddress(request, callback, customData = None, extraHeaders = N
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1391,7 +1379,6 @@ def LoginWithFacebook(request, callback, customData = None, extraHeaders = None)
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1411,7 +1398,6 @@ def LoginWithFacebookInstantGamesId(request, callback, customData = None, extraH
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1420,7 +1406,10 @@ def LoginWithFacebookInstantGamesId(request, callback, customData = None, extraH
 def LoginWithGameCenter(request, callback, customData = None, extraHeaders = None):
     """
     Signs the user in using an iOS Game Center player identifier, returning a session identifier that can subsequently be
-    used for API calls which require an authenticated user
+    used for API calls which require an authenticated user. Logging in with a Game Center ID is insecure if you do not
+    include the optional PublicKeyUrl, Salt, Signature, and Timestamp parameters in this request. It is recommended you
+    require these parameters on all Game Center calls by going to the Apple Add-ons page in the PlayFab Game Manager and
+    enabling the 'Require secure authentication only for this app' option.
     https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithgamecenter
     """
     request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
@@ -1431,7 +1420,6 @@ def LoginWithGameCenter(request, callback, customData = None, extraHeaders = Non
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1450,7 +1438,6 @@ def LoginWithGoogleAccount(request, callback, customData = None, extraHeaders = 
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1470,7 +1457,6 @@ def LoginWithIOSDeviceID(request, callback, customData = None, extraHeaders = No
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1489,7 +1475,6 @@ def LoginWithKongregate(request, callback, customData = None, extraHeaders = Non
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1508,7 +1493,6 @@ def LoginWithNintendoServiceAccount(request, callback, customData = None, extraH
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1528,7 +1512,6 @@ def LoginWithNintendoSwitchDeviceId(request, callback, customData = None, extraH
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1548,7 +1531,6 @@ def LoginWithOpenIdConnect(request, callback, customData = None, extraHeaders = 
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1570,7 +1552,6 @@ def LoginWithPlayFab(request, callback, customData = None, extraHeaders = None):
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1590,7 +1571,6 @@ def LoginWithPSN(request, callback, customData = None, extraHeaders = None):
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1610,7 +1590,6 @@ def LoginWithSteam(request, callback, customData = None, extraHeaders = None):
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1629,33 +1608,10 @@ def LoginWithTwitch(request, callback, customData = None, extraHeaders = None):
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/LoginWithTwitch", request, None, None, wrappedCallback, customData, extraHeaders)
-
-def LoginWithWindowsHello(request, callback, customData = None, extraHeaders = None):
-    """
-    Completes the Windows Hello login flow by returning the signed value of the challange from GetWindowsHelloChallenge.
-    Windows Hello has a 2 step client to server authentication scheme. Step one is to request from the server a challenge
-    string. Step two is to request the user sign the string via Windows Hello and then send the signed value back to the
-    server.
-    https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithwindowshello
-    """
-    request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
-    if not request["TitleId"]:
-        raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if playFabResult:
-            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
-            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Client/LoginWithWindowsHello", request, None, None, wrappedCallback, customData, extraHeaders)
 
 def LoginWithXbox(request, callback, customData = None, extraHeaders = None):
     """
@@ -1671,7 +1627,6 @@ def LoginWithXbox(request, callback, customData = None, extraHeaders = None):
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
             PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
@@ -1795,31 +1750,10 @@ def RegisterPlayFabUser(request, callback, customData = None, extraHeaders = Non
     def wrappedCallback(playFabResult, error):
         if playFabResult:
             PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
         if callback:
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/RegisterPlayFabUser", request, None, None, wrappedCallback, customData, extraHeaders)
-
-def RegisterWithWindowsHello(request, callback, customData = None, extraHeaders = None):
-    """
-    Registers a new PlayFab user account using Windows Hello authentication, returning a session ticket that can
-    subsequently be used for API calls which require an authenticated user
-    https://docs.microsoft.com/rest/api/playfab/client/authentication/registerwithwindowshello
-    """
-    request["TitleId"] = PlayFabSettings.TitleId or request.TitleId
-    if not request["TitleId"]:
-        raise PlayFabErrors.PlayFabException("Must be have TitleId set to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if playFabResult:
-            PlayFabSettings._internalSettings.ClientSessionTicket = playFabResult["SessionTicket"] if "SessionTicket" in playFabResult else PlayFabSettings._internalSettings.ClientSessionTicket
-            PlayFabSettings._internalSettings.EntityToken = playFabResult["EntityToken"]["EntityToken"] if "EntityToken" in playFabResult else PlayFabSettings._internalSettings.EntityToken
-            MultiStepClientLogin(playFabResult.get("SettingsForUser"))
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Client/RegisterWithWindowsHello", request, None, None, wrappedCallback, customData, extraHeaders)
 
 def RemoveContactEmail(request, callback, customData = None, extraHeaders = None):
     """
@@ -1993,20 +1927,6 @@ def SetPlayerSecret(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/SetPlayerSecret", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
-
-def StartGame(request, callback, customData = None, extraHeaders = None):
-    """
-    Start a new game server with a given configuration, add the current player and return the connection information.
-    https://docs.microsoft.com/rest/api/playfab/client/matchmaking/startgame
-    """
-    if not PlayFabSettings._internalSettings.ClientSessionTicket:
-        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Client/StartGame", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
 def StartPurchase(request, callback, customData = None, extraHeaders = None):
     """
@@ -2248,20 +2168,6 @@ def UnlinkTwitch(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Client/UnlinkTwitch", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
-
-def UnlinkWindowsHello(request, callback, customData = None, extraHeaders = None):
-    """
-    Unlink Windows Hello authentication from the current PlayFab Account
-    https://docs.microsoft.com/rest/api/playfab/client/account-management/unlinkwindowshello
-    """
-    if not PlayFabSettings._internalSettings.ClientSessionTicket:
-        raise PlayFabErrors.PlayFabException("Must be logged in to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Client/UnlinkWindowsHello", request, "X-Authorization", PlayFabSettings._internalSettings.ClientSessionTicket, wrappedCallback, customData, extraHeaders)
 
 def UnlinkXboxAccount(request, callback, customData = None, extraHeaders = None):
     """

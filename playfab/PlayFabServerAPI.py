@@ -1077,6 +1077,21 @@ def LoginWithServerCustomId(request, callback, customData = None, extraHeaders =
 
     PlayFabHTTP.DoPost("/Server/LoginWithServerCustomId", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def LoginWithSteamId(request, callback, customData = None, extraHeaders = None):
+    """
+    Signs the user in using an Steam ID, returning a session identifier that can subsequently be used for API calls which
+    require an authenticated user
+    https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithsteamid
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/LoginWithSteamId", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def LoginWithXbox(request, callback, customData = None, extraHeaders = None):
     """
     Signs the user in using a Xbox Live Token from an external server backend, returning a session identifier that can
@@ -1219,20 +1234,6 @@ def RefreshGameServerInstanceHeartbeat(request, callback, customData = None, ext
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Server/RefreshGameServerInstanceHeartbeat", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
-
-def RegisterGame(request, callback, customData = None, extraHeaders = None):
-    """
-    Inform the matchmaker that a new Game Server Instance is added.
-    https://docs.microsoft.com/rest/api/playfab/server/matchmaking/registergame
-    """
-    if not PlayFabSettings.DeveloperSecretKey:
-        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Server/RegisterGame", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def RemoveFriend(request, callback, customData = None, extraHeaders = None):
     """

@@ -176,6 +176,20 @@ def CreateServerMatchmakingTicket(request, callback, customData = None, extraHea
 
     PlayFabHTTP.DoPost("/Match/CreateServerMatchmakingTicket", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def CreateTitleMultiplayerServersQuotaChange(request, callback, customData = None, extraHeaders = None):
+    """
+    Creates a request to change a title's multiplayer server quotas.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/createtitlemultiplayerserversquotachange
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/CreateTitleMultiplayerServersQuotaChange", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def DeleteAsset(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a multiplayer server game asset for a title.
@@ -288,9 +302,25 @@ def EnableMultiplayerServersForTitle(request, callback, customData = None, extra
 
     PlayFabHTTP.DoPost("/MultiplayerServer/EnableMultiplayerServersForTitle", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def GetAssetDownloadUrl(request, callback, customData = None, extraHeaders = None):
+    """
+    Gets a URL that can be used to download the specified asset. A sample pre-authenticated url -
+    https://sampleStorageAccount.blob.core.windows.net/gameassets/gameserver.zip?sv=2015-04-05&ss=b&srt=sco&sp=rw&st=startDate&se=endDate&spr=https&sig=sampleSig&api-version=2017-07-29
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/getassetdownloadurl
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/GetAssetDownloadUrl", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def GetAssetUploadUrl(request, callback, customData = None, extraHeaders = None):
     """
-    Gets the URL to upload assets to.
+    Gets the URL to upload assets to. A sample pre-authenticated url -
+    https://sampleStorageAccount.blob.core.windows.net/gameassets/gameserver.zip?sv=2015-04-05&ss=b&srt=sco&sp=rw&st=startDate&se=endDate&spr=https&sig=sampleSig&api-version=2017-07-29
     https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/getassetuploadurl
     """
     if not PlayFabSettings._internalSettings.EntityToken:
@@ -484,6 +514,20 @@ def GetTitleEnabledForMultiplayerServersStatus(request, callback, customData = N
 
     PlayFabHTTP.DoPost("/MultiplayerServer/GetTitleEnabledForMultiplayerServersStatus", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def GetTitleMultiplayerServersQuotaChange(request, callback, customData = None, extraHeaders = None):
+    """
+    Gets a title's server quota change request.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/gettitlemultiplayerserversquotachange
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/GetTitleMultiplayerServersQuotaChange", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def GetTitleMultiplayerServersQuotas(request, callback, customData = None, extraHeaders = None):
     """
     Gets the quotas for a title in relation to multiplayer servers.
@@ -555,11 +599,11 @@ def ListBuildAliases(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ListBuildAliases", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
-def ListBuildSummaries(request, callback, customData = None, extraHeaders = None):
+def ListBuildSummariesV2(request, callback, customData = None, extraHeaders = None):
     """
     Lists summarized details of all multiplayer server builds for a title. Accepts tokens for title and if game client
     access is enabled, allows game client to request list of builds with player entity token.
-    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listbuildsummaries
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listbuildsummariesv2
     """
     if not PlayFabSettings._internalSettings.EntityToken:
         raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
@@ -568,7 +612,7 @@ def ListBuildSummaries(request, callback, customData = None, extraHeaders = None
         if callback:
             callback(playFabResult, error)
 
-    PlayFabHTTP.DoPost("/MultiplayerServer/ListBuildSummaries", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+    PlayFabHTTP.DoPost("/MultiplayerServer/ListBuildSummariesV2", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def ListCertificateSummaries(request, callback, customData = None, extraHeaders = None):
     """
@@ -694,6 +738,20 @@ def ListServerBackfillTicketsForPlayer(request, callback, customData = None, ext
 
     PlayFabHTTP.DoPost("/Match/ListServerBackfillTicketsForPlayer", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def ListTitleMultiplayerServersQuotaChanges(request, callback, customData = None, extraHeaders = None):
+    """
+    List all server quota change requests for a title.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listtitlemultiplayerserversquotachanges
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/ListTitleMultiplayerServersQuotaChanges", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def ListVirtualMachineSummaries(request, callback, customData = None, extraHeaders = None):
     """
     Lists virtual machines for a title.
@@ -806,6 +864,20 @@ def UpdateBuildAlias(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/UpdateBuildAlias", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def UpdateBuildName(request, callback, customData = None, extraHeaders = None):
+    """
+    Updates a multiplayer server build's name.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/updatebuildname
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/MultiplayerServer/UpdateBuildName", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def UpdateBuildRegion(request, callback, customData = None, extraHeaders = None):
     """

@@ -35,6 +35,20 @@ def ExecuteFunction(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/CloudScript/ExecuteFunction", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def GetFunction(request, callback, customData = None, extraHeaders = None):
+    """
+    Gets registered Azure Functions for a given title id and function name.
+    https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/getfunction
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/CloudScript/GetFunction", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def ListFunctions(request, callback, customData = None, extraHeaders = None):
     """
     Lists all currently registered Azure Functions for a given title.

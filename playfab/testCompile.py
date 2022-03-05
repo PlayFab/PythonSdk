@@ -8,6 +8,7 @@ files = [
 "PlayFabAuthenticationAPI.py",
 "PlayFabCloudScriptAPI.py",
 "PlayFabDataAPI.py",
+"PlayFabEconomyAPI.py",
 "PlayFabEventsAPI.py",
 "PlayFabExperimentationAPI.py",
 "PlayFabInsightsAPI.py",

@@ -23,31 +23,6 @@ Manager for your title, at the PlayFab Website)
 
 DeveloperSecretKey = None
 
-"""
-Client specifics
-"""
-
-"""
-Set this to the appropriate AD_TYPE_X constant below
-"""
-AdvertisingIdType = ""
-
-"""
-Set this to corresponding device value
-"""
-AdvertisingIdValue = None
-
-"""
-DisableAdvertising is provided for completeness, but changing it is not
-suggested
-Disabling this may prevent your advertising-related PlayFab marketplace
-partners from working correctly
-"""
-
-DisableAdvertising = False
-AD_TYPE_IDFA = "Idfa"
-AD_TYPE_ANDROID_ID = "Adid"
-
 class InternalSettings:
     pass
 
@@ -62,7 +37,7 @@ _internalSettings.EntityToken = None
 This is automatically populated by any PlayFabClientApi.Login method.
 """
 _internalSettings.ClientSessionTicket = None
-_internalSettings.SdkVersionString = "PythonSdk-0.0.201014"
+_internalSettings.SdkVersionString = "PythonSdk-0.0.220305"
 _internalSettings.RequestGetParams = {
     "sdk": _internalSettings.SdkVersionString
 }

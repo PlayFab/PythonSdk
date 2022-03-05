@@ -5,6 +5,7 @@ import playfab.PlayFabServerAPI as PlayFabServerAPI
 import playfab.PlayFabAuthenticationAPI as PlayFabAuthenticationAPI
 import playfab.PlayFabCloudScriptAPI as PlayFabCloudScriptAPI
 import playfab.PlayFabDataAPI as PlayFabDataAPI
+import playfab.PlayFabEconomyAPI as PlayFabEconomyAPI
 import playfab.PlayFabEventsAPI as PlayFabEventsAPI
 import playfab.PlayFabExperimentationAPI as PlayFabExperimentationAPI
 import playfab.PlayFabInsightsAPI as PlayFabInsightsAPI
@@ -26,6 +27,7 @@ __all__.append("PlayFabServerAPI")
 __all__.append("PlayFabAuthenticationAPI")
 __all__.append("PlayFabCloudScriptAPI")
 __all__.append("PlayFabDataAPI")
+__all__.append("PlayFabEconomyAPI")
 __all__.append("PlayFabEventsAPI")
 __all__.append("PlayFabExperimentationAPI")
 __all__.append("PlayFabInsightsAPI")
