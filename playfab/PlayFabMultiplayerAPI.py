@@ -2,8 +2,10 @@ import playfab.PlayFabErrors as PlayFabErrors
 import playfab.PlayFabHTTP as PlayFabHTTP
 import playfab.PlayFabSettings as PlayFabSettings
 
-""" API methods for managing multiplayer servers. API methods for managing parties. """
-
+"""
+API methods for managing multiplayer servers. API methods for managing parties. The lobby service helps players group
+together to play multiplayer games. It is often used as a rendezvous point for players to share connection information.
+"""
 
 def CancelAllMatchmakingTicketsForPlayer(request, callback, customData = None, extraHeaders = None):
     """
@@ -116,6 +118,20 @@ def CreateBuildWithProcessBasedServer(request, callback, customData = None, extr
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/CreateBuildWithProcessBasedServer", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def CreateLobby(request, callback, customData = None, extraHeaders = None):
+    """
+    Create a lobby.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/createlobby
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/CreateLobby", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def CreateMatchmakingTicket(request, callback, customData = None, extraHeaders = None):
     """
@@ -274,6 +290,20 @@ def DeleteContainerImageRepository(request, callback, customData = None, extraHe
 
     PlayFabHTTP.DoPost("/MultiplayerServer/DeleteContainerImageRepository", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def DeleteLobby(request, callback, customData = None, extraHeaders = None):
+    """
+    Delete a lobby.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/deletelobby
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/DeleteLobby", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def DeleteRemoteUser(request, callback, customData = None, extraHeaders = None):
     """
     Deletes a remote user to log on to a VM for a multiplayer server build.
@@ -301,6 +331,34 @@ def EnableMultiplayerServersForTitle(request, callback, customData = None, extra
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/EnableMultiplayerServersForTitle", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def FindFriendLobbies(request, callback, customData = None, extraHeaders = None):
+    """
+    Find lobbies which match certain criteria, and which friends are in.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/findfriendlobbies
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/FindFriendLobbies", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def FindLobbies(request, callback, customData = None, extraHeaders = None):
+    """
+    Find all the lobbies that match certain criteria.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/findlobbies
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/FindLobbies", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def GetAssetDownloadUrl(request, callback, customData = None, extraHeaders = None):
     """
@@ -373,6 +431,20 @@ def GetContainerRegistryCredentials(request, callback, customData = None, extraH
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/GetContainerRegistryCredentials", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def GetLobby(request, callback, customData = None, extraHeaders = None):
+    """
+    Get a lobby.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/getlobby
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/GetLobby", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def GetMatch(request, callback, customData = None, extraHeaders = None):
     """
@@ -542,6 +614,48 @@ def GetTitleMultiplayerServersQuotas(request, callback, customData = None, extra
 
     PlayFabHTTP.DoPost("/MultiplayerServer/GetTitleMultiplayerServersQuotas", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def InviteToLobby(request, callback, customData = None, extraHeaders = None):
+    """
+    Send a notification to invite a player to a lobby.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/invitetolobby
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/InviteToLobby", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def JoinArrangedLobby(request, callback, customData = None, extraHeaders = None):
+    """
+    Join an Arranged lobby.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/joinarrangedlobby
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/JoinArrangedLobby", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def JoinLobby(request, callback, customData = None, extraHeaders = None):
+    """
+    Join a lobby.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/joinlobby
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/JoinLobby", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def JoinMatchmakingTicket(request, callback, customData = None, extraHeaders = None):
     """
     Join a matchmaking ticket.
@@ -555,6 +669,20 @@ def JoinMatchmakingTicket(request, callback, customData = None, extraHeaders = N
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Match/JoinMatchmakingTicket", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def LeaveLobby(request, callback, customData = None, extraHeaders = None):
+    """
+    Leave a lobby.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/leavelobby
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/LeaveLobby", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def ListArchivedMultiplayerServers(request, callback, customData = None, extraHeaders = None):
     """
@@ -780,6 +908,20 @@ def RemoveMatchmakingQueue(request, callback, customData = None, extraHeaders = 
 
     PlayFabHTTP.DoPost("/Match/RemoveMatchmakingQueue", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def RemoveMember(request, callback, customData = None, extraHeaders = None):
+    """
+    Remove a member from a lobby.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/removemember
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/RemoveMember", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def RequestMultiplayerServer(request, callback, customData = None, extraHeaders = None):
     """
     Request a multiplayer server session. Accepts tokens for title and if game client access is enabled, allows game client
@@ -836,6 +978,34 @@ def ShutdownMultiplayerServer(request, callback, customData = None, extraHeaders
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/ShutdownMultiplayerServer", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def SubscribeToLobbyResource(request, callback, customData = None, extraHeaders = None):
+    """
+    Subscribe to lobby resource notifications.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/subscribetolobbyresource
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/SubscribeToLobbyResource", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def UnsubscribeFromLobbyResource(request, callback, customData = None, extraHeaders = None):
+    """
+    Unsubscribe from lobby notifications.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/unsubscribefromlobbyresource
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/UnsubscribeFromLobbyResource", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def UntagContainerImage(request, callback, customData = None, extraHeaders = None):
     """
@@ -906,6 +1076,20 @@ def UpdateBuildRegions(request, callback, customData = None, extraHeaders = None
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/MultiplayerServer/UpdateBuildRegions", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def UpdateLobby(request, callback, customData = None, extraHeaders = None):
+    """
+    Update a lobby.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/lobby/updatelobby
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Lobby/UpdateLobby", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def UploadCertificate(request, callback, customData = None, extraHeaders = None):
     """

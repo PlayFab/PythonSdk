@@ -1235,6 +1235,20 @@ def RefreshGameServerInstanceHeartbeat(request, callback, customData = None, ext
 
     PlayFabHTTP.DoPost("/Server/RefreshGameServerInstanceHeartbeat", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
+def RegisterGame(request, callback, customData = None, extraHeaders = None):
+    """
+    Inform the matchmaker that a new Game Server Instance is added.
+    https://docs.microsoft.com/rest/api/playfab/server/matchmaking/registergame
+    """
+    if not PlayFabSettings.DeveloperSecretKey:
+        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Server/RegisterGame", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
+
 def RemoveFriend(request, callback, customData = None, extraHeaders = None):
     """
     Removes the specified friend from the the user's friend list

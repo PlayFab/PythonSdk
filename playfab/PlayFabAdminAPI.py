@@ -733,20 +733,6 @@ def GetSegments(request, callback, customData = None, extraHeaders = None):
 
     PlayFabHTTP.DoPost("/Admin/GetSegments", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
-def GetServerBuildInfo(request, callback, customData = None, extraHeaders = None):
-    """
-    Retrieves the build details for the specified game server executable
-    https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/getserverbuildinfo
-    """
-    if not PlayFabSettings.DeveloperSecretKey:
-        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Admin/GetServerBuildInfo", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
-
 def GetStoreItems(request, callback, customData = None, extraHeaders = None):
     """
     Retrieves the set of items defined for the specified store, including all prices defined
@@ -999,20 +985,6 @@ def ListOpenIdConnection(request, callback, customData = None, extraHeaders = No
 
     PlayFabHTTP.DoPost("/Admin/ListOpenIdConnection", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
-def ListServerBuilds(request, callback, customData = None, extraHeaders = None):
-    """
-    Retrieves the build details for all game server executables which are currently defined for the title
-    https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/listserverbuilds
-    """
-    if not PlayFabSettings.DeveloperSecretKey:
-        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Admin/ListServerBuilds", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
-
 def ListVirtualCurrencyTypes(request, callback, customData = None, extraHeaders = None):
     """
     Retuns the list of all defined virtual currencies for the title
@@ -1068,21 +1040,6 @@ def RemovePlayerTag(request, callback, customData = None, extraHeaders = None):
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Admin/RemovePlayerTag", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
-
-def RemoveServerBuild(request, callback, customData = None, extraHeaders = None):
-    """
-    Removes the game server executable specified from the set of those a client is permitted to request in a call to
-    StartGame
-    https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/removeserverbuild
-    """
-    if not PlayFabSettings.DeveloperSecretKey:
-        raise PlayFabErrors.PlayFabException("Must have DeveloperSecretKey set to call this method")
-
-    def wrappedCallback(playFabResult, error):
-        if callback:
-            callback(playFabResult, error)
-
-    PlayFabHTTP.DoPost("/Admin/RemoveServerBuild", request, "X-SecretKey", PlayFabSettings.DeveloperSecretKey, wrappedCallback, customData, extraHeaders)
 
 def RemoveVirtualCurrencyTypes(request, callback, customData = None, extraHeaders = None):
     """
