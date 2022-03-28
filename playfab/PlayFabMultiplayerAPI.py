@@ -993,6 +993,20 @@ def SubscribeToLobbyResource(request, callback, customData = None, extraHeaders 
 
     PlayFabHTTP.DoPost("/Lobby/SubscribeToLobbyResource", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
+def SubscribeToMatchmakingResource(request, callback, customData = None, extraHeaders = None):
+    """
+    Subscribe to match resource notifications.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/subscribetomatchmakingresource
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Match/SubscribeToMatchmakingResource", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
 def UnsubscribeFromLobbyResource(request, callback, customData = None, extraHeaders = None):
     """
     Unsubscribe from lobby notifications.
@@ -1006,6 +1020,20 @@ def UnsubscribeFromLobbyResource(request, callback, customData = None, extraHead
             callback(playFabResult, error)
 
     PlayFabHTTP.DoPost("/Lobby/UnsubscribeFromLobbyResource", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
+
+def UnsubscribeFromMatchmakingResource(request, callback, customData = None, extraHeaders = None):
+    """
+    Unsubscribe from match resource notifications.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/matchmaking/unsubscribefrommatchmakingresource
+    """
+    if not PlayFabSettings._internalSettings.EntityToken:
+        raise PlayFabErrors.PlayFabException("Must call GetEntityToken before calling this method")
+
+    def wrappedCallback(playFabResult, error):
+        if callback:
+            callback(playFabResult, error)
+
+    PlayFabHTTP.DoPost("/Match/UnsubscribeFromMatchmakingResource", request, "X-EntityToken", PlayFabSettings._internalSettings.EntityToken, wrappedCallback, customData, extraHeaders)
 
 def UntagContainerImage(request, callback, customData = None, extraHeaders = None):
     """
