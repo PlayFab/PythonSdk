@@ -534,6 +534,7 @@ class PlayFabErrorCode(Enum):
     PlayerIdentityLinkNotFound = 1537,
     PhotonApplicationIdAlreadyInUse = 1538,
     CloudScriptUnableToDeleteProductionRevision = 1539,
+    CustomIdNotFound = 1540,
     MatchmakingEntityInvalid = 2001,
     MatchmakingPlayerAttributesInvalid = 2002,
     MatchmakingQueueNotFound = 2016,
@@ -685,6 +686,7 @@ class PlayFabErrorCode(Enum):
     EventSinkSasTokenInvalid = 15004,
     EventSinkNotFound = 15005,
     EventSinkNameInvalid = 15006,
+    EventSinkSasTokenPermissionInvalid = 15007,
     OperationCanceled = 16000,
     InvalidDisplayNameRandomSuffixLength = 17000,
     AllowNonUniquePlayerDisplayNamesDisableNotAllowed = 17001
